@@ -1,12 +1,18 @@
 import React from "react";
-import { Container, Carousel } from "react-bootstrap";
+import { Container, Carousel, Row, Col } from "react-bootstrap";
 import ordrupgaard from "../assets/img/ordrupgaard.jpg";
 import ropox from "../assets/img/ropox.jpg";
 import lyngby from "../assets/img/lyngby.jpg";
-import plum from "../assets/img/plum.png";
+import plum from "../assets/img/plum.jpg";
 import hjertesikker from "../assets/img/hjertesikker.jpg";
-import proselection from "../assets/img/proselection.png";
+import proselection from "../assets/img/proselection.jpg";
 import absalon from "../assets/img/absalon.jpg";
+import danskRad from "../assets/img/dansk-rad.png";
+import pg from "../assets/img/p&g.png";
+import kiro from "../assets/img/logo-kiro.png";
+import danskBeredskaber from "../assets/img/db-logo.png";
+import ole from "../assets/img/logo.png";
+import kentAndreasen from "../assets/img/kent-andreasen.png";
 
 const CasesClients = () => {
   return (
@@ -17,7 +23,7 @@ const CasesClients = () => {
           paddingTop: "5rem",
           backgroundColor: "#FF629A",
           width: 1577,
-          height: 900,
+          height: 1500,
           textAlign: "center",
           fontFamily: "primary-font",
         }}
@@ -31,66 +37,336 @@ const CasesClients = () => {
           <Carousel.Item>
             <img src={ordrupgaard} className="w-50" />
             <Carousel.Caption>
-              <h2>Ordrupgaard</h2>
-              <p>Webshop</p>
+              <div
+                style={{
+                  backgroundColor: "#F9E95D",
+                  position: "absolute",
+                  marginTop: "1rem",
+                  width: 1050,
+                  height: 135,
+                  opacity: 0.6,
+                }}
+              ></div>
+              <h2
+                style={{
+                  marginTop: "1.5rem",
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: 50,
+                  position: "relative",
+                  textDecoration: "underline",
+                }}
+              >
+                Ordrupgaard
+              </h2>
+              <p
+                style={{
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: 35,
+                  fontFamily: "secondary-font",
+                  position: "relative",
+                }}
+              >
+                Webshop
+              </p>
             </Carousel.Caption>
           </Carousel.Item>
 
           <Carousel.Item>
             <img src={ropox} className="w-50" />
             <Carousel.Caption>
-              <h2>Ordrupgaard</h2>
-              <p>Webshop</p>
+              <div
+                style={{
+                  backgroundColor: "#F9E95D",
+                  position: "absolute",
+                  marginTop: "1rem",
+                  width: 1050,
+                  height: 135,
+                  opacity: 0.6,
+                }}
+              ></div>
+              <h2
+                style={{
+                  marginTop: "1.5rem",
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: 50,
+                  position: "relative",
+                  textDecoration: "underline",
+                }}
+              >
+                Ropox
+              </h2>
+              <p
+                style={{
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: 35,
+                  fontFamily: "secondary-font",
+                  position: "relative",
+                }}
+              >
+                Homepage/Webshop system
+              </p>
             </Carousel.Caption>
           </Carousel.Item>
 
           <Carousel.Item>
             <img src={absalon} className="w-50" />
             <Carousel.Caption>
-              <h2>Ordrupgaard</h2>
-              <p>Webshop</p>
+              <div
+                style={{
+                  backgroundColor: "#F9E95D",
+                  position: "absolute",
+                  marginTop: "1rem",
+                  width: 1050,
+                  height: 135,
+                  opacity: 0.6,
+                }}
+              ></div>
+              <h2
+                style={{
+                  marginTop: "1.5rem",
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: 50,
+                  position: "relative",
+                  textDecoration: "underline",
+                }}
+              >
+                Absalon
+              </h2>
+              <p
+                style={{
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: 35,
+                  fontFamily: "secondary-font",
+                  position: "relative",
+                }}
+              >
+                Homepage
+              </p>
             </Carousel.Caption>
           </Carousel.Item>
 
           <Carousel.Item>
             <img src={proselection} className="w-50" />
             <Carousel.Caption>
-              <h2>Ordrupgaard</h2>
-              <p>Webshop</p>
+              <div
+                style={{
+                  backgroundColor: "#F9E95D",
+                  position: "absolute",
+                  marginTop: "1rem",
+                  width: 1050,
+                  height: 135,
+                  opacity: 0.6,
+                }}
+              ></div>
+              <h2
+                style={{
+                  marginTop: "1.5rem",
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: 50,
+                  position: "relative",
+                  textDecoration: "underline",
+                }}
+              >
+                Pro Selection
+              </h2>
+              <p
+                style={{
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: 35,
+                  fontFamily: "secondary-font",
+                  position: "relative",
+                }}
+              >
+                Integration/Homepage
+              </p>
             </Carousel.Caption>
           </Carousel.Item>
 
           <Carousel.Item>
             <img src={hjertesikker} className="w-50" />
             <Carousel.Caption>
-              <h2>Ordrupgaard</h2>
-              <p>Webshop</p>
+              <div
+                style={{
+                  backgroundColor: "#F9E95D",
+                  position: "absolute",
+                  marginTop: "1rem",
+                  width: 1050,
+                  height: 135,
+                  opacity: 0.6,
+                }}
+              ></div>
+              <h2
+                style={{
+                  marginTop: "1.5rem",
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: 50,
+                  position: "relative",
+                  textDecoration: "underline",
+                }}
+              >
+                HjerteSikker
+              </h2>
+              <p
+                style={{
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: 35,
+                  fontFamily: "secondary-font",
+                  position: "relative",
+                }}
+              >
+                Homepage
+              </p>
             </Carousel.Caption>
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src={lyngby} className="w-25" />
+            <img src={lyngby} className="w-50" />
             <Carousel.Caption>
-              <h2>Ordrupgaard</h2>
-              <p>Webshop</p>
+              <div
+                style={{
+                  backgroundColor: "#F9E95D",
+                  position: "absolute",
+                  marginTop: "1rem",
+                  width: 1050,
+                  height: 135,
+                  opacity: 0.6,
+                }}
+              ></div>
+              <h2
+                style={{
+                  marginTop: "1.5rem",
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: 50,
+                  position: "relative",
+                  textDecoration: "underline",
+                }}
+              >
+                Lyngby Porcelain
+              </h2>
+              <p
+                style={{
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: 35,
+                  fontFamily: "secondary-font",
+                  position: "relative",
+                }}
+              >
+                Warehouse management integration
+              </p>
             </Carousel.Caption>
           </Carousel.Item>
 
           <Carousel.Item>
             <img src={plum} className="w-50" />
             <Carousel.Caption>
-              <h2>Ordrupgaard</h2>
-              <p>Webshop</p>
+              <div
+                style={{
+                  backgroundColor: "#F9E95D",
+                  position: "absolute",
+                  marginTop: "1rem",
+                  width: 1050,
+                  height: 135,
+                  opacity: 0.6,
+                }}
+              ></div>
+              <h2
+                style={{
+                  marginTop: "1.5rem",
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: 50,
+                  position: "relative",
+                  textDecoration: "underline",
+                }}
+              >
+                Plum
+              </h2>
+              <p
+                style={{
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: 35,
+                  fontFamily: "secondary-font",
+                  position: "relative",
+                }}
+              >
+                Homepage/Webshop System
+              </p>
             </Carousel.Caption>
           </Carousel.Item>
-
-          {/* <Carousel.Item>
-            <Carousel.Caption>
-              <h2>Ordrupgaard</h2>
-              <p>Webshop</p>
-            </Carousel.Caption>
-          </Carousel.Item> */}
         </Carousel>
+        <h1
+          style={{
+            fontSize: 55,
+            marginTop: "10rem",
+          }}
+        >
+          Our clients
+        </h1>
+        <Row
+          style={{
+            marginTop: "6rem",
+            paddingLeft: "5rem",
+            paddingRight: "7rem",
+          }}
+        >
+          <Col
+            md={4}
+            style={{
+              marginTop: "1rem",
+            }}
+          >
+            <img src={danskRad} className="w-50" />
+          </Col>
+          <Col md={4}>
+            <img src={pg} className="w-25" />
+          </Col>
+          <Col
+            md={4}
+            style={{
+              marginTop: "2rem",
+            }}
+          >
+            <img src={kiro} className="w-50" />
+          </Col>
+          <Col
+            md={4}
+            style={{
+              marginTop: "5rem",
+            }}
+          >
+            <img src={danskBeredskaber} className="w-25" />
+          </Col>
+          <Col
+            md={4}
+            style={{
+              marginTop: "8.5rem",
+            }}
+          >
+            <img src={ole} className="w-75" />
+          </Col>
+
+          <Col
+            md={4}
+            style={{
+              marginTop: "7.5rem",
+            }}
+          >
+            <img src={kentAndreasen} className="w-50" />
+          </Col>
+        </Row>
       </Container>
     </section>
   );

@@ -4,57 +4,54 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { EnvelopeAt } from "react-bootstrap-icons";
 
 const Contact = () => {
-
-  const[full_name, setFullName] = useState("");
-  const[email, setEmail] = useState("");
-  const[type_of_inquiry, setTypeInquiry] = useState("");
-  const[inquiry_description, setinquiryDescription] = useState("");
-  const[errorMessage, setErrorMessage] = useState("");
-  const[successMessage, setSuccessMessage] =useState("");
-
+  const [full_name, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [type_of_inquiry, setTypeInquiry] = useState("");
+  const [inquiry_description, setinquiryDescription] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const validationForm = () => {
-
-
-    if(!full_name || !email || !type_of_inquiry || !inquiry_description){
+    if (!full_name || !email || !type_of_inquiry || !inquiry_description) {
       setErrorMessage("All the fields are required to be filled :)");
       return false;
     }
 
-    const emailRegex = /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]@(gmail|hotmail|outlook|yahoo)\.com\b$/g;
-    if (!emailRegex.test(email)){
+    const emailRegex =
+      /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]@(gmail|hotmail|outlook|yahoo)\.com\b$/g;
+    if (!emailRegex.test(email)) {
       setErrorMessage("Your email is not valid :(");
       return false;
     }
 
-
     return true;
-  }
- 
+  };
+
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    
+
     if (validationForm()) {
-    
       const object = {
         full_name: full_name,
         email: email,
         type_of_inquiry: type_of_inquiry,
         inquiry_description: inquiry_description,
-      }
+      };
 
-
-        axios.post("http://localhost/bachelor_exam/api-contact.php", object)
-        .then(setSuccessMessage("Your contact details has been registered, we'll get in touch as fast as you say fish! ;D"))
+      axios
+        .post("http://localhost/bachelor_exam/api-contact.php", object)
+        .then(
+          setSuccessMessage(
+            "Your contact details has been registered, we'll get in touch as fast as you say fish! ;D"
+          )
+        )
         .catch(setErrorMessage(""));
 
-        axios.get("http://localhost/bachelor_exam/api-contact.php", object)
-        .catch(setErrorMessage("The email has already been registered!"))
-
-        
-  }
-}
-
+      axios
+        .get("http://localhost/bachelor_exam/api-contact.php", object)
+        .catch(setErrorMessage("The email has already been registered!"));
+    }
+  };
 
   return (
     <section id="contact-and-support">
@@ -72,7 +69,7 @@ const Contact = () => {
               style={{
                 backgroundColor: "#F9E95D",
                 width: 900,
-                height: 1850,
+                height: 2450,
                 position: "absolute",
                 top: 4500,
                 left: 0,
@@ -102,7 +99,7 @@ const Contact = () => {
               needing assistance or just a small talk with us.
             </p>
             <Form
-            onSubmit = {handleSubmitForm}
+              onSubmit={handleSubmitForm}
               style={{
                 width: "45%",
                 padding: "0 3rem",
@@ -121,7 +118,7 @@ const Contact = () => {
                   type="text"
                   value={full_name}
                   name="full_name"
-                  onChange={event => setFullName(event.target.value)}
+                  onChange={(event) => setFullName(event.target.value)}
                   style={{
                     borderBottom: "3px solid black",
                     height: "3rem",
@@ -138,7 +135,7 @@ const Contact = () => {
                   name="email"
                   value={email}
                   type="email"
-                  onChange={event => setEmail(event.target.value)}
+                  onChange={(event) => setEmail(event.target.value)}
                   style={{
                     borderBottom: "3px solid black",
                     height: "3rem",
@@ -154,7 +151,7 @@ const Contact = () => {
                 <Form.Select
                   name="type_of_inquiry"
                   value={type_of_inquiry}
-                  onChange={event => setTypeInquiry(event.target.value)}
+                  onChange={(event) => setTypeInquiry(event.target.value)}
                   style={{
                     borderBottom: "3px solid black",
                     height: "3rem",
@@ -173,29 +170,37 @@ const Contact = () => {
                 }}
               >
                 <Form.Label>Describe your inquiry</Form.Label>
-                <Form.Control as="textarea"
+                <Form.Control
+                  as="textarea"
                   type="text"
                   name="inquiry_description"
                   value={inquiry_description}
-                  onChange={event => setinquiryDescription(event.target.value)}
+                  onChange={(event) =>
+                    setinquiryDescription(event.target.value)
+                  }
                   style={{
                     borderBottom: "3px solid black",
                   }}
                 ></Form.Control>
               </Form.Group>
-              <p style={{
-                color: "red",
-                fontSize: 25,
-                fontFamily: "secondary-font",
-                fontWeight: "bold",
-              }}>{errorMessage}
+              <p
+                style={{
+                  color: "red",
+                  fontSize: 25,
+                  fontFamily: "secondary-font",
+                  fontWeight: "bold",
+                }}
+              >
+                {errorMessage}
               </p>
-              <p style={{
-                color: "green",
-                fontSize: 25,
-                fontWeight: "bold",
-                fontFamily: "secondary-font",
-              }}>
+              <p
+                style={{
+                  color: "green",
+                  fontSize: 25,
+                  fontWeight: "bold",
+                  fontFamily: "secondary-font",
+                }}
+              >
                 {successMessage}
               </p>
               <Button
@@ -221,7 +226,7 @@ const Contact = () => {
               style={{
                 position: "absolute",
                 left: 800,
-                top: 5280,
+                top: 5880,
               }}
             ></EnvelopeAt>
           </Col>
@@ -230,7 +235,5 @@ const Contact = () => {
     </section>
   );
 };
-
-
 
 export default Contact;

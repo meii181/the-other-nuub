@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { PersonFill } from "react-bootstrap-icons";
 
 const About = () => {
   return (
@@ -25,9 +26,10 @@ const About = () => {
             fontFamily: "secondary-font",
           }}
         >
-          This is us. Everyday, we are proud of our profession, training and
-          experience behind us, always ready to deliver the best of your
-          product!
+          This is us, everyday, we are a group of dedicated people in the web
+          domain who always put the professionalism on the first place, equipped
+          with solid knowledge, training and experience, and proud of our
+          profession, always ready to deliver the best of your product!
         </p>
         <Row
           className="g-4"
@@ -46,7 +48,9 @@ const About = () => {
                 borderRadius: "50%",
                 backgroundColor: "whitesmoke",
               }}
-            ></div>
+            >
+              <PersonFill size={200} className="mt-4"></PersonFill>
+            </div>
             <div
               style={{
                 textAlign: "center",
@@ -68,7 +72,9 @@ const About = () => {
                 borderRadius: "50%",
                 backgroundColor: "whitesmoke",
               }}
-            />
+            >
+              <PersonFill size={200} className="mt-4"></PersonFill>
+            </div>
             <div
               style={{
                 textAlign: "center",
@@ -91,7 +97,9 @@ const About = () => {
                 backgroundColor: "whitesmoke",
                 marginTop: "3rem",
               }}
-            />
+            >
+              <PersonFill size={200} className="mt-4"></PersonFill>
+            </div>
             <div
               style={{
                 textAlign: "center",
@@ -114,7 +122,9 @@ const About = () => {
                 backgroundColor: "whitesmoke",
                 marginTop: "3rem",
               }}
-            />
+            >
+              <PersonFill size={200} className="mt-4"></PersonFill>
+            </div>
             <div
               style={{
                 textAlign: "center",
