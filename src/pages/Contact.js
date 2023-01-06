@@ -72,7 +72,7 @@ const Contact = () => {
               style={{
                 backgroundColor: "#F9E95D",
                 width: 900,
-                height: 1625,
+                height: 1850,
                 position: "absolute",
                 top: 4500,
                 left: 0,
@@ -101,24 +101,6 @@ const Contact = () => {
               You can actually do both, feel free to contact us, regardless of
               needing assistance or just a small talk with us.
             </p>
-            <p style={{
-                color: "red",
-                fontSize: 25,
-                marginTop: "2rem",
-                marginLeft: "8rem",
-                fontFamily: "secondary-font",
-                fontWeight: "bold",
-              }}>{errorMessage}
-              </p>
-              <p style={{
-                color: "green",
-                fontSize: 25,
-                fontWeight: "bold",
-                marginLeft: "8rem",
-                fontFamily: "secondary-font",
-              }} className="w-50">
-                {successMessage}
-              </p>
             <Form
             onSubmit = {handleSubmitForm}
               style={{
@@ -191,17 +173,31 @@ const Contact = () => {
                 }}
               >
                 <Form.Label>Describe your inquiry</Form.Label>
-                <Form.Control
+                <Form.Control as="textarea"
                   type="text"
                   name="inquiry_description"
                   value={inquiry_description}
                   onChange={event => setinquiryDescription(event.target.value)}
                   style={{
                     borderBottom: "3px solid black",
-                    height: "10rem",
                   }}
                 ></Form.Control>
               </Form.Group>
+              <p style={{
+                color: "red",
+                fontSize: 25,
+                fontFamily: "secondary-font",
+                fontWeight: "bold",
+              }}>{errorMessage}
+              </p>
+              <p style={{
+                color: "green",
+                fontSize: 25,
+                fontWeight: "bold",
+                fontFamily: "secondary-font",
+              }}>
+                {successMessage}
+              </p>
               <Button
                 type="submit"
                 value="Submit Form"
@@ -211,7 +207,7 @@ const Contact = () => {
                   backgroundColor: "#7F7EC7",
                   color: "whitesmoke",
                   borderBottom: "4px solid black",
-                  marginTop: "1rem",
+                  marginTop: "3rem",
                 }}
               >
                 Submit

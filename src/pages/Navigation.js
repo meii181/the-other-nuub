@@ -5,7 +5,7 @@ import nuub_logo from "../assets/img/cropped-nuub_logo.png";
 const Navigation = () => {
   return (
     <Navbar className="navigation pt-3" expand="lg">
-      <Navbar.Brand href="#" className="logo">
+      <Navbar.Brand className="logo">
         <img src={nuub_logo} width="246px" height="83px" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbar-nav" />

@@ -3,9 +3,19 @@ import { Button, Container, Stack } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { ArrowRightCircle } from "react-bootstrap-icons";
+import Services from "./Services";
+import Strategy from "./Strategy";
+import CasesClients from "./Cases&Clients";
+import About from "./About";
+import Contact from "./Contact";
+import Navigation from "./Navigation";
+import Footer from "./Footer";
+import ScrollUpButton from "./ScrollUpButton";
 
 const Home = () => {
   return (
+    <>
+    <Navigation />
     <section id="home" className="justify-content-md-center mt-5 pt-5">
       <Container>
         <Row>
@@ -28,7 +38,7 @@ const Home = () => {
               className="call-to-action mt-5"
             >
               <Button
-                href="#pricecalculator"
+                href="/price-calculator"
                 style={{
                   fontSize: 20,
                   fontWeight: "bold",
@@ -98,6 +108,14 @@ const Home = () => {
         </Row>
       </Container>
     </section>
+    <Services />
+      <Strategy />
+      <CasesClients />
+      <About />
+      <Contact />
+      <Footer />
+      <ScrollUpButton />
+      </>
   );
 };
 
