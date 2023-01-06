@@ -4,17 +4,17 @@ import { HouseFill, Cart4 } from "react-bootstrap-icons";
 import NavigationPriceCalculator from "./NavigationPriceCalculator";
 
 const PriceCalculator = () => {
-  const questions = [
-    {
-      text: "What kind of website would you like?",
-      subtitle:
-        "Choose where would you like to display your information, either on a home page, or on an online tranding platform.",
-      options: [
-        { id: 0, text: "Homepage" },
-        { id: 1, text: "Webpage" },
-      ],
-    },
-  ];
+  //   const questions = [
+  //     {
+  //       text: "What kind of website would you like?",
+  //       subtitle:
+  //         "Choose where would you like to display your information, either on a home page, or on an online tranding platform.",
+  //       options: [
+  //         { id: 0, text: "Homepage" },
+  //         { id: 1, text: "Webpage" },
+  //       ],
+  //     },
+  //   ];
 
   return (
     <div>
