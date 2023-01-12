@@ -21,14 +21,12 @@ const CasesClients = () => {
   return (
     <section id="casesclients">
       <Container
+        className="container-cases"
         fluid
         style={{
-          paddingTop: "5rem",
           backgroundColor: "#FF629A",
-          width: 1577,
-          height: 1500,
-          textAlign: "center",
           fontFamily: "primary-font",
+          textAlign: "center",
         }}
       >
         <h1 style={{ fontSize: 55 }}>{t("Our cases")}</h1>
@@ -40,16 +38,7 @@ const CasesClients = () => {
           <Carousel.Item>
             <img src={ordrupgaard} className="w-50" />
             <Carousel.Caption>
-              <div
-                style={{
-                  backgroundColor: "#F9E95D",
-                  position: "absolute",
-                  marginTop: "1rem",
-                  width: 1050,
-                  height: 135,
-                  opacity: 0.6,
-                }}
-              ></div>
+              <div className="banner-text"></div>
               <h2
                 style={{
                   marginTop: "1.5rem",
@@ -79,16 +68,7 @@ const CasesClients = () => {
           <Carousel.Item>
             <img src={ropox} className="w-50" />
             <Carousel.Caption>
-              <div
-                style={{
-                  backgroundColor: "#F9E95D",
-                  position: "absolute",
-                  marginTop: "1rem",
-                  width: 1050,
-                  height: 135,
-                  opacity: 0.6,
-                }}
-              ></div>
+              <div className="banner-text"></div>
               <h2
                 style={{
                   marginTop: "1.5rem",
@@ -118,16 +98,7 @@ const CasesClients = () => {
           <Carousel.Item>
             <img src={absalon} className="w-50" />
             <Carousel.Caption>
-              <div
-                style={{
-                  backgroundColor: "#F9E95D",
-                  position: "absolute",
-                  marginTop: "1rem",
-                  width: 1050,
-                  height: 135,
-                  opacity: 0.6,
-                }}
-              ></div>
+              <div className="banner-text"></div>
               <h2
                 style={{
                   marginTop: "1.5rem",
@@ -157,16 +128,7 @@ const CasesClients = () => {
           <Carousel.Item>
             <img src={proselection} className="w-50" />
             <Carousel.Caption>
-              <div
-                style={{
-                  backgroundColor: "#F9E95D",
-                  position: "absolute",
-                  marginTop: "1rem",
-                  width: 1050,
-                  height: 135,
-                  opacity: 0.6,
-                }}
-              ></div>
+              <div className="banner-text"></div>
               <h2
                 style={{
                   marginTop: "1.5rem",
@@ -196,16 +158,7 @@ const CasesClients = () => {
           <Carousel.Item>
             <img src={hjertesikker} className="w-50" />
             <Carousel.Caption>
-              <div
-                style={{
-                  backgroundColor: "#F9E95D",
-                  position: "absolute",
-                  marginTop: "1rem",
-                  width: 1050,
-                  height: 135,
-                  opacity: 0.6,
-                }}
-              ></div>
+              <div className="banner-text"></div>
               <h2
                 style={{
                   marginTop: "1.5rem",
@@ -235,16 +188,7 @@ const CasesClients = () => {
           <Carousel.Item>
             <img src={lyngby} className="w-50" />
             <Carousel.Caption>
-              <div
-                style={{
-                  backgroundColor: "#F9E95D",
-                  position: "absolute",
-                  marginTop: "1rem",
-                  width: 1050,
-                  height: 135,
-                  opacity: 0.6,
-                }}
-              ></div>
+              <div className="banner-text"></div>
               <h2
                 style={{
                   marginTop: "1.5rem",
@@ -274,16 +218,7 @@ const CasesClients = () => {
           <Carousel.Item>
             <img src={plum} className="w-50" />
             <Carousel.Caption>
-              <div
-                style={{
-                  backgroundColor: "#F9E95D",
-                  position: "absolute",
-                  marginTop: "1rem",
-                  width: 1050,
-                  height: 135,
-                  opacity: 0.6,
-                }}
-              ></div>
+              <div className="banner-text"></div>
               <h2
                 style={{
                   marginTop: "1.5rem",

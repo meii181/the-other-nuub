@@ -57,27 +57,10 @@ const Contact = () => {
 
   return (
     <section id="contact-and-support">
-      <Container
-        fluid
-        style={{
-          paddingTop: "5rem",
-          height: 1400,
-          fontFamily: "primary-font",
-        }}
-      >
+      <Container className="container-contact" fluid>
         <Row>
           <Col xs={4} lg={8}>
-            <div
-              style={{
-                backgroundColor: "#F9E95D",
-                width: 950,
-                height: 2450,
-                position: "absolute",
-                top: 4500,
-                left: 0,
-                zIndex: -1,
-              }}
-            ></div>
+            <div className="yellow-background"></div>
             <h1
               style={{
                 fontSize: 55,
@@ -90,7 +73,7 @@ const Contact = () => {
               )}
             </h1>
             <p
-              className="w-75"
+              className="w-50"
               style={{
                 fontSize: 25,
                 marginTop: "2rem",
@@ -228,14 +211,7 @@ const Contact = () => {
           </Col>
 
           <Col xs={4} lg={8}>
-            <EnvelopeAt
-              size={500}
-              style={{
-                position: "absolute",
-                left: 800,
-                top: 6000,
-              }}
-            ></EnvelopeAt>
+            <EnvelopeAt className="envelope" size={500}></EnvelopeAt>
           </Col>
         </Row>
       </Container>

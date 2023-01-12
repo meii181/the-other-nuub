@@ -26,13 +26,8 @@ const ScrollUpButton = () => {
     <div className="App">
       {scrollUp && (
         <Button
+          className="scroll-up"
           style={{
-            position: "fixed",
-            right: 25,
-            top: 630,
-            padding: "1rem",
-            width: 90,
-            height: 90,
             backgroundColor: "#97E8F6",
             borderTop: "4px solid black",
           }}

@@ -12,26 +12,9 @@ import { useTranslation } from "react-i18next";
 const Services = () => {
   const { t } = useTranslation();
   return (
-    <section
-      id="services"
-      style={{
-        marginTop: "15rem",
-        paddingLeft: "7rem",
-        paddingRight: "7rem",
-        fontFamily: "secondary-font",
-      }}
-    >
+    <section id="services">
       <Container>
-        <div
-          style={{
-            width: 1578,
-            height: 650,
-            left: 0,
-            top: 1350,
-            position: "absolute",
-            backgroundColor: "#7F7EC7",
-          }}
-        ></div>
+        <div className="background-services"></div>
         <div className="title-subtitle" style={{ textAlign: "center" }}>
           <h1 style={{ fontSize: 55, fontFamily: "primary-font" }}>
             {t("Our services")}
@@ -44,9 +27,6 @@ const Services = () => {
         </div>
 
         <Row
-          xs={1}
-          md={2}
-          xl={4}
           className="g-5 mt-5"
           style={{
             display: "flex",
@@ -55,7 +35,7 @@ const Services = () => {
             marginLeft: "3rem",
           }}
         >
-          <Col>
+          <Col sm={13} md={10} xl={4}>
             <Card
               variant="light"
               style={{
@@ -83,7 +63,7 @@ const Services = () => {
             </Card>
           </Col>
 
-          <Col>
+          <Col sm={13} md={10} xl={4}>
             <Card
               variant="light"
               style={{
@@ -101,10 +81,7 @@ const Services = () => {
                 >
                   {t("Integration")}
                 </Card.Title>
-                <Card.Text
-                  className="mt-3"
-                  style={{ fontSize: 20, textAlign: "start" }}
-                >
+                <Card.Text className="mt-3">
                   {t(
                     "You can opt for additional software to your web solution,whether it is a newsletter, chat bot, or inventory systems, depending on your needs."
                   )}
@@ -113,7 +90,7 @@ const Services = () => {
             </Card>
           </Col>
 
-          <Col>
+          <Col sm={13} md={10} xl={4}>
             <Card
               variant="light"
               style={{
@@ -141,7 +118,7 @@ const Services = () => {
             </Card>
           </Col>
 
-          <Col>
+          <Col sm={13} md={10} xl={4}>
             <Card
               variant="light"
               style={{
@@ -169,7 +146,7 @@ const Services = () => {
             </Card>
           </Col>
 
-          <Col>
+          <Col sm={13} md={10} xl={4}>
             <Card
               variant="light"
               style={{

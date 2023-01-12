@@ -1,0 +1,320 @@
+@font-face {
+  font-family: primary-font;
+  src: url(../public/BetmSemiBold.otf);
+}
+
+@font-face {
+  font-family: secondary-font;
+  src: url(../public/BetmLight.otf)
+}
+
+.nav {
+  font-family: secondary-font;
+}
+
+.language {
+  font-family: primary-font;
+}
+
+.logo {
+  margin: 1rem 2rem;
+}
+
+//// HOME ////
+
+.title {
+  font-family: primary-font;
+  font-size: 55px;
+  position: relative;
+}
+
+.subtitle {
+font-size: 25px; 
+font-family: secondary-font;
+width: 75%;
+padding-top: 2px;
+padding-bottom: 3px;
+}
+
+.pt-2{
+font-size: 20px;
+}
+
+.circle{
+  width: 390px;
+  height: 390px;
+  background-color: #F9E95D;
+  border-radius: 50%;
+  top: 150px;
+  right: 330px;
+  position: absolute;
+  z-index: -1;
+}
+
+.circle_2 {
+  width: 220px;
+  height: 220px;
+  background-color: #7F7EC7;
+  border-radius: 50%;
+  top: 400px;
+  right: 250px;
+  position: absolute;
+  z-index: -1;
+}
+
+.circle_3 {
+  width: 90px;
+  height: 90px;
+  background-color: #EBBFF3;
+  border-radius: 50%;
+  top: 580px;
+  right: 500px;
+  position: absolute;
+  z-index: -1;
+}
+
+
+//// SECTION ////
+
+.background-services{
+width: 1600px;
+height: 700px;
+left: 0px;
+top: 1350px;
+position: absolute;
+background-color: #7F7EC7;
+}
+
+#services {
+margin-top: 12rem;
+padding-left: 7rem;
+padding-right: 7rem;
+font-family: secondary-font;
+}
+
+.mt-3 {
+  font-size: 20px;
+  text-align: start;
+}
+
+//// STRATEGY ////
+
+.container-strategy {
+margin-top: 7rem;
+padding-top: 8rem;
+width: 1577px;
+height: 900px;
+}
+
+.container-cases {
+  padding-top: 5rem;
+  width: 1577px;
+  height: 1500px;
+}
+
+.p-strategy {
+font-size: 25px;
+width: 60%;
+margin-top: 2rem;
+margin-left: 18rem;
+font-family: secondary-font;
+}
+
+
+.circle-strategy {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #2D2828;
+}
+
+.stick {
+border: 0.5px solid black;
+width: 1577px;
+left: 0;
+position: absolute;
+margin-top: 3rem;
+}
+
+//// CASES&CLIENTS ////
+
+.banner-text {
+background-color: #F9E95D;
+position: absolute;
+margin-top: 1rem;
+width: 1050px;
+height: 135px;
+opacity: 0.6;
+}
+
+//// ABOUT US ////
+
+.container-about{
+  padding-top: 5rem;
+  width: 1577px;
+  text-align: center;
+  height: 1100px;
+}
+
+.p-about {
+  font-size: 25px;
+  width: 70%;
+  margin-top: 2rem;
+  margin-left: 13rem;
+  font-family: secondary-font;
+  }
+
+  .about-staff {
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 3rem;
+  }
+
+  .circle-staff{
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    background-color: whitesmoke;
+    margin-top: 3rem;
+  }
+
+  //// CONTACT //// 
+  .container-contact {
+  padding-top: 5rem;
+  height: 1400px;
+  font-family: primary-font;
+}
+
+.yellow-background {
+  background-color: #F9E95D;
+  width: 950px;
+  height: 2550px;
+  position: absolute;
+  top: 4500px;
+  left: 0;
+  z-index: -1;
+}
+
+.envelope {
+  position: absolute;
+  left: 800px;
+  top: 5800px;
+}
+//// FOOTER ////
+
+.container-footer {
+  background-color: #2D2828;
+  width: 1577px;
+  height: 500px;
+  text-align: center;
+  font-family: primary-font;
+  color: white;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 3rem;
+  margin-left: 1rem;
+  font-size: 20px;
+}
+
+.scroll-up {
+  position: fixed;
+  right: 25px;
+  top: 630px;
+  padding: 1rem;
+  width: 100px;
+  height: 100px;
+}
+
+@media (min-width: 2400px){
+
+  .background-services {
+    width: 2400px;
+  }
+
+  .container-cases {
+    height: 2000px;
+  }
+
+  .container-strategy {
+    height: 950px;
+  }
+
+  .p-strategy{
+    margin-left: 28rem;
+  }
+
+  .circle-strategy {
+    width: 50px;
+    height: 50px;
+  }
+
+  .stick {
+    width: 2380px;
+  }
+
+  .banner-text {
+    width: 1700px;
+    }
+
+    .container-about {
+      padding-top: 7rem;
+      width: 1577px;
+    }
+
+    .p-about {
+      margin-left: 22rem;
+      }
+
+      .about-staff {
+        text-align: center;
+        margin-right: 15rem;
+        margin-top: 3rem;
+      }
+
+
+      .copyright {
+        text-align: center;
+        margin-top: 4rem;
+        margin-right: 8rem;
+        font-size: 20px;
+      }
+      
+      .scroll-up {
+        top: 1090px;
+      }
+
+      .yellow-background{
+        width: 1000px;
+        height: 3160px;
+      }
+
+      .envelope {
+        top: 6400px;
+        left: 870px;
+      }
+} 
+
+@media (min-width: 768px) and (max-width: 1200px){
+  .title {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .circle {
+    right: 70px;
+  }
+
+  .circle_2 {
+    right: 50px;
+  }
+
+  .circle_3 {
+    right: 280px;
+  }
+  .background-services {
+    height: 2000px;
+  }
+}

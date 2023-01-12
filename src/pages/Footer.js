@@ -8,17 +8,7 @@ const Footer = () => {
   const { t } = useTranslation();
   return (
     <>
-      <Container
-        fluid
-        style={{
-          backgroundColor: "#2D2828",
-          width: 1577,
-          height: 500,
-          textAlign: "center",
-          fontFamily: "primary-font",
-          color: "white",
-        }}
-      >
+      <Container className="container-footer" fluid>
         <Row>
           <Col xs={4} lg={5} style={{ marginTop: "8rem" }}>
             <img src={nuub_logo_white} />
@@ -79,16 +69,7 @@ const Footer = () => {
             </a>
           </Col>
         </Row>
-        <p
-          style={{
-            textAlign: "center",
-            marginTop: "3rem",
-            marginLeft: "1rem",
-            fontSize: 20,
-          }}
-        >
-          @2022 Nuub
-        </p>
+        <p className="copyright">@2022 Nuub</p>
       </Container>
     </>
   );
