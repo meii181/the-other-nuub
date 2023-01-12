@@ -2,8 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { EnvelopeAt } from "react-bootstrap-icons";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [full_name, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [type_of_inquiry, setTypeInquiry] = useState("");
@@ -39,7 +41,7 @@ const Contact = () => {
       };
 
       axios
-        .post("http://localhost/bachelor_exam/api-contact.php", object)
+        .post("http://localhost/bachelor_exam/contact.php", object)
         .then(
           setSuccessMessage(
             "Your contact details has been registered, we'll get in touch as fast as you say fish! ;D"
@@ -48,7 +50,7 @@ const Contact = () => {
         .catch(setErrorMessage(""));
 
       axios
-        .get("http://localhost/bachelor_exam/api-contact.php", object)
+        .get("http://localhost/bachelor_exam/contact.php", object)
         .catch(setErrorMessage("The email has already been registered!"));
     }
   };
@@ -68,7 +70,7 @@ const Contact = () => {
             <div
               style={{
                 backgroundColor: "#F9E95D",
-                width: 900,
+                width: 950,
                 height: 2450,
                 position: "absolute",
                 top: 4500,
@@ -83,7 +85,9 @@ const Contact = () => {
                 position: "relative",
               }}
             >
-              Would you like to get in touch with us? Or you need assistance?
+              {t(
+                "Would you like to get in touch with us? Or you need assistance?"
+              )}
             </h1>
             <p
               className="w-75"
@@ -95,8 +99,9 @@ const Contact = () => {
                 position: "relative",
               }}
             >
-              You can actually do both, feel free to contact us, regardless of
-              needing assistance or just a small talk with us.
+              {t(
+                "You can actually do both, feel free to contact us, regardless of needing assistance or just a small talk with us."
+              )}
             </p>
             <Form
               onSubmit={handleSubmitForm}
@@ -113,7 +118,7 @@ const Contact = () => {
                   marginBottom: "2rem",
                 }}
               >
-                <Form.Label>Your full name</Form.Label>
+                <Form.Label>{t("Your full name")}</Form.Label>
                 <Form.Control
                   type="text"
                   value={full_name}
@@ -130,7 +135,7 @@ const Contact = () => {
                   marginBottom: "2rem",
                 }}
               >
-                <Form.Label>Your email address</Form.Label>
+                <Form.Label>{t("Your email address")}</Form.Label>
                 <Form.Control
                   name="email"
                   value={email}
@@ -147,7 +152,7 @@ const Contact = () => {
                   marginBottom: "2rem",
                 }}
               >
-                <Form.Label>Select the type of inquiry</Form.Label>
+                <Form.Label>{t("Select the type of inquiry")}</Form.Label>
                 <Form.Select
                   name="type_of_inquiry"
                   value={type_of_inquiry}
@@ -158,10 +163,12 @@ const Contact = () => {
                     fontSize: 20,
                   }}
                 >
-                  <option>--- Please chose the type of inquiry ---</option>
-                  <option>Appointment</option>
-                  <option>Addressing a question</option>
-                  <option>Support/Assistance</option>
+                  <option>
+                    {t("--- Please chose the type of inquiry ---")}
+                  </option>
+                  <option>{t("Appointment")}</option>
+                  <option>{t("Addressing a question")}</option>
+                  <option>{t("Support/Assistance")}</option>
                 </Form.Select>
               </Form.Group>
               <Form.Group
@@ -169,7 +176,7 @@ const Contact = () => {
                   marginBottom: "2rem",
                 }}
               >
-                <Form.Label>Describe your inquiry</Form.Label>
+                <Form.Label>{t("Describe your inquiry")}</Form.Label>
                 <Form.Control
                   as="textarea"
                   type="text"
@@ -191,7 +198,7 @@ const Contact = () => {
                   fontWeight: "bold",
                 }}
               >
-                {errorMessage}
+                {t(errorMessage)}
               </p>
               <p
                 style={{
@@ -201,7 +208,7 @@ const Contact = () => {
                   fontFamily: "secondary-font",
                 }}
               >
-                {successMessage}
+                {t(successMessage)}
               </p>
               <Button
                 type="submit"
@@ -215,7 +222,7 @@ const Contact = () => {
                   marginTop: "3rem",
                 }}
               >
-                Submit
+                {t("Submit")}
               </Button>{" "}
             </Form>
           </Col>
@@ -226,7 +233,7 @@ const Contact = () => {
               style={{
                 position: "absolute",
                 left: 800,
-                top: 5880,
+                top: 6000,
               }}
             ></EnvelopeAt>
           </Col>

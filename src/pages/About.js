@@ -1,8 +1,11 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { PersonFill } from "react-bootstrap-icons";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="about-us">
       <Container
@@ -26,10 +29,9 @@ const About = () => {
             fontFamily: "secondary-font",
           }}
         >
-          This is us, everyday, we are a group of dedicated people in the web
-          domain who always put the professionalism on the first place, equipped
-          with solid knowledge, training and experience, and proud of our
-          profession, always ready to deliver the best of your product!
+          {t(
+            "This is us, everyday, we are a group of dedicated people in the web domain who always put the professionalism on the first place, equipped with solid knowledge, training and experience, and proud of our profession, always ready to deliver the best of your product!"
+          )}
         </p>
         <Row
           className="g-4"
@@ -60,7 +62,7 @@ const About = () => {
             >
               <h1 style={{ fontSize: 45 }}>Kristian Lerche</h1>
               <p style={{ fontSize: 25, fontFamily: "secondary-font" }}>
-                Founder of Nuub
+                {t("Owner of Nuub")}
               </p>
             </div>
           </Col>
@@ -84,7 +86,7 @@ const About = () => {
             >
               <h1 style={{ fontSize: 45 }}>Philip Marlow</h1>
               <p style={{ fontSize: 25, fontFamily: "secondary-font" }}>
-                Senior Web Designer & Project Management
+                {t("Senior Web Designer & Project Management")}
               </p>
             </div>
           </Col>
@@ -109,7 +111,7 @@ const About = () => {
             >
               <h1 style={{ fontSize: 45 }}>Betina Svedsen</h1>
               <p style={{ fontSize: 25, fontFamily: "secondary-font" }}>
-                Web and Graphic Designer
+                {t("Web and Graphic Designer")}
               </p>
             </div>
           </Col>
@@ -134,7 +136,7 @@ const About = () => {
             >
               <h1 style={{ fontSize: 45 }}>Iga Naskręt</h1>
               <p style={{ fontSize: 25, fontFamily: "secondary-font" }}>
-                Web Developer
+                {t("Web Developer")}
               </p>
             </div>
           </Col>

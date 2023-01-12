@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Nav, Navbar, Stack, Button } from "react-bootstrap";
 import nuub_logo from "../assets/img/cropped-nuub_logo.png";
+import { useTranslation } from "react-i18next";
 
 const Navigation = () => {
+  const { t, i18n } = useTranslation();
+  const [state, setState] = useState(false);
+
+  const handleChangeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem("lng", lng);
+    setState(!state);
+  };
+
+  useEffect(() => {
+    const lang = localStorage.getItem("input");
+    if (lang) {
+      setState(JSON.parse(lang));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("input", JSON.stringify(state));
+  });
+
   return (
     <Navbar className="navigation pt-3" expand="lg">
       <Navbar.Brand className="logo">
@@ -12,45 +33,73 @@ const Navigation = () => {
       <Navbar.Collapse id="navbar-nav">
         <Stack direction="horizontal" gap={3} className="ms-auto">
           <Nav
-            className="nav justify-content-end me-5"
+            className="nav justify-content-end me-auto"
             style={{ fontSize: 24, fontWeight: "bold" }}
           >
             <Nav.Link href="#services" className="me-4">
-              Services
+              {t("Services")}
             </Nav.Link>
             <Nav.Link href="#strategy" className="me-4">
-              Strategy
+              {t("Strategy")}
             </Nav.Link>
             <Nav.Link href="#casesclients" className="me-4">
-              Cases&Clients
+              {t("Cases&Clients")}
             </Nav.Link>
             <Nav.Link href="#about-us" className="me-4">
-              About Us
+              {t("About Us")}
             </Nav.Link>
             <Nav.Link href="#contact-and-support" className="me-4">
-              Contact and Support
+              {t("Contact and Support")}
             </Nav.Link>
           </Nav>
         </Stack>
         <Nav className="language me-5">
-          <Button
-            href="#english"
-            className="me-3 px-4"
-            style={{ fontSize: 20 }}
-            variant="info"
-            active
-          >
-            EN
-          </Button>{" "}
-          <Button
-            href="#danish"
-            className="ms-2 px-4"
-            style={{ fontSize: 20 }}
-            variant="info"
-            disabled
-          >
-            DA
-          </Button>{" "}
+          {state ? (
+            <Button
+              className="me-3 px-4"
+              style={{ fontSize: 20 }}
+              variant="info"
+              active
+              onClick={() => handleChangeLanguage("en")}
+            >
+              {" "}
+              EN{" "}
+            </Button>
+          ) : (
+            <Button
+              className="me-3 px-4"
+              style={{ fontSize: 20 }}
+              variant="info"
+              disabled
+              onClick={() => handleChangeLanguage("en")}
+            >
+              {" "}
+              EN{" "}
+            </Button>
+          )}
+          {state ? (
+            <Button
+              className="me-3 px-4"
+              style={{ fontSize: 20 }}
+              variant="info"
+              disabled
+              onClick={() => handleChangeLanguage("da")}
+            >
+              {" "}
+              DA{" "}
+            </Button>
+          ) : (
+            <Button
+              className="me-3 px-4"
+              style={{ fontSize: 20 }}
+              variant="info"
+              active
+              onClick={() => handleChangeLanguage("da")}
+            >
+              {" "}
+              DA{" "}
+            </Button>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

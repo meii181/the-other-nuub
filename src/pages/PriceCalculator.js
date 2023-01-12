@@ -1,20 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import { HouseFill, Cart4 } from "react-bootstrap-icons";
 import NavigationPriceCalculator from "./NavigationPriceCalculator";
+import Questions from "./Questions";
 
 const PriceCalculator = () => {
-  //   const questions = [
-  //     {
-  //       text: "What kind of website would you like?",
-  //       subtitle:
-  //         "Choose where would you like to display your information, either on a home page, or on an online tranding platform.",
-  //       options: [
-  //         { id: 0, text: "Homepage" },
-  //         { id: 1, text: "Webpage" },
-  //       ],
-  //     },
-  //   ];
+  const [questions, setQuestions] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
     <div>
@@ -116,6 +108,7 @@ const PriceCalculator = () => {
             </Card>
           </Col>
         </Row>
+        <Questions />
       </Container>
     </div>
   );

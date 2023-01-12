@@ -2,8 +2,10 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import nuub_logo_white from "../assets/img/cropped-nuub_logo white.png";
 import { Facebook, Instagram, Linkedin } from "react-bootstrap-icons";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <>
       <Container
@@ -23,7 +25,7 @@ const Footer = () => {
             <h2
               style={{ color: "whitesmoke", fontSize: 35, marginTop: "3rem" }}
             >
-              Web Design and Integration
+              {t("Web Design and Integration")}
             </h2>
           </Col>
           <Col>

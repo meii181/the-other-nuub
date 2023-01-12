@@ -13,8 +13,11 @@ import kiro from "../assets/img/logo-kiro.png";
 import danskBeredskaber from "../assets/img/db-logo.png";
 import ole from "../assets/img/logo.png";
 import kentAndreasen from "../assets/img/kent-andreasen.png";
+import { useTranslation } from "react-i18next";
 
 const CasesClients = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="casesclients">
       <Container
@@ -28,7 +31,7 @@ const CasesClients = () => {
           fontFamily: "primary-font",
         }}
       >
-        <h1 style={{ fontSize: 55 }}>Our cases</h1>
+        <h1 style={{ fontSize: 55 }}>{t("Our cases")}</h1>
         <Carousel
           style={{
             marginTop: "5rem",
@@ -68,7 +71,7 @@ const CasesClients = () => {
                   position: "relative",
                 }}
               >
-                Webshop
+                {t("Webshop")}
               </p>
             </Carousel.Caption>
           </Carousel.Item>
@@ -107,7 +110,7 @@ const CasesClients = () => {
                   position: "relative",
                 }}
               >
-                Homepage/Webshop system
+                {t("Homepage/Webshop system")}
               </p>
             </Carousel.Caption>
           </Carousel.Item>
@@ -146,7 +149,7 @@ const CasesClients = () => {
                   position: "relative",
                 }}
               >
-                Homepage
+                {t("Homepage")}
               </p>
             </Carousel.Caption>
           </Carousel.Item>
@@ -185,7 +188,7 @@ const CasesClients = () => {
                   position: "relative",
                 }}
               >
-                Integration/Homepage
+                {t("Integration/Homepage")}
               </p>
             </Carousel.Caption>
           </Carousel.Item>
@@ -224,7 +227,7 @@ const CasesClients = () => {
                   position: "relative",
                 }}
               >
-                Homepage
+                {t("Homepage")}
               </p>
             </Carousel.Caption>
           </Carousel.Item>
@@ -263,7 +266,7 @@ const CasesClients = () => {
                   position: "relative",
                 }}
               >
-                Warehouse management integration
+                {t("Warehouse management integration")}
               </p>
             </Carousel.Caption>
           </Carousel.Item>
@@ -302,7 +305,7 @@ const CasesClients = () => {
                   position: "relative",
                 }}
               >
-                Homepage/Webshop System
+                {t("Homepage/Webshop system")}
               </p>
             </Carousel.Caption>
           </Carousel.Item>
@@ -313,7 +316,7 @@ const CasesClients = () => {
             marginTop: "10rem",
           }}
         >
-          Our clients
+          {t("Our clients")}
         </h1>
         <Row
           style={{

@@ -23,3 +23,21 @@
 .title {
   font-family: primary-font;
 }
+
+/* @media (max-width: 640px) {
+
+  .me-4 {
+    text-align: center;
+    
+  }
+
+  .language {
+    text-align: center;
+    width: 30%;
+  }
+
+  .subtitle {
+    font-size: 15px;
+
+  }
+} */

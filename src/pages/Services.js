@@ -7,8 +7,10 @@ import {
   HouseGear,
   DatabaseGear,
 } from "react-bootstrap-icons";
+import { useTranslation } from "react-i18next";
 
 const Services = () => {
+  const { t } = useTranslation();
   return (
     <section
       id="services"
@@ -32,17 +34,19 @@ const Services = () => {
         ></div>
         <div className="title-subtitle" style={{ textAlign: "center" }}>
           <h1 style={{ fontSize: 55, fontFamily: "primary-font" }}>
-            Our services
+            {t("Our services")}
           </h1>
           <p style={{ fontSize: 25 }} className="pt-2">
-            We do offer all types of services for all types of our clients’
-            needs and preferences, from helping you with the marketing and
-            search engine optimization, to integrating your website to work with
-            other software
+            {t(
+              "We do offer all types of services for all types of our clients' needs and preferences, from helping you with creating the website, to integrating it to work with other software and search engine optimization"
+            )}
           </p>
         </div>
 
         <Row
+          xs={1}
+          md={2}
+          xl={4}
           className="g-5 mt-5"
           style={{
             display: "flex",
@@ -51,14 +55,13 @@ const Services = () => {
             marginLeft: "3rem",
           }}
         >
-          <Col md={4}>
+          <Col>
             <Card
               variant="light"
               style={{
                 borderTop: "4px solid black",
                 borderRadius: 0,
                 padding: "0 2rem",
-                width: "20rem",
               }}
             >
               <Card.Body className="my-5" style={{ textAlign: "center" }}>
@@ -66,28 +69,28 @@ const Services = () => {
                 <Card.Title
                   style={{ fontSize: 35, fontFamily: "primary-font" }}
                 >
-                  Marketing
+                  {t("Marketing")}
                 </Card.Title>
                 <Card.Text
                   className="mt-3"
                   style={{ fontSize: 20, textAlign: "start" }}
                 >
-                  Having your website seen on the user's search results or
-                  through social media means something crucial when it comes to
-                  promoting your own content.
+                  {t(
+                    "Having your website seen on the user's search results or through social media means something crucial when it comes to promoting your own content."
+                  )}
                 </Card.Text>
               </Card.Body>
             </Card>
           </Col>
 
-          <Col md={4}>
+          <Col>
             <Card
               variant="light"
               style={{
                 borderTop: "4px solid black",
                 borderRadius: 0,
                 padding: "0 2rem",
-                width: "20rem",
+
                 textAlign: "center",
               }}
             >
@@ -96,28 +99,27 @@ const Services = () => {
                 <Card.Title
                   style={{ fontSize: 35, fontFamily: "primary-font" }}
                 >
-                  Integration
+                  {t("Integration")}
                 </Card.Title>
                 <Card.Text
                   className="mt-3"
                   style={{ fontSize: 20, textAlign: "start" }}
                 >
-                  You can opt for additional software to your web solution,
-                  whether it is a newsletter, chat bot, or inventory systems,
-                  depending on your needs.
+                  {t(
+                    "You can opt for additional software to your web solution,whether it is a newsletter, chat bot, or inventory systems, depending on your needs."
+                  )}
                 </Card.Text>
               </Card.Body>
             </Card>
           </Col>
 
-          <Col md={4}>
+          <Col>
             <Card
               variant="light"
               style={{
                 borderTop: "4px solid black",
                 borderRadius: 0,
                 padding: "0 2rem",
-                width: "20rem",
               }}
             >
               <Card.Body className="my-5" style={{ textAlign: "center" }}>
@@ -125,28 +127,27 @@ const Services = () => {
                 <Card.Title
                   style={{ fontSize: 35, fontFamily: "primary-font" }}
                 >
-                  Homepage
+                  {t("Homepage")}
                 </Card.Title>
                 <Card.Text
                   className="mt-3"
                   style={{ fontSize: 20, textAlign: "start" }}
                 >
-                  If you are looking to have your own website, to promote your
-                  portfolio to the larger audience for example, you are in the
-                  right place.
+                  {t(
+                    "If you are looking to have your own website, to promote your portfolio to the larger audience for example, you are in the right place."
+                  )}
                 </Card.Text>
               </Card.Body>
             </Card>
           </Col>
 
-          <Col md={4}>
+          <Col>
             <Card
               variant="light"
               style={{
                 borderTop: "4px solid black",
                 borderRadius: 0,
                 padding: "0 2rem",
-                width: "20rem",
               }}
             >
               <Card.Body className="my-4" style={{ textAlign: "center" }}>
@@ -154,27 +155,27 @@ const Services = () => {
                 <Card.Title
                   style={{ fontSize: 35, fontFamily: "primary-font" }}
                 >
-                  Webshop
+                  {t("Webshop")}
                 </Card.Title>
                 <Card.Text
                   className="mt-3"
                   style={{ fontSize: 20, textAlign: "start" }}
                 >
-                  Providing websites to the clients that would like to open a
-                  business, together with the E-commerce services.
+                  {t(
+                    "Providing websites to the clients that would like to open a business, together with the E-commerce services."
+                  )}
                 </Card.Text>
               </Card.Body>
             </Card>
           </Col>
 
-          <Col md={4}>
+          <Col>
             <Card
               variant="light"
               style={{
                 borderTop: "4px solid black",
                 borderRadius: 0,
                 padding: "0 2rem",
-                width: "20rem",
               }}
             >
               <Card.Body className="my-4" style={{ textAlign: "center" }}>
@@ -182,15 +183,15 @@ const Services = () => {
                 <Card.Title
                   style={{ fontSize: 35, fontFamily: "primary-font" }}
                 >
-                  Drift
+                  {t("Drift")}
                 </Card.Title>
                 <Card.Text
                   className="mt-3"
                   style={{ fontSize: 20, textAlign: "start" }}
                 >
-                  Regardless you need a new website or an update to it, the
-                  website solution always requires to be in a great technical
-                  shape.
+                  {t(
+                    "Regardless you need a new website or an update to it, the website solution always requires to be in a great technical shape."
+                  )}
                 </Card.Text>
               </Card.Body>
             </Card>
