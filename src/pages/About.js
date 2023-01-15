@@ -30,7 +30,7 @@ const About = () => {
             marginLeft: "4rem",
           }}
         >
-          <Col sm={12} md={7} xxl={3}>
+          <Col sm={12} md={7} lg={5} xxl={3}>
             <div className="circle-staff">
               <PersonFill size={200} className="mt-4"></PersonFill>
             </div>
@@ -41,7 +41,7 @@ const About = () => {
               </p>
             </div>
           </Col>
-          <Col sm={12} md={7} xxl={3}>
+          <Col sm={12} md={7} lg={5} xxl={3}>
             <div className="circle-staff">
               <PersonFill size={200} className="mt-4"></PersonFill>
             </div>
@@ -52,7 +52,7 @@ const About = () => {
               </p>
             </div>
           </Col>
-          <Col sm={12} md={7} xxl={3}>
+          <Col sm={12} md={7} lg={5} xxl={3}>
             <div className="circle-staff">
               <PersonFill size={200} className="mt-4"></PersonFill>
             </div>
@@ -63,7 +63,7 @@ const About = () => {
               </p>
             </div>
           </Col>
-          <Col sm={12} md={7} xxl={3}>
+          <Col sm={12} md={7} lg={5} xxl={3}>
             <div className="circle-staff">
               <PersonFill size={200} className="mt-4"></PersonFill>
             </div>

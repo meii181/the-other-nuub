@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Carousel, Row, Col } from "react-bootstrap";
+import { Container, Carousel, Row, Col, Image } from "react-bootstrap";
 import ordrupgaard from "../assets/img/ordrupgaard.jpg";
 import ropox from "../assets/img/ropox.jpg";
 import lyngby from "../assets/img/lyngby.jpg";
@@ -36,7 +36,7 @@ const CasesClients = () => {
           }}
         >
           <Carousel.Item>
-            <img src={ordrupgaard} className="w-50" />
+            <img src={ordrupgaard} width="60%" height="auto" />
             <Carousel.Caption>
               <div className="banner-text"></div>
               <h2
@@ -66,7 +66,7 @@ const CasesClients = () => {
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src={ropox} className="w-50" />
+            <img src={ropox} width="60%" height="auto" />
             <Carousel.Caption>
               <div className="banner-text"></div>
               <h2
@@ -96,7 +96,7 @@ const CasesClients = () => {
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src={absalon} className="w-50" />
+            <img src={absalon} width="60%" height="auto" />
             <Carousel.Caption>
               <div className="banner-text"></div>
               <h2
@@ -126,7 +126,7 @@ const CasesClients = () => {
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src={proselection} className="w-50" />
+            <img src={proselection} width="60%" height="auto" />
             <Carousel.Caption>
               <div className="banner-text"></div>
               <h2
@@ -156,7 +156,7 @@ const CasesClients = () => {
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src={hjertesikker} className="w-50" />
+            <img src={hjertesikker} width="60%" height="auto" />
             <Carousel.Caption>
               <div className="banner-text"></div>
               <h2
@@ -186,7 +186,7 @@ const CasesClients = () => {
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src={lyngby} className="w-50" />
+            <Image src={lyngby} width="60%" height="auto" />
             <Carousel.Caption>
               <div className="banner-text"></div>
               <h2
@@ -216,7 +216,7 @@ const CasesClients = () => {
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src={plum} className="w-50" />
+            <img src={plum} width="60%" height="auto" />
             <Carousel.Caption>
               <div className="banner-text"></div>
               <h2
@@ -266,10 +266,10 @@ const CasesClients = () => {
               marginTop: "1rem",
             }}
           >
-            <img src={danskRad} className="w-50" />
+            <img src={danskRad} width="60%" height="auto" />
           </Col>
           <Col md={4}>
-            <img src={pg} className="w-25" />
+            <img src={pg} width="40%" height="auto" />
           </Col>
           <Col
             md={4}
@@ -277,7 +277,7 @@ const CasesClients = () => {
               marginTop: "2rem",
             }}
           >
-            <img src={kiro} className="w-50" />
+            <img src={kiro} width="60%" height="auto" />
           </Col>
           <Col
             md={4}
@@ -285,7 +285,7 @@ const CasesClients = () => {
               marginTop: "5rem",
             }}
           >
-            <img src={danskBeredskaber} className="w-25" />
+            <img src={danskBeredskaber} width="40%" height="auto" />
           </Col>
           <Col
             md={4}
@@ -293,7 +293,7 @@ const CasesClients = () => {
               marginTop: "8.5rem",
             }}
           >
-            <img src={ole} className="w-75" />
+            <img src={ole} width="80%" height="auto" />
           </Col>
 
           <Col
@@ -302,7 +302,7 @@ const CasesClients = () => {
               marginTop: "7.5rem",
             }}
           >
-            <img src={kentAndreasen} className="w-50" />
+            <img src={kentAndreasen} width="60%" height="auto" />
           </Col>
         </Row>
       </Container>

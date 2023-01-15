@@ -10,10 +10,20 @@ const Footer = () => {
     <>
       <Container className="container-footer" fluid>
         <Row>
-          <Col xs={4} lg={5} style={{ marginTop: "8rem" }}>
-            <img src={nuub_logo_white} />
+          <Col xs={12} md={4} xxl={5} style={{ marginTop: "8rem" }}>
+            <img
+              src={nuub_logo_white}
+              width="80%"
+              height="auto"
+              className="ms-5"
+            />
             <h2
-              style={{ color: "whitesmoke", fontSize: 35, marginTop: "3rem" }}
+              style={{
+                color: "whitesmoke",
+                fontSize: 30,
+                marginTop: "3rem",
+                marginLeft: "2rem",
+              }}
             >
               {t("Web Design and Integration")}
             </h2>
@@ -29,8 +39,9 @@ const Footer = () => {
             ></div>
           </Col>
           <Col
-            xs={4}
-            lg={5}
+            xs={12}
+            md={4}
+            xxl={5}
             style={{
               marginTop: "6rem",
               marginRight: "3rem",

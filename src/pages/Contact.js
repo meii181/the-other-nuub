@@ -59,7 +59,7 @@ const Contact = () => {
     <section id="contact-and-support">
       <Container className="container-contact" fluid>
         <Row>
-          <Col xs={4} lg={8}>
+          <Col xs={13} md={12} xxl={8}>
             <div className="yellow-background"></div>
             <h1
               style={{
