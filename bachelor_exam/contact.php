@@ -4,7 +4,7 @@ header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Methods: POST, GET");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-include "globals.php";
+require "globals.php";
 
 $json = file_get_contents("php://input");
 
@@ -18,42 +18,42 @@ if (isset($json) && !empty($json)) {
         $typeInquiry = $request->type_of_inquiry;
         $inquiryDescription = $request->inquiry_description;
 
-        $db = _db();
+            $db = _db();
 
+            $q = $db->prepare("SELECT * FROM contact_form WHERE email = :email");
+            $q->bindValue(":email", $email);
+            $q->execute();
+            $row = $q->fetch();
 
-                $q = $db->prepare("SELECT * FROM contact_form WHERE email = :email");
+            if ($row > 0) {
+                header("Content-type: application/json");
+                http_response_code(400);
+                echo json_encode("The email has already been registered!");
+                exit();
+
+            } else {
+
+                $q = $db->prepare("INSERT INTO contact_form(contact_id, full_name, email, type_of_inquiry, inquiry_description) VALUES (:contact_id, :full_name, :email, :type_of_inquiry, :inquiry_description)");
+                $q->bindValue(":contact_id", null);
+                $q->bindValue(":full_name", $fullName);
                 $q->bindValue(":email", $email);
+                $q->bindValue(":type_of_inquiry", $typeInquiry);
+                $q->bindValue(":inquiry_description", $inquiryDescription);
                 $q->execute();
-                $row = $q->fetch();
 
-                if ($row > 0) {
-                    header("Content-type: application/json");
-                    http_response_code(400);
-                    echo "The email has already been registered!";
-                    exit();
+                $id = $db->lastInsertId();
 
-                } else {
 
-                    $q = $db->prepare("INSERT INTO contact_form(contact_id, full_name, email, type_of_inquiry, inquiry_description) VALUES (:contact_id, :full_name, :email, :type_of_inquiry, :inquiry_description)");
-                    $q->bindValue(":contact_id", null);
-                    $q->bindValue(":full_name", $fullName);
-                    $q->bindValue(":email", $email);
-                    $q->bindValue(":type_of_inquiry", $typeInquiry);
-                    $q->bindValue(":inquiry_description", $inquiryDescription);
-                    $q->execute();
-
-                    $id = $db->lastInsertId();
-
-                    header("Content-type: application/json");
-                    http_response_code(200);
-                    echo "Success!";
-                    exit();
-                }
+                header("Content-type: application/json");
+                http_response_code(200);
+                echo json_encode("Success!");
+                exit();
+            }
 
     } catch (Exception $ex){
         header("Content-type: application/json");
         http_response_code(500);
-        echo "Not working";
+        echo json_encode(["error" => $ex->getMessage()]);
         exit();
     }
 
