@@ -43,10 +43,9 @@ if (isset($json) && !empty($json)) {
 
                 $id = $db->lastInsertId();
 
-
                 header("Content-type: application/json");
                 http_response_code(200);
-                echo json_encode("Success!");
+                echo json_encode("Success");
                 exit();
             }
 

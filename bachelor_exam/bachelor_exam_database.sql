@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2023 at 02:23 AM
+-- Generation Time: Jan 16, 2023 at 11:11 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -45,17 +45,27 @@ INSERT INTO `answers` (`answer_id`, `text`, `question_id`) VALUES
 (5, 'More than 100', 1),
 (6, 'Simple Solution', 3),
 (7, 'Strategic Tool', 3),
-(8, 'Homepage', 6),
-(9, 'Webshop', 6),
-(10, 'Between 1-5 pages', 7),
-(11, 'Between 5-10 pages', 7),
-(12, 'More than 10 pages', 7),
-(13, 'None', 7),
-(14, 'Social Media Advertising/Management', 12),
-(15, 'Implementation of Chat Bot', 12),
-(16, 'Payment System', 12),
-(17, 'Website Hosting', 12),
-(18, 'Website Security', 12);
+(8, 'Yes', 5),
+(9, 'No', 5),
+(10, 'Homepage', 6),
+(11, 'Webshop', 6),
+(12, 'Between 1-5 pages', 7),
+(13, 'Between 5-10 pages', 7),
+(14, 'More than 10 pages', 7),
+(15, 'None', 7),
+(16, 'Yes', 9),
+(17, 'No', 9),
+(18, 'Yes', 10),
+(19, 'No', 10),
+(20, 'Yes', 11),
+(21, 'No', 11),
+(22, 'Social Media Advertising/Management', 12),
+(23, 'Implementation of Chat Bot', 12),
+(24, 'Payment System', 12),
+(25, 'Website Hosting', 12),
+(26, 'Website Security', 12),
+(27, 'Yes', 13),
+(28, 'No', 13);
 
 -- --------------------------------------------------------
 
@@ -75,8 +85,9 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`client_id`, `full_name`, `email`, `phone_number`) VALUES
-(1, 'Bianca Grecu', 'babanca2000@gmail.com', '45678957'),
-(2, 'Bianca Grecu', 'babanca2000@gmail.com', '45678957');
+(1, 'Grecu Filoftea-Bianca', 'bianca@gmail.com', '53337377'),
+(2, 'Grecu Filoftea-Bianca', 'biancagrecu090@gmail.com', '53337377'),
+(3, 'Grecu Filoftea-Bianca', 'baba090@gmail.com', '53337377');
 
 -- --------------------------------------------------------
 
@@ -184,13 +195,13 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `contact_form`

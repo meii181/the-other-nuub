@@ -6,51 +6,52 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 require "globals.php";
 
-// $json = file_get_contents("php://input");
+$json = file_get_contents("php://input");
 
-// if (isset($json) && !empty($json)) {
-//     $request = json_decode($json);
+if (isset($json) && !empty($json)) {
+    $request = json_decode($json);
 
     try {
 
+        $clientFullName = $request->full_name;
+        $clientEmail = $request->email;
+        $clientPhoneNumber = $request->phone_number;
+
         $db = _db();
 
-        $check_query = $db->prepare("SELECT * FROM clients");
+        $check_query = $db->prepare("SELECT * FROM clients WHERE email = :email");
+        $check_query->bindValue(":email", $clientEmail);
         $check_query->execute();
-        $existingClient = $check_query->fetchAll();
+        $existingClient = $check_query->fetch();
 
-        if (empty($existingClient)) {
+        if ($existingClient > 0){
+            header("Content-type: application/json");
+                http_response_code(400);
+                echo json_encode("The email has been registered already");
+                exit();
 
-        $client_full_name = "Bianca Grecu";
-        $client_email = "babanca2000@gmail.com";
-        $client_phone_number = "45678957";
-
-
-        // $clientFullName = $request->client_full_name;
-        // $clientEmail = $request->client_email;
-        // $clientPhoneNumber = $request->client_phone_number;
+        } else {
 
             $q = $db->prepare("INSERT INTO clients(client_id, full_name, email, phone_number) VALUES(:client_id, :full_name, :email, :phone_number)");
             $q->bindValue(":client_id", null);
-            $q->bindValue(":full_name", $client_full_name);
-            $q->bindValue(":email", $client_email);
-            $q->bindValue(":phone_number", $client_phone_number);
+            $q->bindValue(":full_name", $clientFullName);
+            $q->bindValue(":email", $clientEmail);
+            $q->bindValue(":phone_number", $clientPhoneNumber);
             $q->execute();
 
             $client_id = $db->lastInsertId();
 
+            header("Content-type: application/json");
+                http_response_code(200);
+                echo json_encode("Success");
+                exit();
         }
 
-        $q = $db->prepare("SELECT * FROM clients");
-        $q->execute();
-        $clients = $q->fetchAll();
-
-        echo json_encode($clients);
- 
     } catch (Exception $ex) {
         header("Content-type: application/json");
         http_response_code(500);
-        echo json_encode(["error" => $ex->getMessage()]);;
+        echo json_encode(["error" => $ex->getMessage()]);
         exit();
 
     }
+}
