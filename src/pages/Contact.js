@@ -20,20 +20,20 @@ const Contact = () => {
 
     if (!full_name || !email || !type_of_inquiry || !inquiry_description) {
       setErrorMessage("All the fields are required to be filled :)");
-      setErrorDisplayed(true)
-      formIsValid = false;
-    } else {
-    const emailRegex =
-      /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]@(gmail|hotmail|outlook|yahoo)\.com\b$/g;
-    if (!emailRegex.test(email)) {
-      setErrorMessage("Your email is not valid :(");
       setErrorDisplayed(true);
       formIsValid = false;
     } else {
-    setErrorDisplayed(false);
-  }
-}
-return formIsValid;
+      const emailRegex =
+        /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]@(gmail|hotmail|outlook|yahoo)\.com\b$/g;
+      if (!emailRegex.test(email)) {
+        setErrorMessage("Your email is not valid :(");
+        setErrorDisplayed(true);
+        formIsValid = false;
+      } else {
+        setErrorDisplayed(false);
+      }
+    }
+    return formIsValid;
   };
 
   const handleSubmitForm = (event) => {
@@ -47,34 +47,37 @@ return formIsValid;
         inquiry_description: inquiry_description,
       };
 
-  axios
-  .post("http://localhost/bachelor_exam/contact.php", object)
-  .then(response => {
-    if (!successDisplayed) {
-      setSuccessMessage("Your contact details has been registered, we'll get in touch as fast as you say fish! ;D");
-      setSuccessDisplayed(true);
-    }
-    setErrorMessage("");
-    setErrorDisplayed(false);
-  })
-  .catch(error => {
-    if (!errorDisplayed) {
-      setErrorMessage("The email has already been registered!");
-      setErrorDisplayed(true);
-    }
-  });
+      axios
+        .post("http://localhost/bachelor_exam/contact.php", object)
+        .then((response) => {
+          if (!successDisplayed) {
+            setSuccessMessage(
+              "Your contact details has been registered, we'll get in touch as fast as you say fish! ;D"
+            );
+            setSuccessDisplayed(true);
+          }
+          setErrorMessage("");
+          setErrorDisplayed(false);
+        })
+        .catch((error) => {
+          if (!errorDisplayed) {
+            setErrorMessage("The email has already been registered!");
+            setErrorDisplayed(true);
+          }
+        });
 
-axios
-  .get("http://localhost/bachelor_exam/contact.php", object)
-  .catch(error => {
-    if (error.response && error.response.data === 'The email has already been registered!') {
-      setErrorMessage("The email has already been registered!");
+      axios
+        .get("http://localhost/bachelor_exam/contact.php", object)
+        .catch((error) => {
+          if (
+            error.response &&
+            error.response.data === "The email has already been registered!"
+          ) {
+            setErrorMessage("The email has already been registered!");
+          }
+        });
     }
-  });
-
-}
-};
-  
+  };
 
   return (
     <section id="contact-and-support">

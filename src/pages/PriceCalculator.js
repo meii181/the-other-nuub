@@ -1,122 +1,159 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import NavigationPriceCalculator from "./NavigationPriceCalculator";
 import { Container, Button } from "react-bootstrap";
 import axios from "axios";
 
-const PriceCalculator = (props) => {
-
+const PriceCalculator = () => {
   const [currentStep, setCurrentStep] = useState(-1);
   const [questionList, setQuestionList] = useState([]);
   const [currentQuestionAnswers, setCurrentQuestionAnswers] = useState([]);
-
-  const {inputRef} = props;
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost/bachelor_exam/questions.php")
-    .then(response => { 
-    setQuestionList(response.data);
-    setCurrentStep(0)
-  })  .catch(error => {
+    axios
+      .get("http://localhost/bachelor_exam/questions.php")
+      .then((response) => {
+        setQuestionList(response.data);
+        setCurrentStep(0);
+      })
+      .catch((error) => {
         console.log(error);
       });
-}, [currentStep]);
+  }, [currentStep]);
 
-useEffect(() => {
-  if(questionList.length && currentStep !== -1){
-  axios.get(`http://localhost/bachelor_exam/answers.php?question_id=${questionList[currentStep].question_id}`)
-  .then(response => {
-    setCurrentQuestionAnswers(response.data);
-  })
-  .catch(error => {
-    console.log(error);
-  })
-}
-}, [currentStep, questionList]);
+  useEffect(() => {
+    if (questionList.length && currentStep !== -1) {
+      axios
+        .get(
+          `http://localhost/bachelor_exam/answers.php?question_id=${questionList[currentStep].question_id}`
+        )
+        .then((response) => {
+          const answers = response.data.filter(
+            (answer) =>
+              answer.question_id === questionList[currentStep].question_id
+          );
+          setCurrentQuestionAnswers(answers);
+          setCurrentStep(0);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [currentStep, questionList]);
 
+  const handleNextSection = (event) => {
+    event.preventDefault();
+    if (!inputValue && currentStep === -1) {
+      alert("Please select an answer!");
+      return;
+    }
+    if (inputValue === "" && questionList[currentStep].question_type === "input_field") {
+      alert("Please enter a value!");
+      return;
+    }
+    if (currentStep !== -1 && currentStep < questionList.length) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
 
-const handleNextSection = (inputRef) => {
-  console.log("next button called");
-  console.log(inputRef);
-
-  if(questionList && currentStep !== undefined && questionList[currentStep].question_type === "input_field" && !inputRef.current.value){
-    alert("Please enter info!");
-    return;
-  }
-
-  if(currentStep !== -1 && currentStep + 1 < questionList.length) {
-  setCurrentStep(currentStep + 1);
-  }
-};
-
-const handlePreviousSection = () => {
-  if(currentStep !== -1 && currentStep > 0){
-  setCurrentStep(currentStep - 1);
-  }
-};
-
-console.log(currentStep);
+  const handlePreviousSection = (event) => {
+    event.preventDefault();
+    if (currentStep !== -1 && currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
 
   return (
     <div>
-      <NavigationPriceCalculator 
-      currentStep={currentStep}
-      handleNextSection={handleNextSection}
-      handlePreviousSection={handlePreviousSection}
-      inputRef={inputRef}
+      <NavigationPriceCalculator
+      currentStep = {currentStep}
+      handleNextSection = {handleNextSection}
+      handlePreviousSection = {handlePreviousSection}
       />
-      <Container fluid style={{
-        borderTop: "4px solid black",
-        borderBottom: "4px solid black",
-        textAlign: "center",
-
-      }}>
+      <Container
+        fluid
+        style={{
+          borderTop: "4px solid black",
+          borderBottom: "4px solid black",
+          textAlign: "center",
+          marginTop: "3rem",
+        }}
+      >
         {currentStep === -1 || !questionList.length ? (
           <p>Please wait...</p>
         ) : (
           <>
-        <h1 className="question_title">{questionList[currentStep].text}</h1>
-        <h3 className="question_description">{questionList[currentStep].description}</h3>
-        { questionList[currentStep].question_type && questionList[currentStep].question_type === "multiple_choice" ? (
-          console.log(questionList[currentStep].question_type),
-          <>
-          { currentQuestionAnswers.map((answer) => (
-            <div key={`${answer.answer_id} - ${questionList[currentStep].question_id}`}>
-              <input type="radio" id={answer.answer_id} name={questionList[currentStep].id} value={answer.answer_id} />
-              <label htmlFor={answer.answer_id}>{answer.text}</label>
-              </div>
-          ))}
-              </>
-              ) : questionList[currentStep].question_type && questionList[currentStep].question_type === "true_false" ? (
-                console.log(questionList[currentStep].question_type),
-                <>
+            <h1 className="question_title">{questionList[currentStep].text}</h1>
+            <h3 className="question_description">
+              {questionList[currentStep].description}
+            </h3>
+            {questionList[currentStep].question_type &&
+            questionList[currentStep].question_type === "multiple_choice" ? (
+              <>
                 {currentQuestionAnswers.map((answer) => (
-                  <div key={`${answer.answer_id} - ${questionList[currentStep].question_id}`}>
-                    <input type="radio" id={answer.answer_id} name={questionList[currentStep].question_id} value={answer.text} />
-                    <label htmlFor={answer.answer_id}>{answer.text}</label>
+                    <div
+                      key={`${answer.answer_id} - ${questionList[currentStep].question_id}`}
+                    >
+                      <input
+                        type="radio"
+                        id={answer.answer_id}
+                        name={questionList[currentStep].question_id}
+                        onChange={(event) => setInputValue(event.target.id)}
+                        value={answer.answer_id}
+                      />
+                      <label htmlFor={answer.answer_id}>{answer.text}</label>
                     </div>
-                    ))}
-                    </>
-                    ) : questionList[currentStep].question_type && questionList[currentStep].question_type === "input_field" ? (
-                      console.log(questionList[currentStep].question_type),
-                <>
+                  ))}
+              </>
+            ) : questionList[currentStep].question_type &&
+              questionList[currentStep].question_type === "true_false" ? (
+              <>
                 {currentQuestionAnswers.map((answer) => (
-                  <div key={`${answer.answer_id} - ${questionList[currentStep].question_id}`}>
-                    <label htmlFor={answer.answer_id}>{answer.text}</label>
-                    <input type="text" ref={props.inputRef} id={answer.answer_id} name={questionList[currentStep].question_id} />
+                    <div
+                      key={`${answer.answer_id} - ${questionList[currentStep].question_id}`}
+                    >
+                      <input
+                        type="radio"
+                        id={answer.answer_id}
+                        name={questionList[currentStep].question_id}
+                        onChange={(event) => setInputValue(event.target.id)}
+                        value={answer.text}
+                      />
+                      <label htmlFor={answer.answer_id}>{answer.text}</label>
                     </div>
                 ))}
-                </>
-                    ) : null }
-              <div>
-              {currentStep > 0 && <Button onClick={() => handlePreviousSection()}>Back</Button>}
-              {currentStep < questionList.length - 1 && <Button onClick={() => handleNextSection(inputRef)}>Next</Button>}
-              </div>
               </>
+            ) : questionList[currentStep].question_type &&
+              questionList[currentStep].question_type === "input_field" ? (
+              <>
+                    <div
+                      key={`${questionList[currentStep].question_id}`}
+                    >
+                      <input
+                        type="textarea"
+                        className="input_value_style"
+                        value={inputValue}
+                        onChange={(event) => setInputValue(event.target.id)}
+                        name={questionList[currentStep].question_id}
+                      />
+                    </div>
+              </>
+            ) : null }
+            <div>
+              {currentStep > 0 && (
+                <Button onClick={handlePreviousSection}>Back</Button>
+              )}
+              {currentStep < questionList.length - 1 && (
+                <Button onClick={handleNextSection}>
+                  Next
+                </Button>
+              )}
+            </div>
+          </>
         )}
-          </Container>
-              </div>
+      </Container>
+    </div>
   );
-                };
-           
+};
 
 export default PriceCalculator;
