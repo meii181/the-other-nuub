@@ -207,7 +207,7 @@ opacity: 0.6;
 .container-footer {
   background-color: #2D2828;
   width: 100%;
-  height: 500px;
+  height: 550px;
   text-align: center;
   font-family: primary-font;
   color: white;
@@ -242,8 +242,32 @@ font-size: 55px;
 font-family: secondary-font;
 text-align: center;
 padding: 0.5rem 0;
+margin-bottom: 1rem;
 }
 
+.estimate {
+  padding: 2rem 0;
+}
+
+.price {
+  font-size: 55px;
+  padding: 1rem 0;
+}
+
+.estimate,
+.price {
+  font-family: primary-font,
+}
+
+.paragraph_1,
+.paragraph_2 {
+  padding: 1rem 0;
+  font-size: 25px;
+  width: 60%;
+  margin-left: 20rem;
+  text-align: center;
+  font-family: secondary-font;
+}
 
 @media (min-width: 2400px){
 

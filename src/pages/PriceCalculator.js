@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import NavigationPriceCalculator from "./NavigationPriceCalculator";
 import { Container, Button } from "react-bootstrap";
 import axios from "axios";
 
 const PriceCalculator = () => {
-  const [currentStep, setCurrentStep] = useState(-1);
+  const [currentStep, setCurrentStep] = useState(0);
   const [questionList, setQuestionList] = useState([]);
   const [currentQuestionAnswers, setCurrentQuestionAnswers] = useState([]);
-  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     axios
       .get("http://localhost/bachelor_exam/questions.php")
       .then((response) => {
         setQuestionList(response.data);
-        setCurrentStep(0);
+        
       })
       .catch((error) => {
         console.log(error);
@@ -22,7 +21,7 @@ const PriceCalculator = () => {
   }, [currentStep]);
 
   useEffect(() => {
-    if (questionList.length && currentStep !== -1) {
+    if (questionList.length) {
       axios
         .get(
           `http://localhost/bachelor_exam/answers.php?question_id=${questionList[currentStep].question_id}`
@@ -33,7 +32,7 @@ const PriceCalculator = () => {
               answer.question_id === questionList[currentStep].question_id
           );
           setCurrentQuestionAnswers(answers);
-          setCurrentStep(0);
+          
         })
         .catch((error) => {
           console.log(error);
@@ -41,26 +40,18 @@ const PriceCalculator = () => {
     }
   }, [currentStep, questionList]);
 
-  const handleNextSection = (event) => {
-    event.preventDefault();
-    if (!inputValue && currentStep === -1) {
-      alert("Please select an answer!");
-      return;
-    }
-    if (inputValue === "" && questionList[currentStep].question_type === "input_field") {
-      alert("Please enter a value!");
-      return;
-    }
-    if (currentStep !== -1 && currentStep < questionList.length) {
-      setCurrentStep(currentStep + 1);
-    }
-  };
+  const lastQuestion = questionList.length - 1;
 
-  const handlePreviousSection = (event) => {
-    event.preventDefault();
-    if (currentStep !== -1 && currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-    }
+  const handleNextSection = () => {
+    if (currentStep === lastQuestion){
+    window.location.href = "/final";
+  } else {
+    setCurrentStep(currentStep + 1);
+  }
+};
+
+  const handlePreviousSection = () => {
+    setCurrentStep(currentStep - 1);
   };
 
   return (
@@ -76,10 +67,11 @@ const PriceCalculator = () => {
           borderTop: "4px solid black",
           borderBottom: "4px solid black",
           textAlign: "center",
-          marginTop: "3rem",
+          marginTop: "1rem",
+          padding: "1rem",
         }}
       >
-        {currentStep === -1 || !questionList.length ? (
+        {!questionList.length ? (
           <p>Please wait...</p>
         ) : (
           <>
@@ -91,14 +83,13 @@ const PriceCalculator = () => {
             questionList[currentStep].question_type === "multiple_choice" ? (
               <>
                 {currentQuestionAnswers.map((answer) => (
-                    <div
+                    <div style={{fontFamily: "secondary-font", fontSize: 20, padding: "0.5rem"}}
                       key={`${answer.answer_id} - ${questionList[currentStep].question_id}`}
                     >
                       <input
                         type="radio"
                         id={answer.answer_id}
                         name={questionList[currentStep].question_id}
-                        onChange={(event) => setInputValue(event.target.id)}
                         value={answer.answer_id}
                       />
                       <label htmlFor={answer.answer_id}>{answer.text}</label>
@@ -109,14 +100,13 @@ const PriceCalculator = () => {
               questionList[currentStep].question_type === "true_false" ? (
               <>
                 {currentQuestionAnswers.map((answer) => (
-                    <div
+                    <div style={{fontFamily: "secondary-font", fontSize: 20, padding: "0.5rem"}}
                       key={`${answer.answer_id} - ${questionList[currentStep].question_id}`}
                     >
                       <input
                         type="radio"
                         id={answer.answer_id}
                         name={questionList[currentStep].question_id}
-                        onChange={(event) => setInputValue(event.target.id)}
                         value={answer.text}
                       />
                       <label htmlFor={answer.answer_id}>{answer.text}</label>
@@ -126,14 +116,12 @@ const PriceCalculator = () => {
             ) : questionList[currentStep].question_type &&
               questionList[currentStep].question_type === "input_field" ? (
               <>
-                    <div
+                    <div style={{fontFamily: "secondary-font", fontSize: 20, padding: "0.5rem"}}
                       key={`${questionList[currentStep].question_id}`}
                     >
-                      <input
-                        type="textarea"
+                      <textarea
+                        style={{height: "10rem", width: "30%"}}
                         className="input_value_style"
-                        value={inputValue}
-                        onChange={(event) => setInputValue(event.target.id)}
                         name={questionList[currentStep].question_id}
                       />
                     </div>
@@ -141,11 +129,26 @@ const PriceCalculator = () => {
             ) : null }
             <div>
               {currentStep > 0 && (
-                <Button onClick={handlePreviousSection}>Back</Button>
+                <Button style={{
+                  fontSize: 30,
+                  fontWeight: "bold",
+                  backgroundColor: "#FF629A",
+                  color: "whitesmoke",
+                  borderBottom: "4px solid black",
+                  marginTop: "3rem",
+                }} onClick={handlePreviousSection}>Back</Button>
               )}
-              {currentStep < questionList.length - 1 && (
-                <Button onClick={handleNextSection}>
-                  Next
+              {currentStep <= lastQuestion && (
+                <Button style={{
+                  fontSize: 30,
+                  fontWeight: "bold",
+                  backgroundColor: "#FF629A",
+                  color: "whitesmoke",
+                  borderBottom: "4px solid black",
+                  marginTop: "3rem",
+                  marginLeft: "3rem",
+                }} type="button" onClick={handleNextSection}>
+                  {currentStep === lastQuestion ? "Finish" : "Next"}
                 </Button>
               )}
             </div>
@@ -155,5 +158,6 @@ const PriceCalculator = () => {
     </div>
   );
 };
+
 
 export default PriceCalculator;

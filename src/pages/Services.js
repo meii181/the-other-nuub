@@ -111,7 +111,7 @@ const Services = () => {
                   style={{ fontSize: 20, textAlign: "start" }}
                 >
                   {t(
-                    "If you are looking to have your own website, to promote your portfolio to the larger audience for example, you are in the right place."
+                    "If you are looking to have your own website, to promote your portfolio with your own work to the larger audience for example, you are in the right place."
                   )}
                 </Card.Text>
               </Card.Body>
