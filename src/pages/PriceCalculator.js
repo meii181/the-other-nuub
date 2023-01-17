@@ -57,9 +57,6 @@ const PriceCalculator = () => {
   return (
     <div>
       <NavigationPriceCalculator
-      currentStep = {currentStep}
-      handleNextSection = {handleNextSection}
-      handlePreviousSection = {handlePreviousSection}
       />
       <Container
         fluid
