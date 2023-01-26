@@ -6,17 +6,16 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 require "globals.php";
 
 $questions = array(
-"How big is the company?" => "Choose down below the number of staff that are in your company",
-"Would you like to make a short description about the company/you?" =>  "You can write down what you do, what are your goals, and what are you exactly looking for",
-"Which is your target goal for the website solution?" =>  "Please select if your website solution should work as a simple online representation, or it should be part of a bigger strategy", 
-"How much is your budget?" => "Write down the budget, annual or monthly", 
-"Do you have a website?" =>  "Choose down below if you already have a website or not",
+"Do you have a website?" =>  "Choose down below if you have a website and looking for an update or not",
 "What kind of website would you like/is your current website?" =>  "Choose the type of the website, whether existent and needs a refreshment, or not",
 "How many pages do you need for the website?" => "Choose the desired number of pages for your future website, choose 'None' if you already have a website",
-"What works well on the website, and what not and would like to get fixed?" =>  "Mention down below what would you like to have fixed to your website, choose 'None' if you don't have a website", 
+"Do you have pictures to use for the website or any other solution to achieve them?" => "For example, if you can achieve photos through a photographer or a stock photo",
+"Are you in need of changing something to the/getting help with the visual identity of your brand?" => "For example, if we can help you with choosing the colors, font, logo or the style of the website, or to make changes in case you already have one", 
 "Would you like to help you with integrating your web solution in the market?" =>  "For example, we can help you with search engine optimization to grow traffic to the website", 
 "Would you like to help you with integrating your web solution with other software?" =>  "For example, if you wish to have a contact form to your website, or update the purchase system, having the website integrated with other software would be useful in this case",
-"Is your website responsive?" =>  "If not, we'll help you with offering a responsive design to the website",
+"Would you like to have security implemented on your website?" => "For example, to provide security to the users through providing validation and sanitization of various forms to avoid possible virtual attacks",
+"Is your website responsive?" => "If not, we'll help you with offering a responsive design to the website",
+"Would you like to have your website hosted?" => "Choose whether you would like to get your website hosted or not",
 "What kind of additional services would you like to have implemented to the website?" =>  "Choose down whether what kind of services would you like to have implemented",
 "Would you like to have the website available in english as well?" =>  "Choose whether you wish to have a second language for your website or not"
 );
@@ -28,27 +27,16 @@ $questions = array(
 
         $db = _db();
 
-        $check_query = $db->prepare("SELECT * FROM questions WHERE text = :text");
-        $check_query->bindValue(":text", $text);
-        $check_query->execute();
-        $existingQuestion = $check_query->fetchAll();
+        $check_questions = $db->prepare("SELECT * FROM questions WHERE text = :text");
+        $check_questions->bindValue(":text", $text);
+        $check_questions->execute();
+        $existingQuestion = $check_questions->fetchAll();
 
         if (empty($existingQuestion)) {
 
             $question_type = "";
-            if ($text === "How big is the company?") {
-                $question_type = "multiple_choice";
-
-            } else if ($text === "Would you like to make a short description about the company/you?") {
-                $question_type = "input_field";
-
-            } else if ($text === "Which is your target goal for the website solution?") {
-                $question_type = "multiple_choice";
-
-            } else if ($text === "How much is your budget?") {
-                $question_type = "input_field";
-
-            } else if ($text === "Do you have a website?") {
+            
+            if ($text === "Do you have a website?") {
                 $question_type = "true_false";
 
             } else if ($text === "What kind of website would you like/is your current website?") {
@@ -57,8 +45,11 @@ $questions = array(
             } else if ($text === "How many pages do you need for the website?") {
                 $question_type = "multiple_choice";
 
-            } else if ($text === "What works well on the website, and what not and would like to get fixed?") {
-                $question_type = "input_field";
+            } else if ($text === "Do you have pictures to use for the website or any other solution to achieve them?") {
+                $question_type = "true_false";
+
+            } else if ($text === "Are you in need of changing something to the/getting help with the visual identity of your brand?") {
+                $question_type = "true_false";
 
             } else if ($text === "Would you like to help you with integrating your web solution in the market?") {
                 $question_type = "true_false";
@@ -66,7 +57,13 @@ $questions = array(
             } else if ($text === "Would you like to help you with integrating your web solution with other software?") {
                 $question_type = "true_false";
 
+            } else if ($text === "Would you like to have security implemented on your website?") {
+                $question_type = "true_false";
+
             } else if ($text === "Is your website responsive?") {
+                $question_type = "true_false";
+
+            } else if ($text === "Would you like to have your website hosted?") {
                 $question_type = "true_false";
 
             } else if ($text === "What kind of additional services would you like to have implemented to the website?") {
@@ -75,7 +72,7 @@ $questions = array(
             } else if ($text === "Would you like to have the website available in english as well?") {
                 $question_type = "true_false";
             } else {
-                $question_type = "input_field";
+                $question_type = "multiple_choice";
             }
 
             $q = $db->prepare("INSERT INTO questions(question_id, text, description, question_type) VALUES(:question_id, :text, :description, :question_type)");
@@ -84,6 +81,7 @@ $questions = array(
             $q->bindValue(":description", $description);
             $q->bindValue(":question_type", $question_type);
             $q->execute();
+            
         }
     }
         $q = $db->prepare("SELECT * FROM questions");

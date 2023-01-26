@@ -7,10 +7,11 @@ const PriceCalculator = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [questionList, setQuestionList] = useState([]);
   const [currentQuestionAnswers, setCurrentQuestionAnswers] = useState([]);
-  const [buttonState, setButtonState] = useState(false);
-  const [input, setInput] = useState("");
-  // const [answer, setAnswer] = useState();
-  // const [question, setQuestion] = useState();
+  const [inputValue, setInputValue] = useState(false);
+
+  const handleInputValue = (event) => {
+    setInputValue(event.target.value);
+  }
 
   useEffect(() => {
     axios
@@ -28,7 +29,7 @@ const PriceCalculator = () => {
     if (questionList.length) {
       axios
         .get(
-          `http://localhost/bachelor_exam/answers.php?question_id=${questionList[currentStep].question_id}`
+          `http://localhost/bachelor_exam/answer_choices.php?question_id=${questionList[currentStep].question_id}`
         )
         .then((response) => {
           const answers = response.data.filter(
@@ -44,13 +45,12 @@ const PriceCalculator = () => {
     }
   }, [currentStep, questionList]);
 
+
   const lastQuestion = questionList.length - 1;
 
   const handleNextSection = () => {
     if (currentStep === lastQuestion){
     window.location.href = "/final";
-  } else if(input === ""){
-    setButtonState(!buttonState);
   } else {
     setCurrentStep(currentStep + 1);
   }
@@ -59,19 +59,7 @@ const PriceCalculator = () => {
   const handlePreviousSection = () => {
     setCurrentStep(currentStep - 1);
   };
-
-  // const handleAnswer = (event) => {
-  //   const answers = {
-  //     answer: answer.answer_id,
-  //     answerText: answer.text
-  //   }
-  //   setAnswer(answers);
-  // }
-
-  // const handleQuestion = (event) => {
-  //   setQuestion(question);
-  // }
-
+  
   return (
     <div>
       <NavigationPriceCalculator
@@ -97,56 +85,40 @@ const PriceCalculator = () => {
             {questionList[currentStep].question_type &&
             questionList[currentStep].question_type === "multiple_choice" ? (
               <>
-                {currentQuestionAnswers.map((answer) => (
+                {currentQuestionAnswers.map((answers) => (
                     <div style={{fontFamily: "secondary-font", fontSize: 20, padding: "0.5rem"}}
-                      key={`${answer.answer_id} - ${questionList[currentStep].question_id}`}
+                      key={`${answers.answer_choice_id} - ${questionList[currentStep].question_id}`}
                     >
                       <input
                         type="radio"
-                        id={answer.answer_id}
+                        id={answers.answer_choice_id}
                         name={questionList[currentStep].question_id}
-                        value={input}
-                        onChange={(event) => setInput(event.target.value)}
+                        value={answers.answer_choice_id}
+                        onChange={handleInputValue}
                         
                       />
-                      <label htmlFor={answer.answer_id}>{answer.text}</label>
+                      <label htmlFor={answers.answer_choice_id}>{answers.text}</label>
                     </div>
                   ))}
               </>
             ) : questionList[currentStep].question_type &&
               questionList[currentStep].question_type === "true_false" ? (
               <>
-                {currentQuestionAnswers.map((answer) => (
+                {currentQuestionAnswers.map((answers) => (
                     <div style={{fontFamily: "secondary-font", fontSize: 20, padding: "0.5rem"}}
-                      key={`${answer.answer_id} - ${questionList[currentStep].question_id}`}
+                      key={`${answers.answer_choice_id} - ${questionList[currentStep].question_id}`}
                     >
                       <input
                         type="radio"
-                        id={answer.answer_id}
+                        id={answers.answer_choice_id}
                         name={questionList[currentStep].question_id}
-                        value={input}
-                        onChange={(event) => setInput(event.target.value)}
+                        value={answers.text}
+                        onChange={handleInputValue}
                         
                       />
-                      <label htmlFor={answer.answer_id}>{answer.text}</label>
+                      <label htmlFor={answers.answer_choice_id}>{answers.text}</label>
                     </div>
                 ))}
-              </>
-            ) : questionList[currentStep].question_type &&
-              questionList[currentStep].question_type === "input_field" ? (
-              <>
-                    <div style={{fontFamily: "secondary-font", fontSize: 20, padding: "0.5rem"}}
-                      key={`${questionList[currentStep].question_id}`}
-                    >
-                      <textarea
-                        style={{height: "10rem", width: "30%"}}
-                        className="input_value_style"
-                        name={questionList[currentStep].question_id}
-                        value={input}
-                        onChange={(event) => setInput(event.target.value)}
-
-                      />
-                    </div>
               </>
             ) : null }
             <div>
@@ -160,7 +132,8 @@ const PriceCalculator = () => {
                   marginTop: "3rem",
                 }} onClick={handlePreviousSection}>Back</Button>
               )}
-              {currentStep <= lastQuestion && buttonState ? (
+              
+              {currentStep <= lastQuestion && (
                 <Button style={{
                   fontSize: 30,
                   fontWeight: "bold",
@@ -169,19 +142,7 @@ const PriceCalculator = () => {
                   borderBottom: "4px solid black",
                   marginTop: "3rem",
                   marginLeft: "3rem",
-                }} active type="button" onClick={handleNextSection}>
-                  {currentStep === lastQuestion ? "Finish" : "Next"}
-                </Button>
-              ) : (
-                <Button style={{
-                  fontSize: 30,
-                  fontWeight: "bold",
-                  backgroundColor: "#FF629A",
-                  color: "whitesmoke",
-                  borderBottom: "4px solid black",
-                  marginTop: "3rem",
-                  marginLeft: "3rem",
-                }} disabled type="button" onClick={handleNextSection}>
+                }} active type="button" onClick={handleNextSection} disabled={!inputValue}>
                   {currentStep === lastQuestion ? "Finish" : "Next"}
                 </Button>
               )}
