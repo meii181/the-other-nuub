@@ -266,10 +266,10 @@ const CasesClients = () => {
               marginTop: "1rem",
             }}
           >
-            <img src={danskRad} width="60%" height="auto" />
+            <img src={danskRad} width="50%" height="auto" />
           </Col>
           <Col md={4}>
-            <img src={pg} width="40%" height="auto" />
+            <img src={pg} width="30%" height="auto" />
           </Col>
           <Col
             md={4}
@@ -277,7 +277,7 @@ const CasesClients = () => {
               marginTop: "2rem",
             }}
           >
-            <img src={kiro} width="60%" height="auto" />
+            <img src={kiro} width="50%" height="auto" />
           </Col>
           <Col
             md={4}
@@ -285,7 +285,7 @@ const CasesClients = () => {
               marginTop: "5rem",
             }}
           >
-            <img src={danskBeredskaber} width="40%" height="auto" />
+            <img src={danskBeredskaber} width="30%" height="auto" />
           </Col>
           <Col
             md={4}
@@ -293,7 +293,7 @@ const CasesClients = () => {
               marginTop: "8.5rem",
             }}
           >
-            <img src={ole} width="80%" height="auto" />
+            <img src={ole} width="70%" height="auto" />
           </Col>
 
           <Col
@@ -302,7 +302,7 @@ const CasesClients = () => {
               marginTop: "7.5rem",
             }}
           >
-            <img src={kentAndreasen} width="60%" height="auto" />
+            <img src={kentAndreasen} width="50%" height="auto" />
           </Col>
         </Row>
       </Container>

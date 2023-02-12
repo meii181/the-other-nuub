@@ -15,7 +15,7 @@ i18next.use(initReactI18next).init({
   },
 
   //   default language
-  lng: localStorage.getItem("lng") || "en",
+  lng: localStorage.getItem("lng") || "da",
 });
 
 export default i18next;

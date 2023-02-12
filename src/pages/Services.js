@@ -14,6 +14,8 @@ const Services = () => {
   return (
     <section id="services">
       <Container>
+        <Row>
+          <Col sm={12} md={10} xl={7}>
         <div className="background-services"></div>
         <div className="title-subtitle" style={{ textAlign: "center" }}>
           <h1 style={{ fontSize: 55, fontFamily: "primary-font" }}>
@@ -25,6 +27,9 @@ const Services = () => {
             )}
           </p>
         </div>
+        </Col>
+        </Row>
+
 
         <Row
           className="g-5 mt-5"
@@ -35,7 +40,7 @@ const Services = () => {
             marginLeft: "3rem",
           }}
         >
-          <Col sm={13} md={10} xl={4}>
+          <Col sm={12} md={10} xl={4}>
             <Card
               variant="light"
               style={{
@@ -90,7 +95,7 @@ const Services = () => {
             </Card>
           </Col>
 
-          <Col sm={13} md={10} xl={4}>
+          <Col sm={12} md={10} xl={4}>
             <Card
               variant="light"
               style={{
@@ -118,7 +123,7 @@ const Services = () => {
             </Card>
           </Col>
 
-          <Col sm={13} md={10} xl={4}>
+          <Col sm={12} md={10} xl={4}>
             <Card
               variant="light"
               style={{
@@ -146,7 +151,7 @@ const Services = () => {
             </Card>
           </Col>
 
-          <Col sm={13} md={10} xl={4}>
+          <Col sm={12} md={10} xl={4}>
             <Card
               variant="light"
               style={{

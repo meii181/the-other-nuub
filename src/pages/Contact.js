@@ -8,7 +8,6 @@ const Contact = () => {
   const { t } = useTranslation();
   const [full_name, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [type_of_inquiry, setTypeInquiry] = useState("");
   const [inquiry_description, setinquiryDescription] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -18,7 +17,7 @@ const Contact = () => {
   const validationForm = () => {
     let formIsValid = true;
 
-    if (!full_name || !email || !type_of_inquiry || !inquiry_description) {
+    if (!full_name || !email || !inquiry_description) {
       setErrorMessage("All the fields are required to be filled :)");
       setErrorDisplayed(true);
       formIsValid = false;
@@ -43,7 +42,6 @@ const Contact = () => {
       const object = {
         full_name: full_name,
         email: email,
-        type_of_inquiry: type_of_inquiry,
         inquiry_description: inquiry_description,
       };
 
@@ -83,7 +81,7 @@ const Contact = () => {
     <section id="contact-and-support">
       <Container className="container-contact" fluid>
         <Row>
-          <Col xs={13} md={12} xxl={8}>
+          <Col xs={12} md={12} xl={8}>
             <div className="yellow-background"></div>
             <h1
               style={{
@@ -92,9 +90,7 @@ const Contact = () => {
                 position: "relative",
               }}
             >
-              {t(
-                "Would you like to get in touch with us? Or you need assistance?"
-              )}
+              {t("Do you have any questions or would like some assistance?")}
             </h1>
             <p
               className="w-50"
@@ -107,7 +103,7 @@ const Contact = () => {
               }}
             >
               {t(
-                "You can actually do both, feel free to contact us, regardless of needing assistance or just a small talk with us."
+                "You can actually do both, feel free to contact us, regardless of needing assistance or a small question."
               )}
             </p>
             <Form
@@ -153,30 +149,6 @@ const Contact = () => {
                     height: "3rem",
                   }}
                 ></Form.Control>
-              </Form.Group>
-              <Form.Group
-                style={{
-                  marginBottom: "2rem",
-                }}
-              >
-                <Form.Label>{t("Select the type of inquiry")}</Form.Label>
-                <Form.Select
-                  name="type_of_inquiry"
-                  value={type_of_inquiry}
-                  onChange={(event) => setTypeInquiry(event.target.value)}
-                  style={{
-                    borderBottom: "3px solid black",
-                    height: "3rem",
-                    fontSize: 20,
-                  }}
-                >
-                  <option>
-                    {t("--- Please chose the type of inquiry ---")}
-                  </option>
-                  <option>{t("Appointment")}</option>
-                  <option>{t("Addressing a question")}</option>
-                  <option>{t("Support/Assistance")}</option>
-                </Form.Select>
               </Form.Group>
               <Form.Group
                 style={{

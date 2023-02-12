@@ -15,6 +15,8 @@ const Strategy = () => {
           backgroundColor: "#F9E95D",
         }}
       >
+        <Row>
+          <Col sm={12} md={10} xl={7} style={{margin: "0 auto"}}>
         <div className="strategy-section" style={{ textAlign: "center" }}>
           <h1 style={{ fontSize: 55 }}>{t("Our strategy")}</h1>
           <p className="p-strategy">
@@ -28,35 +30,36 @@ const Strategy = () => {
             )}
           </p>
         </div>
+        </Col>
+        </Row>
         <Row
           className="g-2"
           style={{
             marginTop: "7rem",
-            marginLeft: "14rem",
           }}
         >
-          <Col md={6} xl={3}>
+          <Col md={3} xl={3}>
             <div className="circle-strategy"></div>
             <h2 className="mt-4" style={{ fontSize: 35 }}>
               {t("Planning")}
             </h2>
           </Col>
 
-          <Col md={6} xl={3}>
+          <Col md={3} xl={3}>
             <div className="circle-strategy"></div>
             <h2 className="mt-4" style={{ fontSize: 35 }}>
               {t("Development")}
             </h2>
           </Col>
 
-          <Col md={6} xl={3}>
+          <Col md={3} xl={3}>
             <div className="circle-strategy"></div>
             <h2 className="mt-4" style={{ fontSize: 35 }}>
               {t("Delivery")}
             </h2>
           </Col>
 
-          <Col md={6} xl={3}>
+          <Col md={3} xl={3}>
             <div className="circle-strategy"></div>
             <h2 className="mt-4" style={{ fontSize: 35 }}>
               {t("Growth")}

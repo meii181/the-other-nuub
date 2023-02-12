@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Stack } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { ArrowRightCircle } from "react-bootstrap-icons";
+import { ArrowDownCircle } from "react-bootstrap-icons";
 import Services from "./Services";
 import Strategy from "./Strategy";
 import CasesClients from "./Cases&Clients";
@@ -40,34 +40,33 @@ const Home = () => {
 
               <Stack
                 direction="horizontal"
-                gap={4}
-                className="call-to-action mt-5 mt-5"
+                gap={5}
+                className="call-to-action mt-5"
               >
                 <Button
-                  href="/price-calculator"
+                  href="#services"
                   style={{
-                    fontSize: 20,
+                    fontSize: 23,
                     fontWeight: "bold",
                     backgroundColor: "#7F7EC7",
                     color: "whitesmoke",
                     borderBottom: "4px solid black",
                   }}
-                  className="px-3 py-2"
+                  className="px-3 py-2 mt-1"
                 >
-                  {t("Get Started!")}
+                  {t("Our services")}
                 </Button>{" "}
-                <a
-                  href="#contact-and-support"
+                <p
                   style={{
                     fontWeight: "bold",
-                    textDecoration: "none",
                     color: "black",
+                    fontSize: 23
                   }}
-                  className="pt-2"
+                  className="pt-2 mt-1"
                 >
-                  {t("or get in touch with us")}{" "}
-                  <ArrowRightCircle size={25} className="ms-2" />
-                </a>
+                  {t("Scroll down for more")}{" "}
+                  <ArrowDownCircle size={25} className="ms-2" />
+                </p>
               </Stack>
             </Col>
 

@@ -10,7 +10,7 @@ const Footer = () => {
     <>
       <Container className="container-footer" fluid>
         <Row>
-          <Col xs={12} md={4} xxl={5} style={{ marginTop: "8rem" }}>
+          <Col sm={12} md={4} xxl={5} style={{ marginTop: "8rem" }}>
             <img
               src={nuub_logo_white}
               width="80%"
@@ -39,7 +39,7 @@ const Footer = () => {
             ></div>
           </Col>
           <Col
-            xs={12}
+            sm={12}
             md={4}
             xxl={5}
             style={{

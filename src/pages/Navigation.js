@@ -50,54 +50,57 @@ const Navigation = () => {
             </Nav.Link>
             <Nav.Link href="#contact-and-support" className="me-4">
               {t("Contact and Support")}
+              </Nav.Link>
+              <Nav.Link href="/login" className="me-5 py-2 px-4" style={{borderRadius: 50, backgroundColor: "#FF629A", color: "whitesmoke", fontWeight: "bold"}}>
+              {t("Book Meeting")}
             </Nav.Link>
           </Nav>
         </Stack>
-        <Nav className="language me-5">
+        <Nav className="language ms-2 me-3">
           {state ? (
             <Button
-              className="me-3 px-4"
-              style={{ fontSize: 20 }}
+              className="me-3 px-4 py-2"
+              style={{ fontSize: 22 }}
               variant="info"
               active
-              onClick={() => handleChangeLanguage("en")}
+              onClick={() => handleChangeLanguage("da")}
             >
               {" "}
-              EN{" "}
+              DA{" "}
             </Button>
           ) : (
             <Button
-              className="me-3 px-4"
-              style={{ fontSize: 20 }}
+              className="me-3 px-4 py-2"
+              style={{ fontSize: 22 }}
               variant="info"
               disabled
-              onClick={() => handleChangeLanguage("en")}
+              onClick={() => handleChangeLanguage("da")}
             >
               {" "}
-              EN{" "}
+              DA{" "}
             </Button>
           )}
           {state ? (
             <Button
-              className="me-3 px-4"
-              style={{ fontSize: 20 }}
+              className="me-4 px-4 py-2"
+              style={{ fontSize: 22 }}
               variant="info"
               disabled
-              onClick={() => handleChangeLanguage("da")}
+              onClick={() => handleChangeLanguage("en")}
             >
               {" "}
-              DA{" "}
+              EN{" "}
             </Button>
           ) : (
             <Button
-              className="me-3 px-4"
-              style={{ fontSize: 20 }}
+              className="me-4 px-4 py-2"
+              style={{ fontSize: 22 }}
               variant="info"
               active
-              onClick={() => handleChangeLanguage("da")}
+              onClick={() => handleChangeLanguage("en")}
             >
               {" "}
-              DA{" "}
+              EN{" "}
             </Button>
           )}
         </Nav>
