@@ -15,7 +15,6 @@ if (isset($json) && !empty($json)) {
     try {
         $fullName = $request->full_name;
         $email = $request->email;
-        $typeInquiry = $request->type_of_inquiry;
         $inquiryDescription = $request->inquiry_description;
 
             $db = _db();
@@ -33,15 +32,20 @@ if (isset($json) && !empty($json)) {
 
             } else {
 
-                $q = $db->prepare("INSERT INTO contact_form(contact_id, full_name, email, type_of_inquiry, inquiry_description) VALUES (:contact_id, :full_name, :email, :type_of_inquiry, :inquiry_description)");
+                $q = $db->prepare("INSERT INTO contact_form(contact_id, full_name, email, inquiry_description) VALUES (:contact_id, :full_name, :email, :inquiry_description)");
                 $q->bindValue(":contact_id", null);
                 $q->bindValue(":full_name", $fullName);
                 $q->bindValue(":email", $email);
-                $q->bindValue(":type_of_inquiry", $typeInquiry);
                 $q->bindValue(":inquiry_description", $inquiryDescription);
                 $q->execute();
 
                 $id = $db->lastInsertId();
+
+            $to_email = $email;
+            $subject = "Your Inquiry Resume";
+            $message_content = "Hi there! Thank you for reaching us for helping you with your project, here are your information that you filled, we will be looking into it and contact you as soon as we say fish! :)";
+
+            require_once "email/send_email.php";
 
                 header("Content-type: application/json");
                 http_response_code(200);
