@@ -15,21 +15,20 @@ const Services = () => {
     <section id="services">
       <Container>
         <Row>
-          <Col sm={12} md={10} xl={7}>
-        <div className="background-services"></div>
-        <div className="title-subtitle" style={{ textAlign: "center" }}>
-          <h1 style={{ fontSize: 55, fontFamily: "primary-font" }}>
-            {t("Our services")}
-          </h1>
-          <p style={{ fontSize: 25 }} className="pt-2">
-            {t(
-              "We do offer all types of services for all types of our clients' needs and preferences, from helping you with creating the website, to integrating it to work with other software and search engine optimization"
-            )}
-          </p>
-        </div>
-        </Col>
+          <Col sm={12} md={10} lg={12}>
+            <div className="background-services"></div>
+            <div className="title-subtitle" style={{ textAlign: "center" }}>
+              <h1 style={{ fontSize: 55, fontFamily: "primary-font" }}>
+                {t("Our services")}
+              </h1>
+              <p style={{ fontSize: 25 }} className="pt-2">
+                {t(
+                  "We do offer all types of services for all types of our clients' needs and preferences, from helping you with creating the website, to integrating it to work with other software and search engine optimization"
+                )}
+              </p>
+            </div>
+          </Col>
         </Row>
-
 
         <Row
           className="g-5 mt-5"
@@ -68,7 +67,7 @@ const Services = () => {
             </Card>
           </Col>
 
-          <Col sm={13} md={10} xl={4}>
+          <Col sm={12} md={10} xl={4}>
             <Card
               variant="light"
               style={{

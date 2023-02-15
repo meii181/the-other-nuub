@@ -6,10 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ScrollUpButton from "./pages/ScrollUpButton";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import ForgotPassword from "./pages/ForgotPassword";
-import Confirmation from "./pages/Confirmation";
-import RecoverPassword from "./pages/RecoverPassword";
-import PasswordRecovered from "./pages/PasswordRecovered";
+import Dashboard from "./pages/LoggedIntoSession/Dashboard";
+import AppointmentList from "./pages/LoggedIntoSession/AppointmentList";
+import Appointment from "./pages/LoggedIntoSession/Appointment";
+import Profile from "./pages/LoggedIntoSession/Profile";
+import UpdateProfile from "./pages/LoggedIntoSession/UpdateProfile";
 
 function App() {
   return (
@@ -20,10 +21,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/confirmation" element={<Confirmation />} />
-          <Route path="/recoverpassword" element={<RecoverPassword />} />
-          <Route path="/passwordrecovered" element={<PasswordRecovered />} />
+          <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path="/appointment" element={<Appointment />} />
+          <Route path="/appointmentlist" element={<AppointmentList />} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/updateprofile" element={<UpdateProfile/>} />
         </Routes>
       </Router>
     </div>

@@ -16,7 +16,7 @@ const Strategy = () => {
         }}
       >
         <Row>
-          <Col sm={12} md={10} xl={7} style={{margin: "0 auto"}}>
+          <Col sm={12} md={10} lg={7} style={{margin: "0 auto"}}>
         <div className="strategy-section" style={{ textAlign: "center" }}>
           <h1 style={{ fontSize: 55 }}>{t("Our strategy")}</h1>
           <p className="p-strategy">
@@ -36,30 +36,31 @@ const Strategy = () => {
           className="g-2"
           style={{
             marginTop: "7rem",
+            marginLeft: "9rem",
           }}
         >
-          <Col md={3} xl={3}>
+          <Col sm={5} md={3} lg={3}>
             <div className="circle-strategy"></div>
             <h2 className="mt-4" style={{ fontSize: 35 }}>
               {t("Planning")}
             </h2>
           </Col>
 
-          <Col md={3} xl={3}>
+          <Col sm={5} md={3} lg={3}>
             <div className="circle-strategy"></div>
             <h2 className="mt-4" style={{ fontSize: 35 }}>
               {t("Development")}
             </h2>
           </Col>
 
-          <Col md={3} xl={3}>
+          <Col sm={5} md={3} lg={3}>
             <div className="circle-strategy"></div>
             <h2 className="mt-4" style={{ fontSize: 35 }}>
               {t("Delivery")}
             </h2>
           </Col>
 
-          <Col md={3} xl={3}>
+          <Col sm={5} md={3} lg={3}>
             <div className="circle-strategy"></div>
             <h2 className="mt-4" style={{ fontSize: 35 }}>
               {t("Growth")}

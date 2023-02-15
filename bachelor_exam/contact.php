@@ -1,6 +1,5 @@
 <?php
-
-header("Access-Control-Allow-Origin: http://localhost:3000");
+header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
@@ -40,12 +39,6 @@ if (isset($json) && !empty($json)) {
                 $q->execute();
 
                 $id = $db->lastInsertId();
-
-            $to_email = $email;
-            $subject = "Your Inquiry Resume";
-            $message_content = "Hi there! Thank you for reaching us for helping you with your project, here are your information that you filled, we will be looking into it and contact you as soon as we say fish! :)";
-
-            require_once "email/send_email.php";
 
                 header("Content-type: application/json");
                 http_response_code(200);
