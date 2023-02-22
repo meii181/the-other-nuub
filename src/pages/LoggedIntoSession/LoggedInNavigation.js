@@ -2,12 +2,12 @@ import React from "react";
 import { Nav, Navbar, Stack } from "react-bootstrap";
 import nuub from "../../assets/img/cropped-nuub_logo.png";
 
-const LoggedInNavigation = ({handleLogOut}) => {
+const LoggedInNavigation = () => {
 
     return (
         <Navbar className="loggedInNavigation pt-3" expand="lg" style={{backgroundColor: "#EBBFF3", borderBottom: "4px solid black"}}>
             <Navbar.Brand href="/dashboard" className="nuub ms-2 p-2">
-                <img src={nuub} width="246px" height="83px" />
+                <img src={nuub} width="246px" height="83px" alt="logo" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbar-nav" />
                 <Navbar.Collapse>
@@ -22,7 +22,7 @@ const LoggedInNavigation = ({handleLogOut}) => {
             <Nav.Link href="/appointmentlist" className="me-4">
               My appointments
             </Nav.Link>
-            <Nav.Link onClick={handleLogOut} className="me-5" style={{color: "#EB3131"}}>
+            <Nav.Link className="me-5" style={{color: "#EB3131"}}>
               Sign Out
             </Nav.Link>
           </Nav>

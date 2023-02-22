@@ -1,0 +1,42 @@
+@font-face {
+    font-family: primary-font;
+    src: url(../public/BetmSemiBold.otf);
+  }
+  
+@font-face {
+    font-family: secondary-font;
+    src: url(../public/BetmLight.otf)
+  }
+
+h1,
+h2,
+h3 {
+    font-family: primary-font; 
+}
+
+p {
+  font-family: secondary-font;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: grey;
+}
+
+.email-wrapper {
+  width: 100%;
+  table-layout: fixed;
+  background-color: grey; 
+}
+
+.email-template {
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+    border-spacing: 0;
+    background-color: #ffffff;
+    color: #020303;
+}
+

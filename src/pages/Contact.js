@@ -11,70 +11,70 @@ const Contact = () => {
   const [inquiry_description, setinquiryDescription] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const [errorDisplayed, setErrorDisplayed] = useState(false);
-  const [successDisplayed, setSuccessDisplayed] = useState(false);
 
-  const validationForm = () => {
-    let formIsValid = true;
-
-    if (!full_name || !email || !inquiry_description) {
-      setErrorMessage("All the fields are required to be filled :)");
-      setErrorDisplayed(true);
-      formIsValid = false;
-    } else {
-      const emailRegex =
-        /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]@(gmail|hotmail|outlook|yahoo)\.com\b$/g;
-      if (!emailRegex.test(email)) {
-        setErrorMessage("Your email is not valid :(");
-        setErrorDisplayed(true);
-        formIsValid = false;
-      } else {
-        setErrorDisplayed(false);
-      }
-    }
-    return formIsValid;
-  };
+  function emailValidate() {
+    const emailRegex =
+      /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]@(gmail|hotmail|outlook|yahoo)\.com\b$/g;
+    return emailRegex.test(email);
+  }
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
 
-    if (validationForm()) {
-      const object = {
-        full_name: full_name,
-        email: email,
-        inquiry_description: inquiry_description,
-      };
+    const object = {
+      full_name: full_name,
+      email: email,
+      inquiry_description: inquiry_description,
+    };
 
-      axios
-        .post("http://localhost/bachelor_exam/contact.php", object)
-        .then((response) => {
-          if (!successDisplayed) {
-            setSuccessMessage(
-              "Your contact details has been registered, we'll get in touch as fast as you say fish! ;D"
-            );
-            setSuccessDisplayed(true);
-          }
-          setErrorMessage("");
-          setErrorDisplayed(false);
-        })
-        .catch((error) => {
-          if (!errorDisplayed) {
-            setErrorMessage("The email has already been registered!");
-            setErrorDisplayed(true);
-          }
-        });
-
-      axios
-        .get("http://localhost/bachelor_exam/contact.php", object)
-        .catch((error) => {
-          if (
-            error.response &&
-            error.response.data === "The email has already been registered!"
-          ) {
-            setErrorMessage("The email has already been registered!");
-          }
-        });
-    }
+    axios
+      .post("http://localhost/api/contact.php", object)
+      .then((response) => {
+        if (
+          response.data ===
+          "Your contact details has been registered, we'll get in touch as fast as you say fish! ;D"
+        ) {
+        }
+        setSuccessMessage(
+          "Your contact details has been registered, we'll get in touch as fast as you say fish! ;D"
+        );
+      })
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.data === "All fields must be filled"
+        ) {
+          setErrorMessage("All fields must be filled");
+        } else if (
+          error.response &&
+          error.response.data === "The email is not valid" &&
+          !emailValidate()
+        ) {
+          setErrorMessage("The email is not valid");
+        } else if (
+          error.response &&
+          error.response.data === "The full name must be at least 8 characters"
+        ) {
+          setErrorMessage("The full name must be at least 8 characters");
+        } else if (
+          error.response &&
+          error.response.data === "The full name cannot be more 20 characters"
+        ) {
+          setErrorMessage("The full name cannot be more 20 characters");
+        } else if (
+          error.response &&
+          error.response.data === "Maximum 200 characters allowed"
+        ) {
+          setErrorMessage("Maximum 200 characters allowed");
+        } else if (
+          error.response &&
+          error.response.data === "The email has already been registered"
+        ) {
+          setErrorMessage("The email has already been registered");
+        } else {
+          console.log(error);
+        }
+      });
   };
 
   return (
