@@ -13,9 +13,6 @@ const Login = () => {
     password: "",
   });
 
-  const [user, setUser] = useState([]);
-  const [isLoggedIn, setLoggedIn] = useState(false);
-
   function emailValidate(email) {
     const emailRegex =
       /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]@(gmail|hotmail|outlook|yahoo)\.com\b$/g;
@@ -32,25 +29,16 @@ const Login = () => {
     event.preventDefault();
 
     axios
-      .post("http://localhost/api/login.php", {
-        email: userInput.email,
-        password: userInput.password,
-      })
+      .post(
+        "http://localhost/api/login.php",
+        new URLSearchParams({
+          email: userInput.email,
+          password: userInput.password,
+        }),
+        { withCredentials: true }
+      )
       .then((response) => {
         if (response.data) {
-          const user = {
-            user_id: response.data.user_id,
-            first_name: response.data.first_name,
-            last_name: response.data.last_name,
-            email: response.data.email,
-            company: response.data.company,
-            phone_number: response.data.phone_number,
-            verified: response.data.verified,
-            token: response.data.token,
-          };
-          sessionStorage.setItem("user", JSON.stringify(user));
-          setUser(user);
-          setLoggedIn(true);
           navigate("/dashboard");
         } else {
           setErrorMessage("Login failed, try again");

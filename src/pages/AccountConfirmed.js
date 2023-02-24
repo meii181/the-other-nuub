@@ -46,7 +46,7 @@ const AccountConfirmed = () => {
               </p>
               {validToken ? (
                 <Button
-                  href="/dashboard"
+                  href="/login"
                   className="mt-4 px-4"
                   style={{
                     fontSize: 25,
@@ -55,7 +55,7 @@ const AccountConfirmed = () => {
                     backgroundColor: "#7F7EC7",
                   }}
                 >
-                  Go to dashboard
+                  Go to login
                 </Button>
               ) : (
                 <p>Please wait...</p>

@@ -7,53 +7,69 @@ import { useNavigate } from "react-router-dom";
 const UpdateProfile = () => {
   const navigate = useNavigate();
 
-  const [first_name, setFirstName] = useState("");
-  const [last_name, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone_number, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirm_password, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
+  const [userInput, setUserInput] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    company: "",
+    phone_number: "",
+    password: "",
+    confirm_password: "",
+  });
 
-  function validateEmail() {
+  function validateEmail(email) {
     const emailRegex =
       /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]@(gmail|hotmail|outlook|yahoo)\.com\b$/g;
     return emailRegex.test(email);
   }
 
   useEffect(() => {
-    const storedUser = JSON.parse(sessionStorage.getItem("user"));
-
-    if (storedUser) {
-      setUser(storedUser);
-    } else {
-      navigate("/login");
-    }
+    axios
+      .get("http://localhost/api/get_user.php", { withCredentials: true })
+      .then((response) => {
+        if (response.data) {
+          const user = response.data;
+          setUser(user);
+          navigate("/updateprofile");
+        } else {
+          navigate("/login");
+        }
+      });
   }, [navigate]);
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setUserInput((values) => ({ ...values, [name]: value }));
+  };
 
   const handleUpdateFormSubmit = (event) => {
     event.preventDefault();
 
-    const update_user = {
-      first_name: first_name,
-      last_name: last_name,
-      email: email,
-      phone_number: phone_number,
-      password: password,
-      confirm_password: confirm_password,
-    };
-
     axios
-      .post("http://localhost/api/update_profile.php", update_user)
+      .post(
+        "http://localhost/api/update_profile.php",
+        new URLSearchParams({
+          first_name: userInput.first_name,
+          last_name: userInput.last_name,
+          email: userInput.email,
+          phone_number: userInput.phone_number,
+          password: userInput.password,
+          confirm_password: userInput.confirm_password,
+        }),
+        { withCredentials: true }
+      )
       .then((response) => {
-        if (response.data) {
+        if (response.data === "Your profile has been updated successfully!") {
           setSuccessMessage("Your profile has been updated successfully!");
         } else {
           setErrorMessage(response.data);
         }
       })
+
       .catch((error) => {
         if (
           error.response &&
@@ -154,8 +170,8 @@ const UpdateProfile = () => {
                       type="text"
                       name="first_name"
                       placeholder="Your first name"
-                      value={first_name}
-                      onChange={(event) => setFirstName(event.target.value)}
+                      value={userInput.first_name}
+                      onChange={handleChange}
                       style={{
                         height: "3rem",
                         marginBottom: "1rem",
@@ -172,8 +188,8 @@ const UpdateProfile = () => {
                       type="text"
                       name="last_name"
                       placeholder="Your last name"
-                      value={last_name}
-                      onChange={(event) => setLastName(event.target.value)}
+                      value={userInput.last_name}
+                      onChange={handleChange}
                       style={{
                         height: "3rem",
                         marginBottom: "1rem",
@@ -190,9 +206,9 @@ const UpdateProfile = () => {
                       type="email"
                       name="email"
                       placeholder="Your email"
-                      value={email}
+                      value={userInput.email}
                       autoComplete="off"
-                      onChange={(event) => setEmail(event.target.value)}
+                      onChange={handleChange}
                       style={{
                         height: "3rem",
                         marginBottom: "1rem",
@@ -209,8 +225,8 @@ const UpdateProfile = () => {
                       type="text"
                       name="phone_number"
                       placeholder="Your phone number"
-                      value={phone_number}
-                      onChange={(event) => setPhoneNumber(event.target.value)}
+                      value={userInput.phone_number}
+                      onChange={handleChange}
                       style={{
                         height: "3rem",
                         marginBottom: "1rem",
@@ -228,8 +244,8 @@ const UpdateProfile = () => {
                       name="password"
                       placeholder="Your password"
                       autoComplete="off"
-                      value={password}
-                      onChange={(event) => setPassword(event.target.value)}
+                      value={userInput.password}
+                      onChange={handleChange}
                       style={{
                         height: "3rem",
                         marginBottom: "1rem",
@@ -247,10 +263,8 @@ const UpdateProfile = () => {
                       name="confirm_password"
                       placeholder="Confirm changed password"
                       autoComplete="off"
-                      value={confirm_password}
-                      onChange={(event) =>
-                        setConfirmPassword(event.target.value)
-                      }
+                      value={userInput.confirm_password}
+                      onChange={handleChange}
                       style={{
                         height: "3rem",
                         marginBottom: "1rem",

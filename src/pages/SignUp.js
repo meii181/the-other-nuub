@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import AuthenticationNav from "./AuthenticationNav";
 
 const SignUp = () => {
-  const navigate = useNavigate();
-
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const [userInput, setUserInput] = useState({
     first_name: "",
     last_name: "",
@@ -17,8 +15,6 @@ const SignUp = () => {
     password: "",
     confirm_password: "",
   });
-
-  const [user, setUser] = useState([]);
 
   function emailValidation(email) {
     const emailRegex =
@@ -36,31 +32,26 @@ const SignUp = () => {
     event.preventDefault();
 
     axios
-      .post("http://localhost/api/signup.php", {
-        first_name: userInput.first_name,
-        last_name: userInput.last_name,
-        company: userInput.company,
-        email: userInput.email,
-        phone_number: userInput.phone_number,
-        password: userInput.password,
-        confirm_password: userInput.confirm_password,
-      })
+      .post(
+        "http://localhost/api/signup.php",
+        new URLSearchParams({
+          first_name: userInput.first_name,
+          last_name: userInput.last_name,
+          company: userInput.company,
+          email: userInput.email,
+          phone_number: userInput.phone_number,
+          password: userInput.password,
+          confirm_password: userInput.confirm_password,
+        })
+      )
       .then((response) => {
-        if (response.data) {
-          const user = {
-            user_id: response.data.user_id,
-            first_name: response.data.first_name,
-            last_name: response.data.last_name,
-            email: response.data.email,
-            company: response.data.company,
-            phone_number: response.data.phone_number,
-            verified: response.data.verified,
-            token: response.data.token,
-          };
-          sessionStorage.setItem("user", JSON.stringify(user));
-          setUser(user);
-          navigate("/emailconfirm");
-          console.log(user);
+        if (
+          response.data ===
+          "A verification link has been sent to your email address."
+        ) {
+          setSuccessMessage(
+            "A verification link has been sent to your email address."
+          );
         } else {
           setErrorMessage("Couldn't sign you up");
         }
@@ -320,6 +311,16 @@ const SignUp = () => {
                 }}
               >
                 {errorMessage}
+              </p>
+              <p
+                style={{
+                  color: "green",
+                  fontSize: 25,
+                  fontFamily: "secondary-font",
+                  fontWeight: "bold",
+                }}
+              >
+                {successMessage}
               </p>
               <p>
                 Already have an account? Log in{" "}

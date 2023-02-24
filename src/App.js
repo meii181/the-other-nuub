@@ -11,8 +11,7 @@ import AppointmentList from "./pages/LoggedIntoSession/AppointmentList";
 import Appointment from "./pages/LoggedIntoSession/Appointment";
 import Profile from "./pages/LoggedIntoSession/Profile";
 import UpdateProfile from "./pages/LoggedIntoSession/UpdateProfile";
-import EmailConfirmationSent from "./pages/EmailConfirmationSent";
-import AccountConfirmed from "./pages/LoggedIntoSession/AccountConfirmed"
+import AccountConfirmed from "./pages/AccountConfirmed"
 
 function App() {
   return (
@@ -28,7 +27,6 @@ function App() {
           <Route path="/appointmentlist" element={<AppointmentList />} />
           <Route path="/profile" element={<Profile/>} />
           <Route path="/updateprofile" element={<UpdateProfile/>} />
-          <Route path="/emailconfirm" element={<EmailConfirmationSent/>} /> 
           <Route path="/accountconfirmed" element={<AccountConfirmed/>} />
         </Routes>
       </Router>
