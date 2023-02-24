@@ -16,7 +16,6 @@ const Profile = () => {
         if (response.data) {
           const user = response.data;
           setUser(user);
-          console.log(user.first_name);
           navigate("/profile");
         } else {
           navigate("/login");

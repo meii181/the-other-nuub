@@ -16,6 +16,7 @@ const Footer = () => {
               width="80%"
               height="auto"
               className="ms-5"
+              alt="logo"
             />
             <h2
               style={{
@@ -48,9 +49,9 @@ const Footer = () => {
             }}
           >
             <h2>Herstedvang 7C, 1. sal 2620 Albertslund</h2>
-            <h2 style={{marginTop: "1rem"}}>CVR: 35528970</h2>
-            <h2 style={{marginTop: "3rem"}}>Tlf. 43 45 43 44</h2>
-            <h2 style={{marginTop: "1rem"}}>support@nuub.dk</h2>
+            <h2 style={{ marginTop: "1rem" }}>CVR: 35528970</h2>
+            <h2 style={{ marginTop: "3rem" }}>Tlf. 43 45 43 44</h2>
+            <h2 style={{ marginTop: "1rem" }}>support@nuub.dk</h2>
             <a href="https://www.facebook.com/nuub.dk">
               <Facebook
                 size={40}

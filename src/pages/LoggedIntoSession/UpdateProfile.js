@@ -20,12 +20,6 @@ const UpdateProfile = () => {
     confirm_password: "",
   });
 
-  function validateEmail(email) {
-    const emailRegex =
-      /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]@(gmail|hotmail|outlook|yahoo)\.com\b$/g;
-    return emailRegex.test(email);
-  }
-
   useEffect(() => {
     axios
       .get("http://localhost/api/get_user.php", { withCredentials: true })
@@ -65,6 +59,7 @@ const UpdateProfile = () => {
       .then((response) => {
         if (response.data === "Your profile has been updated successfully!") {
           setSuccessMessage("Your profile has been updated successfully!");
+          setErrorMessage("");
         } else {
           setErrorMessage(response.data);
         }
@@ -102,8 +97,7 @@ const UpdateProfile = () => {
           setErrorMessage("The last name cannot be longer than 2 characters");
         } else if (
           error.response &&
-          error.response.data === "The email is not valid" &&
-          !validateEmail()
+          error.response.data === "The email is not valid"
         ) {
           setErrorMessage("The email is not valid");
         } else if (
@@ -140,7 +134,7 @@ const UpdateProfile = () => {
         ) {
           setErrorMessage("Failed updating your profile");
         } else {
-          console.log(error);
+          setErrorMessage("");
         }
       });
   };
@@ -169,7 +163,7 @@ const UpdateProfile = () => {
                     <Form.Control
                       type="text"
                       name="first_name"
-                      placeholder="Your first name"
+                      placeholder={user.first_name}
                       value={userInput.first_name}
                       onChange={handleChange}
                       style={{
@@ -187,7 +181,7 @@ const UpdateProfile = () => {
                     <Form.Control
                       type="text"
                       name="last_name"
-                      placeholder="Your last name"
+                      placeholder={user.last_name}
                       value={userInput.last_name}
                       onChange={handleChange}
                       style={{
@@ -205,7 +199,7 @@ const UpdateProfile = () => {
                     <Form.Control
                       type="email"
                       name="email"
-                      placeholder="Your email"
+                      placeholder={user.email}
                       value={userInput.email}
                       autoComplete="off"
                       onChange={handleChange}
@@ -224,7 +218,7 @@ const UpdateProfile = () => {
                     <Form.Control
                       type="text"
                       name="phone_number"
-                      placeholder="Your phone number"
+                      placeholder={user.phone_number}
                       value={userInput.phone_number}
                       onChange={handleChange}
                       style={{
@@ -242,7 +236,7 @@ const UpdateProfile = () => {
                     <Form.Control
                       type="password"
                       name="password"
-                      placeholder="Your password"
+                      placeholder="Password"
                       autoComplete="off"
                       value={userInput.password}
                       onChange={handleChange}
@@ -261,7 +255,7 @@ const UpdateProfile = () => {
                     <Form.Control
                       type="password"
                       name="confirm_password"
-                      placeholder="Confirm changed password"
+                      placeholder="Confirm password"
                       autoComplete="off"
                       value={userInput.confirm_password}
                       onChange={handleChange}

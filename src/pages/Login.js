@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
 import axios from "axios";
@@ -13,11 +13,16 @@ const Login = () => {
     password: "",
   });
 
-  function emailValidate(email) {
-    const emailRegex =
-      /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]@(gmail|hotmail|outlook|yahoo)\.com\b$/g;
-    return emailRegex.test(email);
-  }
+    // creating another useEffect to avoid the user from going to login page being logged in already
+
+    useEffect(() => {
+      axios.get("http://localhost/api/check_logged_users.php", {withCredentials: true})
+      .then((response) => {
+        if(response.data === "You're logged in") {
+          navigate("/dashboard");
+        } 
+      })
+    }, [navigate]);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -53,8 +58,7 @@ const Login = () => {
           setErrorMessage("All fields must be filled in");
         } else if (
           error.response &&
-          error.response.data === "The email is not valid" &&
-          !emailValidate()
+          error.response.data === "The email is not valid"
         ) {
           console.log("The email is not valid");
           setErrorMessage("The email is not valid");
@@ -77,6 +81,15 @@ const Login = () => {
         ) {
           console.log("Wrong email or password");
           setErrorMessage("Wrong email or password");
+        } else if (
+          error.response &&
+          error.response.data ===
+            "Unable to login, you must verify your account first"
+        ) {
+          console.log("Unable to login, you must verify your account first");
+          setErrorMessage(
+            "Unable to login, you must verify your account first"
+          );
         } else if (
           error.response &&
           error.response.data === "User does not exist"
@@ -184,6 +197,20 @@ const Login = () => {
                 Not registered yet? Sign up{" "}
                 <a
                   href="/signup"
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    fontWeight: "bold",
+                  }}
+                >
+                  here!
+                </a>
+              </p>
+
+              <p>
+                Forgot your password? Recover it{" "}
+                <a
+                  href="/forgotpassword"
                   style={{
                     textDecoration: "none",
                     color: "black",

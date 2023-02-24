@@ -15,8 +15,6 @@ function Dashboard() {
         if (response.data) {
           const user = response.data;
           setUser(user);
-          console.log(user.first_name);
-          navigate("/dashboard");
         } else {
           navigate("/login");
         }

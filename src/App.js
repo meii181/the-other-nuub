@@ -11,7 +11,10 @@ import AppointmentList from "./pages/LoggedIntoSession/AppointmentList";
 import Appointment from "./pages/LoggedIntoSession/Appointment";
 import Profile from "./pages/LoggedIntoSession/Profile";
 import UpdateProfile from "./pages/LoggedIntoSession/UpdateProfile";
-import AccountConfirmed from "./pages/AccountConfirmed"
+import AccountConfirmed from "./pages/AccountConfirmed";
+import ForgotPassword from "./pages/ForgotPassword";
+import RecoverPassword from "./pages/RecoverPassword";
+import PasswordChange from "./pages/PasswordChange";
 
 function App() {
   return (
@@ -22,12 +25,15 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/appointmentlist" element={<AppointmentList />} />
-          <Route path="/profile" element={<Profile/>} />
-          <Route path="/updateprofile" element={<UpdateProfile/>} />
-          <Route path="/accountconfirmed" element={<AccountConfirmed/>} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/updateprofile" element={<UpdateProfile />} />
+          <Route path="/accountconfirmed" element={<AccountConfirmed />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/recoverpassword" element={<RecoverPassword />} />
+          <Route path="/passwordchange" element={<PasswordChange />} />
         </Routes>
       </Router>
     </div>

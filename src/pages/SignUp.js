@@ -16,12 +16,6 @@ const SignUp = () => {
     confirm_password: "",
   });
 
-  function emailValidation(email) {
-    const emailRegex =
-      /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]@(gmail|hotmail|outlook|yahoo)\.com\b$/g;
-    return emailRegex.test(email);
-  }
-
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -52,6 +46,7 @@ const SignUp = () => {
           setSuccessMessage(
             "A verification link has been sent to your email address."
           );
+          setErrorMessage("");
         } else {
           setErrorMessage("Couldn't sign you up");
         }
@@ -88,8 +83,7 @@ const SignUp = () => {
           setErrorMessage("The last name cannot be longer than 12 characters");
         } else if (
           error.response &&
-          error.response.data === "The email is not valid" &&
-          !emailValidation()
+          error.response.data === "The email is not valid"
         ) {
           setErrorMessage("The email is not valid");
         } else if (

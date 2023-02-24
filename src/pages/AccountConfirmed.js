@@ -42,7 +42,7 @@ const AccountConfirmed = () => {
               </h1>
               <p style={{ fontSize: 30, width: "90%" }}>
                 Your account has been successfully verified and now you can book
-                a meeting with us
+                a meeting with us.
               </p>
               {validToken ? (
                 <Button

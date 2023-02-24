@@ -36,7 +36,7 @@ const CasesClients = () => {
           }}
         >
           <Carousel.Item>
-            <img src={ordrupgaard} width="60%" height="auto" />
+            <img src={ordrupgaard} width="60%" height="auto" alt="ordrupgaard"/>
             <Carousel.Caption>
               <div className="banner-text"></div>
               <h2
@@ -66,7 +66,7 @@ const CasesClients = () => {
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src={ropox} width="60%" height="auto" />
+            <img src={ropox} width="60%" height="auto" alt="ropox"/>
             <Carousel.Caption>
               <div className="banner-text"></div>
               <h2
@@ -96,7 +96,7 @@ const CasesClients = () => {
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src={absalon} width="60%" height="auto" />
+            <img src={absalon} width="60%" height="auto" alt="absalon"/>
             <Carousel.Caption>
               <div className="banner-text"></div>
               <h2
@@ -126,7 +126,7 @@ const CasesClients = () => {
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src={proselection} width="60%" height="auto" />
+            <img src={proselection} width="60%" height="auto" alt="proselection"/>
             <Carousel.Caption>
               <div className="banner-text"></div>
               <h2
@@ -156,7 +156,7 @@ const CasesClients = () => {
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src={hjertesikker} width="60%" height="auto" />
+            <img src={hjertesikker} width="60%" height="auto" alt="hjertesikker"/>
             <Carousel.Caption>
               <div className="banner-text"></div>
               <h2
@@ -186,7 +186,7 @@ const CasesClients = () => {
           </Carousel.Item>
 
           <Carousel.Item>
-            <Image src={lyngby} width="60%" height="auto" />
+            <Image src={lyngby} width="60%" height="auto" alt="lyngby"/>
             <Carousel.Caption>
               <div className="banner-text"></div>
               <h2
@@ -216,7 +216,7 @@ const CasesClients = () => {
           </Carousel.Item>
 
           <Carousel.Item>
-            <img src={plum} width="60%" height="auto" />
+            <img src={plum} width="60%" height="auto" alt="plum"/>
             <Carousel.Caption>
               <div className="banner-text"></div>
               <h2
@@ -266,10 +266,10 @@ const CasesClients = () => {
               marginTop: "1rem",
             }}
           >
-            <img src={danskRad} width="50%" height="auto" />
+            <img src={danskRad} width="50%" height="auto" alt="danskRad"/>
           </Col>
           <Col md={4}>
-            <img src={pg} width="30%" height="auto" />
+            <img src={pg} width="30%" height="auto" alt="PG"/>
           </Col>
           <Col
             md={4}
@@ -277,7 +277,7 @@ const CasesClients = () => {
               marginTop: "2rem",
             }}
           >
-            <img src={kiro} width="50%" height="auto" />
+            <img src={kiro} width="50%" height="auto" alt="kiro"/>
           </Col>
           <Col
             md={4}
@@ -285,7 +285,7 @@ const CasesClients = () => {
               marginTop: "5rem",
             }}
           >
-            <img src={danskBeredskaber} width="30%" height="auto" />
+            <img src={danskBeredskaber} width="30%" height="auto" alt="danskBeredskaber"/>
           </Col>
           <Col
             md={4}
@@ -293,7 +293,7 @@ const CasesClients = () => {
               marginTop: "8.5rem",
             }}
           >
-            <img src={ole} width="70%" height="auto" />
+            <img src={ole} width="70%" height="auto" alt="ole"/>
           </Col>
 
           <Col
@@ -302,7 +302,7 @@ const CasesClients = () => {
               marginTop: "7.5rem",
             }}
           >
-            <img src={kentAndreasen} width="50%" height="auto" />
+            <img src={kentAndreasen} width="50%" height="auto" alt="kentAndreasen"/>
           </Col>
         </Row>
       </Container>

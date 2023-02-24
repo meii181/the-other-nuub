@@ -27,7 +27,7 @@ const Navigation = () => {
   return (
     <Navbar className="navigation pt-3" expand="lg">
       <Navbar.Brand className="logo">
-        <img src={nuub_logo} width="246px" height="83px" />
+        <img src={nuub_logo} width="246px" height="83px" alt="logo" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbar-nav" />
       <Navbar.Collapse id="navbar-nav">
@@ -50,8 +50,17 @@ const Navigation = () => {
             </Nav.Link>
             <Nav.Link href="#contact-and-support" className="me-4">
               {t("Contact and Support")}
-              </Nav.Link>
-              <Nav.Link href="/login" className="me-5 py-2 px-4" style={{borderRadius: 50, backgroundColor: "#FF629A", color: "whitesmoke", fontWeight: "bold"}}>
+            </Nav.Link>
+            <Nav.Link
+              href="/login"
+              className="me-5 py-2 px-4"
+              style={{
+                borderRadius: 50,
+                backgroundColor: "#FF629A",
+                color: "whitesmoke",
+                fontWeight: "bold",
+              }}
+            >
               {t("Book Meeting")}
             </Nav.Link>
           </Nav>
