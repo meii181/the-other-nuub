@@ -288,7 +288,8 @@ const SignUp = () => {
                 value="Submit Form"
                 className="mt-3 mb-5 px-4"
                 style={{
-                  fontSize: 25,
+                  fontSize: 30,
+                  fontFamily: "primary-font",
                   borderBottom: "4px solid black",
                   borderRadius: 20,
                   backgroundColor: "#7F7EC7",

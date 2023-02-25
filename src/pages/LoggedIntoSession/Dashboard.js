@@ -15,17 +15,22 @@ function Dashboard() {
         if (response.data) {
           const user = response.data;
           setUser(user);
+          navigate("/dashboard");
         } else {
           navigate("/login");
         }
+      })
+      .catch((error) => {
+        console.log(error);
+        navigate("/login");
       });
-  }, [navigate]);
+  }, [navigate]); 
 
   return (
     <>
       <LoggedInNavigation />
 
-      <Container>
+       <Container>
         <Row>
           <Col sm={5} md={10} xl={12}>
             <div
@@ -37,7 +42,7 @@ function Dashboard() {
               </h1>
               <p style={{ fontSize: 30, width: "90%" }}>
                 Here you can update your creditentials, create a new meeting
-                with us and manage your appointment :D
+                with us and manage your appointment :D .
               </p>
             </div>
           </Col>

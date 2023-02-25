@@ -194,6 +194,7 @@ const Contact = () => {
                 value="Submit Form"
                 style={{
                   fontSize: 30,
+                  fontFamily: "primary-font",
                   fontWeight: "bold",
                   backgroundColor: "#7F7EC7",
                   color: "whitesmoke",

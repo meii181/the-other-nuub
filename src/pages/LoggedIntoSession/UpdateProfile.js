@@ -27,12 +27,17 @@ const UpdateProfile = () => {
         if (response.data) {
           const user = response.data;
           setUser(user);
-          navigate("/updateprofile");
+          navigate("/updateprofile")
         } else {
           navigate("/login");
         }
+      })
+      .catch((error) => {
+        console.log(error);
+        navigate("/login");
       });
   }, [navigate]);
+
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -146,8 +151,8 @@ const UpdateProfile = () => {
         <Row>
           <Col sm={12} md={10} lg={12}>
             <div
-              className="form d-flex align-items-center flex-column"
-              style={{ marginTop: "4rem" }}
+              className="form d-flex justify-content-center flex-column"
+              style={{ marginTop: "4rem", textAlign: "center" }}
             >
               <h1 style={{ fontSize: 60 }}>Edit your creditentials</h1>
               <p style={{ fontSize: 25 }}>

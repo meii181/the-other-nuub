@@ -20,8 +20,13 @@ const Profile = () => {
         } else {
           navigate("/login");
         }
+      })
+      .catch((error) => {
+        console.log(error);
+        navigate("/login");
       });
   }, [navigate]);
+
 
   return (
     <>
@@ -74,7 +79,8 @@ const Profile = () => {
                 style={{
                   backgroundColor: "#7F7EC7",
                   borderBottom: "3px solid black",
-                  fontSize: 25,
+                  fontSize: 30,
+                  fontFamily: "primary-font",
                   fontWeight: "bold",
                   borderRadius: 20,
                 }}

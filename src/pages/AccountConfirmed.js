@@ -49,7 +49,8 @@ const AccountConfirmed = () => {
                   href="/login"
                   className="mt-4 px-4"
                   style={{
-                    fontSize: 25,
+                    fontSize: 30,
+                    fontFamily: "primary-font",
                     borderBottom: "4px solid black",
                     borderRadius: 20,
                     backgroundColor: "#7F7EC7",

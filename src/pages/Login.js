@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
 import axios from "axios";
@@ -12,17 +12,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-
-    // creating another useEffect to avoid the user from going to login page being logged in already
-
-    useEffect(() => {
-      axios.get("http://localhost/api/check_logged_users.php", {withCredentials: true})
-      .then((response) => {
-        if(response.data === "You're logged in") {
-          navigate("/dashboard");
-        } 
-      })
-    }, [navigate]);
 
   const handleChange = (event) => {
     const name = event.target.name;
