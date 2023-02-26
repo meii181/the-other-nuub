@@ -22,15 +22,14 @@ function Dashboard() {
       })
       .catch((error) => {
         console.log(error);
-        navigate("/login");
       });
-  }, [navigate]); 
+  }, [navigate]);
 
   return (
     <>
       <LoggedInNavigation />
 
-       <Container>
+      <Container>
         <Row>
           <Col sm={5} md={10} xl={12}>
             <div

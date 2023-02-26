@@ -49,5 +49,10 @@
     "Your email is not valid :(": "Din e-mail er ikke gyldig :(",
     "The email has already been registered!": "E-mailen er allerede blevet registreret!",
     "Your contact details has been registered, we'll get in touch as fast as you say fish! ;D": "Dine kontaktoplysninger er blevet registreret, vi kontakter dig lige så hurtigt som du siger fisk! ;D",
-    "Submit": "Indsend"
+    "Submit": "Indsend",
+    "Log In": "Log Ind",
+    "Introduce your credentials in order to log in the portal": "Introducer dine legitimationsoplysninger for at logge på portalen",
+    "Not registered yet? Sign up": "Ikke tilmeldt endnu? Tilmelde",
+    "Forgot your password? Recover it": "Glemt din adgangskode? Gendan det",
+    "here!": "her!"
   }

@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import AuthenticationNav from "./AuthenticationNav";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [errorMessage, setErrorMessage] = useState("");
   const [userInput, setUserInput] = useState({
@@ -35,7 +37,8 @@ const Login = () => {
         if (response.data) {
           navigate("/dashboard");
         } else {
-          setErrorMessage("Login failed, try again");
+          setErrorMessage("You're not logged in");
+          navigate("/login");
         }
       })
       .catch((error) => {
@@ -112,7 +115,9 @@ const Login = () => {
                 Log In
               </h1>
               <p className="mb-4" style={{ fontSize: 30 }}>
-                Introduce your creditentials in order to log in the portal
+                {t(
+                  "Introduce your creditentials in order to log in the portal"
+                )}
               </p>
             </div>
             <Form

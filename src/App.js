@@ -41,9 +41,18 @@ function App() {
           <Route path="/passwordchange" element={<PasswordChange />} />
           <Route path="/cancelappointment" element={<CancelAppointment />} />
           <Route path="/editappointment" element={<EditAppointment />} />
-          <Route path="/updatedappointmentconfirm" element={<UpdatedAppointmentConfirmation />} />
-          <Route path="/cancelledappointmentconfirm" element={<CancelledAppointmentConfirmation />} />
-          <Route path="/appointmentconfirm" element={<ConfirmedAppointment />} />
+          <Route
+            path="/updatedappointmentconfirm"
+            element={<UpdatedAppointmentConfirmation />}
+          />
+          <Route
+            path="/cancelledappointmentconfirm"
+            element={<CancelledAppointmentConfirmation />}
+          />
+          <Route
+            path="/appointmentconfirm"
+            element={<ConfirmedAppointment />}
+          />
         </Routes>
       </Router>
     </div>

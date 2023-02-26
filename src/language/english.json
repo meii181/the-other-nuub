@@ -48,5 +48,10 @@
     "Your email is not valid :(": "Your email is not valid :(",
     "The email has already been registered!": "The email has already been registered!",
     "Your contact details has been registered, we'll get in touch as fast as you say fish! ;D": "Your contact details has been registered, we'll get in touch as fast as you say fish! ;D",
-    "Submit": "Submit"
+    "Submit": "Submit",
+    "Log In": "Log In",
+    "Introduce your credentials in order to log in the portal": "Introduce your credentials in order to log in the portal",
+    "Not registered yet? Sign up": "Not registered yet? Sign up",
+    "Forgot your password? Recover it": "Forgot your password? Recover it",
+    "here!": "here!"
   }
