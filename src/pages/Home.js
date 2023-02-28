@@ -6,7 +6,7 @@ import { ArrowDownCircle } from "react-bootstrap-icons";
 import Services from "./Services";
 import Strategy from "./Strategy";
 import CasesClients from "./Cases&Clients";
-import About from "./About";
+import BookMeeting from "./BookMeeting";
 import Contact from "./Contact";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
@@ -45,7 +45,7 @@ const Home = () => {
                 className="call-to-action mt-5"
               >
                 <Button
-                  href="#services"
+                  href="/login"
                   style={{
                     fontSize: 23,
                     fontWeight: "bold",
@@ -55,7 +55,7 @@ const Home = () => {
                   }}
                   className="px-3 py-2 mt-1"
                 >
-                  {t("Our services")}
+                  {t("Book meeting")}
                 </Button>{" "}
                 <p
                   style={{
@@ -65,7 +65,7 @@ const Home = () => {
                   }}
                   className="pt-2 mt-1"
                 >
-                  {t("Scroll down for more")}{" "}
+                  {t("or scroll down for more")}{" "}
                   <ArrowDownCircle size={25} className="ms-2" />
                 </p>
               </Stack>
@@ -82,7 +82,7 @@ const Home = () => {
       <Services />
       <Strategy />
       <CasesClients />
-      <About />
+      <BookMeeting />
       <Contact />
       <Footer />
       <ScrollUpButton />

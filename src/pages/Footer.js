@@ -10,7 +10,7 @@ const Footer = () => {
     <>
       <Container className="container-footer" fluid>
         <Row>
-          <Col sm={12} md={4} xxl={5} style={{ marginTop: "8rem" }}>
+          <Col sm={12} md={4} lg={5} style={{ marginTop: "15rem" }}>
             <img
               src={nuub_logo_white}
               width="80%"
@@ -29,23 +29,12 @@ const Footer = () => {
               {t("Web Design and Integration")}
             </h2>
           </Col>
-          <Col>
-            <div
-              style={{
-                height: 420,
-                borderLeft: "3px solid whitesmoke",
-                position: "absolute",
-                marginLeft: "8rem",
-              }}
-            ></div>
-          </Col>
           <Col
             sm={12}
             md={4}
-            xxl={5}
+            lg={7}
             style={{
-              marginTop: "6rem",
-              marginRight: "3rem",
+              marginTop: "15rem",
             }}
           >
             <h2>Herstedvang 7C, 1. sal 2620 Albertslund</h2>

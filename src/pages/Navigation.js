@@ -28,9 +28,6 @@ const Navigation = () => {
             <Nav.Link href="#casesclients" className="me-4">
               {t("Cases&Clients")}
             </Nav.Link>
-            <Nav.Link href="#about-us" className="me-4">
-              {t("About Us")}
-            </Nav.Link>
             <Nav.Link href="#contact-and-support" className="me-4">
               {t("Contact and Support")}
             </Nav.Link>

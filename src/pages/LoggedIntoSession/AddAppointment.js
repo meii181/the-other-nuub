@@ -110,6 +110,17 @@ const AddAppointment = () => {
                 marginRight: "1rem",
               }}
             >
+              <p
+                style={{
+                  color: "red",
+                  fontSize: 30,
+                  fontFamily: "secondary-font",
+                  fontWeight: "bold",
+                  textAlign: "center",
+                }}
+              >
+                {t(errorMessage)}
+              </p>
               <Form.Group>
                 <Form.Control
                   size="lg"
@@ -179,17 +190,6 @@ const AddAppointment = () => {
                   {t("Confirm")}
                 </Button>
               </Stack>
-              <p
-                style={{
-                  color: "red",
-                  fontSize: 30,
-                  fontFamily: "secondary-font",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                }}
-              >
-                {t(errorMessage)}
-              </p>
             </Form>
           </Col>
         </Row>
