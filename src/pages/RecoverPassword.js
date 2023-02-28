@@ -3,6 +3,7 @@ import axios from "axios";
 import AuthenticationNav from "./AuthenticationNav";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const RecoverPassword = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -11,17 +12,18 @@ const RecoverPassword = () => {
     confirm_password: "",
   });
 
+  const { t } = useTranslation();
+
   const [password_key, setPasswordKey] = useState("");
   const { search } = useLocation();
   const navigate = useNavigate();
 
-// retrieve the key
-useEffect(() => {
+  // retrieve the key
+  useEffect(() => {
     const params = new URLSearchParams(search);
     const key = params.get("password_key");
     setPasswordKey(key);
-
-}, [search]);
+  }, [search]);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -37,14 +39,12 @@ useEffect(() => {
         `http://localhost/api/reset_password.php?password_key=${password_key}`,
         new URLSearchParams({
           password: userInput.password,
-          confirm_password: userInput.confirm_password
+          confirm_password: userInput.confirm_password,
         })
       )
 
       .then((response) => {
-        if (
-          response.data
-        ) {
+        if (response.data) {
           navigate("/passwordchange");
           setErrorMessage("");
         } else {
@@ -58,11 +58,10 @@ useEffect(() => {
         ) {
           setErrorMessage("Please type your password");
         } else if (
-            error.response &&
-            error.response.data === "Please confirm your password"
-          ) {
-            setErrorMessage("Please confirm your password");
-
+          error.response &&
+          error.response.data === "Please confirm your password"
+        ) {
+          setErrorMessage("Please confirm your password");
         } else if (
           error.response &&
           error.response.data === "The key is missing"
@@ -70,9 +69,9 @@ useEffect(() => {
           setErrorMessage("The key is missing");
         } else if (
           error.response &&
-          error.response.data === "The key does not contain 32 characaters"
+          error.response.data === "The key does not contain 32 characters"
         ) {
-          setErrorMessage("The key does not contain 32 characaters");
+          setErrorMessage("The key does not contain 32 characters");
         } else if (
           error.response &&
           error.response.data === "The password do not match"
@@ -84,11 +83,12 @@ useEffect(() => {
         ) {
           setErrorMessage("The password must be at least 8 characters");
         } else if (
-            error.response &&
-            error.response.data === "The password cannot be longer than 15 characters"
-          ) {
-            setErrorMessage("The password cannot be longer than 15 characters");
-          } else {
+          error.response &&
+          error.response.data ===
+            "The password cannot be longer than 15 characters"
+        ) {
+          setErrorMessage("The password cannot be longer than 15 characters");
+        } else {
           console.log(error);
         }
       });
@@ -112,13 +112,13 @@ useEffect(() => {
               style={{ textAlign: "center", marginTop: "10rem" }}
             >
               <h1 className="mb-2 p-4" style={{ fontSize: 55 }}>
-                Recover your password
+                {t("Recover your password")}
               </h1>
               <p className="mb-4" style={{ fontSize: 30 }}>
-                Introduce your new password and you are ready to go
+                {t("Introduce your new password and you are ready to go")}
               </p>
             </div>
-           <Form
+            <Form
               onSubmit={handleLogInSubmit}
               className="py-4 px-5 d-flex align-items-center flex-column"
               style={{ fontSize: 25, fontFamily: "primary-font" }}
@@ -127,7 +127,7 @@ useEffect(() => {
                 <Form.Control
                   type="password"
                   name="password"
-                  placeholder="New password"
+                  placeholder={t("New password")}
                   value={userInput.password}
                   onChange={handleChange}
                   autoComplete="off"
@@ -146,7 +146,7 @@ useEffect(() => {
                 <Form.Control
                   type="password"
                   name="confirm_password"
-                  placeholder="Confirm new password"
+                  placeholder={t("Confirm new password")}
                   value={userInput.confirm_password}
                   onChange={handleChange}
                   autoComplete="off"
@@ -173,7 +173,7 @@ useEffect(() => {
                   backgroundColor: "#7F7EC7",
                 }}
               >
-                Submit
+                {t("Submit")}
               </Button>
 
               <p
@@ -184,7 +184,7 @@ useEffect(() => {
                   fontWeight: "bold",
                 }}
               >
-                {errorMessage}
+                {t(errorMessage)}
               </p>
             </Form>
           </Col>

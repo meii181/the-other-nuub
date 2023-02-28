@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const AccountConfirmed = () => {
   const navigate = useNavigate();
   const { search } = useLocation();
   const [validToken, setValidToken] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const params = new URLSearchParams(search);
@@ -38,11 +41,12 @@ const AccountConfirmed = () => {
               style={{ textAlign: "center", marginTop: "12rem" }}
             >
               <h1 className="mb-4" style={{ fontSize: 50 }}>
-                Thank you!
+                {t("Thank you!")}
               </h1>
               <p style={{ fontSize: 30, width: "90%" }}>
-                Your account has been successfully verified and now you can book
-                a meeting with us.
+                {t(
+                  "Your account has been successfully verified and now you can book a meeting with us."
+                )}
               </p>
               {validToken ? (
                 <Button
@@ -56,10 +60,10 @@ const AccountConfirmed = () => {
                     backgroundColor: "#7F7EC7",
                   }}
                 >
-                  Go to login
+                  {t("Go to login")}
                 </Button>
               ) : (
-                <p>Please wait...</p>
+                <p>{t("Please wait...")}</p>
               )}
             </div>
           </Col>

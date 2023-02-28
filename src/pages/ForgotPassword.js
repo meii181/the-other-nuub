@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import AuthenticationNav from "./AuthenticationNav";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 const ForgotPassword = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -9,6 +10,8 @@ const ForgotPassword = () => {
   const [userInput, setUserInput] = useState({
     email: "",
   });
+
+  const { t } = useTranslation();
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -59,9 +62,9 @@ const ForgotPassword = () => {
           setErrorMessage("The key could not be found");
         } else if (
           error.response &&
-          error.response.data === "The key does not contain 32 characaters"
+          error.response.data === "The key does not contain 32 characters"
         ) {
-          setErrorMessage("The key does not contain 32 characaters");
+          setErrorMessage("The key does not contain 32 characters");
         } else {
           console.log(error);
         }
@@ -86,7 +89,7 @@ const ForgotPassword = () => {
               style={{ textAlign: "center", marginTop: "10rem" }}
             >
               <h1 className="mb-2 p-4" style={{ fontSize: 55 }}>
-                Forgot your password?
+                {t("Forgot your password?")}
               </h1>
               <p
                 className="mb-4"
@@ -96,8 +99,9 @@ const ForgotPassword = () => {
                   paddingRight: "3rem",
                 }}
               >
-                Introduce the email you signed up with in order to recover your
-                password
+                {t(
+                  "Introduce the email you signed up with in order to recover your password"
+                )}
               </p>
             </div>
             <Form
@@ -109,7 +113,7 @@ const ForgotPassword = () => {
                 <Form.Control
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder={t("Email")}
                   value={userInput.email}
                   onChange={handleChange}
                   style={{
@@ -145,7 +149,7 @@ const ForgotPassword = () => {
                   fontWeight: "bold",
                 }}
               >
-                {errorMessage}
+                {t(errorMessage)}
               </p>
 
               <p
@@ -156,7 +160,20 @@ const ForgotPassword = () => {
                   fontWeight: "bold",
                 }}
               >
-                {successMessage}
+                {t(successMessage)}
+              </p>
+              <p>
+                {t("Get back to login")}{" "}
+                <a
+                  href="/login"
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {t("here!")}
+                </a>
               </p>
             </Form>
           </Col>

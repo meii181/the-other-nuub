@@ -17,6 +17,7 @@ const Home = () => {
   const { t } = useTranslation();
   return (
     <>
+      <ScrollUpButton />
       <Navigation />
       <section
         id="home"
@@ -60,7 +61,7 @@ const Home = () => {
                   style={{
                     fontWeight: "bold",
                     color: "black",
-                    fontSize: 23
+                    fontSize: 23,
                   }}
                   className="pt-2 mt-1"
                 >

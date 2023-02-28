@@ -4,10 +4,13 @@ import { Row, Col, Container, Button } from "react-bootstrap";
 import { PersonFill } from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const Profile = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     axios
@@ -26,7 +29,6 @@ const Profile = () => {
         navigate("/login");
       });
   }, [navigate]);
-
 
   return (
     <>
@@ -50,25 +52,25 @@ const Profile = () => {
               </h1>
             </div>
             <div className="user-section d-flex align-items-center flex-column m-4">
-              <h2>First Name</h2>
+              <h2>{t("First Name")}</h2>
               <p style={{ fontSize: 25, marginBottom: "2rem" }}>
                 {user.first_name}
               </p>
 
-              <h2>Last Name</h2>
+              <h2>{t("Last Name")}</h2>
               <p style={{ fontSize: 25, marginBottom: "2rem" }}>
                 {user.last_name}
               </p>
 
-              <h2>Company</h2>
+              <h2>{t("Company")}</h2>
               <p style={{ fontSize: 25, marginBottom: "2rem" }}>
                 {user.company}
               </p>
 
-              <h2>Email address</h2>
+              <h2>{t("Email address")}</h2>
               <p style={{ fontSize: 25, marginBottom: "2rem" }}>{user.email}</p>
 
-              <h2>Phone number</h2>
+              <h2>{t("Phone number")}</h2>
               <p style={{ fontSize: 25, marginBottom: "0.5rem" }}>
                 {user.phone_number}
               </p>
@@ -85,7 +87,7 @@ const Profile = () => {
                   borderRadius: 20,
                 }}
               >
-                Update Profile
+                {t("Update Profile")}
               </Button>
             </div>
           </Col>

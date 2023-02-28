@@ -3,17 +3,18 @@ import { useNavigate } from "react-router-dom";
 import LoggedInNavigation from "./LoggedInNavigation";
 import { Row, Col, Container } from "react-bootstrap";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 function Dashboard() {
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     axios
       .get("http://localhost/api/get_user.php", { withCredentials: true })
       .then((response) => {
         if (response.data) {
-          const user = response.data;
           setUser(user);
           navigate("/dashboard");
         } else {
@@ -23,12 +24,11 @@ function Dashboard() {
       .catch((error) => {
         console.log(error);
       });
-  }, [navigate]);
+  }, []);
 
   return (
     <>
-      <LoggedInNavigation />
-
+      <LoggedInNavigation />(
       <Container>
         <Row>
           <Col sm={5} md={10} xl={12}>
@@ -37,16 +37,18 @@ function Dashboard() {
               style={{ textAlign: "center", marginTop: "5rem" }}
             >
               <h1 className="mb-5" style={{ fontSize: 50 }}>
-                Welcome to your Nuub dashboard, {user.first_name}
+                {t("Welcome to your Nuub dashboard,")} {user.first_name}
               </h1>
               <p style={{ fontSize: 30, width: "90%" }}>
-                Here you can update your creditentials, create a new meeting
-                with us and manage your appointment :D .
+                {t(
+                  "Here you can update your creditentials, create a new meeting with us and manage your appointment :D ."
+                )}
               </p>
             </div>
           </Col>
         </Row>
       </Container>
+      )
     </>
   );
 }

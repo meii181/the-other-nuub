@@ -3,7 +3,6 @@ import "./index.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ScrollUpButton from "./pages/ScrollUpButton";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/LoggedIntoSession/Dashboard";
@@ -15,8 +14,6 @@ import AccountConfirmed from "./pages/AccountConfirmed";
 import ForgotPassword from "./pages/ForgotPassword";
 import RecoverPassword from "./pages/RecoverPassword";
 import PasswordChange from "./pages/PasswordChange";
-import CancelAppointment from "./pages/LoggedIntoSession/CancelAppointment";
-import EditAppointment from "./pages/LoggedIntoSession/EditAppointment";
 import UpdatedAppointmentConfirmation from "./pages/LoggedIntoSession/UpdatedAppointmentConfirmation";
 import CancelledAppointmentConfirmation from "./pages/LoggedIntoSession/CancelledAppointmentConfirmation";
 import ConfirmedAppointment from "./pages/LoggedIntoSession/ConfirmedAppointment";
@@ -24,7 +21,6 @@ import ConfirmedAppointment from "./pages/LoggedIntoSession/ConfirmedAppointment
 function App() {
   return (
     <div className="App">
-      <ScrollUpButton />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -39,8 +35,6 @@ function App() {
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/recoverpassword" element={<RecoverPassword />} />
           <Route path="/passwordchange" element={<PasswordChange />} />
-          <Route path="/cancelappointment" element={<CancelAppointment />} />
-          <Route path="/editappointment" element={<EditAppointment />} />
           <Route
             path="/updatedappointmentconfirm"
             element={<UpdatedAppointmentConfirmation />}

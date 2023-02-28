@@ -46,39 +46,38 @@ const Login = () => {
           error.response &&
           error.response.data === "All fields must be filled in"
         ) {
-          console.log("All fields must be filled in");
           setErrorMessage("All fields must be filled in");
         } else if (
           error.response &&
           error.response.data === "The email is not valid"
         ) {
-          console.log("The email is not valid");
           setErrorMessage("The email is not valid");
         } else if (
           error.response &&
-          error.response.data === "The password is not strong"
+          error.response.data ===
+            "The password is not strong, it must be at least 8 characters"
         ) {
-          console.log("The password is not strong");
-          setErrorMessage("The password is not strong");
+          setErrorMessage(
+            "The password is not strong, it must be at least 8 characters"
+          );
         } else if (
           error.response &&
           error.response.data ===
-            "The password has reached the maximum characters"
+            "The password has reached the maximum of 30 characters"
         ) {
-          console.log("The password has reached the maximum characters");
-          setErrorMessage("The password has reached the maximum characters");
+          setErrorMessage(
+            "The password has reached the maximum of 30 characters"
+          );
         } else if (
           error.response &&
           error.response.data === "Wrong email or password"
         ) {
-          console.log("Wrong email or password");
           setErrorMessage("Wrong email or password");
         } else if (
           error.response &&
           error.response.data ===
             "Unable to login, you must verify your account first"
         ) {
-          console.log("Unable to login, you must verify your account first");
           setErrorMessage(
             "Unable to login, you must verify your account first"
           );
@@ -86,7 +85,6 @@ const Login = () => {
           error.response &&
           error.response.data === "User does not exist"
         ) {
-          console.log("User does not exist");
           setErrorMessage("User does not exist");
         } else {
           console.log(error);
@@ -112,12 +110,10 @@ const Login = () => {
               style={{ textAlign: "center", marginTop: "7rem" }}
             >
               <h1 className="mb-2 p-4" style={{ fontSize: 55 }}>
-                Log In
+                {t("Log In")}
               </h1>
               <p className="mb-4" style={{ fontSize: 30 }}>
-                {t(
-                  "Introduce your creditentials in order to log in the portal"
-                )}
+                {t("Introduce your credentials in order to log in the portal")}
               </p>
             </div>
             <Form
@@ -129,7 +125,7 @@ const Login = () => {
                 <Form.Control
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder={t("Email")}
                   value={userInput.email}
                   onChange={handleChange}
                   style={{
@@ -147,7 +143,7 @@ const Login = () => {
                 <Form.Control
                   type="password"
                   name="password"
-                  placeholder="Password"
+                  placeholder={t("Password")}
                   value={userInput.password}
                   autoComplete="off"
                   onChange={handleChange}
@@ -173,7 +169,7 @@ const Login = () => {
                   backgroundColor: "#7F7EC7",
                 }}
               >
-                Log in
+                {t("Log in")}
               </Button>
 
               <p
@@ -184,11 +180,11 @@ const Login = () => {
                   fontWeight: "bold",
                 }}
               >
-                {errorMessage}
+                {t(errorMessage)}
               </p>
 
               <p>
-                Not registered yet? Sign up{" "}
+                {t("Not registered yet? Sign up")}{" "}
                 <a
                   href="/signup"
                   style={{
@@ -197,12 +193,12 @@ const Login = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  here!
+                  {t("here!")}
                 </a>
               </p>
 
               <p>
-                Forgot your password? Recover it{" "}
+                {t("Forgot your password? Recover it")}{" "}
                 <a
                   href="/forgotpassword"
                   style={{
@@ -211,7 +207,7 @@ const Login = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  here!
+                  {t("here!")}
                 </a>
               </p>
             </Form>

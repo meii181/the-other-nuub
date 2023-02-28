@@ -1,34 +1,36 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { EnvelopeAt } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
 
 const Contact = () => {
   const { t } = useTranslation();
-  const [full_name, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [inquiry_description, setinquiryDescription] = useState("");
+  const [contactInput, setContactInput] = useState({
+    full_name: "",
+    email: "",
+    inquiry_description: "",
+  });
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  function emailValidate() {
-    const emailRegex =
-      /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]@(gmail|hotmail|outlook|yahoo)\.com\b$/g;
-    return emailRegex.test(email);
-  }
+  const handleChangeInput = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setContactInput((values) => ({ ...values, [name]: value }));
+  };
 
   const handleSubmitForm = (event) => {
     event.preventDefault();
 
-    const object = {
-      full_name: full_name,
-      email: email,
-      inquiry_description: inquiry_description,
-    };
-
     axios
-      .post("http://localhost/api/contact.php", object)
+      .post(
+        "http://localhost/api/contact.php",
+        new URLSearchParams({
+          full_name: contactInput.full_name,
+          email: contactInput.email,
+          inquiry_description: contactInput.inquiry_description,
+        })
+      )
       .then((response) => {
         if (
           response.data ===
@@ -38,6 +40,7 @@ const Contact = () => {
         setSuccessMessage(
           "Your contact details has been registered, we'll get in touch as fast as you say fish! ;D"
         );
+        setErrorMessage("");
       })
       .catch((error) => {
         if (
@@ -47,8 +50,7 @@ const Contact = () => {
           setErrorMessage("All fields must be filled");
         } else if (
           error.response &&
-          error.response.data === "The email is not valid" &&
-          !emailValidate()
+          error.response.data === "The email is not valid"
         ) {
           setErrorMessage("The email is not valid");
         } else if (
@@ -124,9 +126,9 @@ const Contact = () => {
                 <Form.Label>{t("Your full name")}</Form.Label>
                 <Form.Control
                   type="text"
-                  value={full_name}
+                  value={contactInput.full_name}
                   name="full_name"
-                  onChange={(event) => setFullName(event.target.value)}
+                  onChange={handleChangeInput}
                   style={{
                     borderBottom: "3px solid black",
                     height: "3rem",
@@ -141,9 +143,9 @@ const Contact = () => {
                 <Form.Label>{t("Your email address")}</Form.Label>
                 <Form.Control
                   name="email"
-                  value={email}
+                  value={contactInput.email}
                   type="email"
-                  onChange={(event) => setEmail(event.target.value)}
+                  onChange={handleChangeInput}
                   style={{
                     borderBottom: "3px solid black",
                     height: "3rem",
@@ -160,10 +162,8 @@ const Contact = () => {
                   as="textarea"
                   type="text"
                   name="inquiry_description"
-                  value={inquiry_description}
-                  onChange={(event) =>
-                    setinquiryDescription(event.target.value)
-                  }
+                  value={contactInput.inquiry_description}
+                  onChange={handleChangeInput}
                   style={{
                     borderBottom: "3px solid black",
                   }}
@@ -200,15 +200,13 @@ const Contact = () => {
                   color: "whitesmoke",
                   borderBottom: "4px solid black",
                   marginTop: "3rem",
+                  borderRadius: 20,
+                  padding: "0.5rem 1rem",
                 }}
               >
                 {t("Submit")}
               </Button>{" "}
             </Form>
-          </Col>
-
-          <Col xs={4} lg={8}>
-            <EnvelopeAt className="envelope" size={500}></EnvelopeAt>
           </Col>
         </Row>
       </Container>

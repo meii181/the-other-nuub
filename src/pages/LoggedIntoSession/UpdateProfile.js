@@ -3,9 +3,12 @@ import axios from "axios";
 import { Row, Col, Container, Button, Form } from "react-bootstrap";
 import LoggedInNavigation from "./LoggedInNavigation";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const UpdateProfile = () => {
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -27,7 +30,7 @@ const UpdateProfile = () => {
         if (response.data) {
           const user = response.data;
           setUser(user);
-          navigate("/updateprofile")
+          navigate("/updateprofile");
         } else {
           navigate("/login");
         }
@@ -37,7 +40,6 @@ const UpdateProfile = () => {
         navigate("/login");
       });
   }, [navigate]);
-
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -107,16 +109,19 @@ const UpdateProfile = () => {
           setErrorMessage("The email is not valid");
         } else if (
           error.response &&
-          error.response.data === "The password is not strong enough"
+          error.response.data ===
+            "The password is not strong enough, it must be at least 8 characters"
         ) {
-          setErrorMessage("The password is not strong enough");
+          setErrorMessage(
+            "The password is not strong enough, it must be at least 8 characters"
+          );
         } else if (
           error.response &&
           error.response.data ===
-            "The password has exceeded the maximum of characters"
+            "The password has exceeded the maximum of 30 characters"
         ) {
           setErrorMessage(
-            "The password has exceeded the maximum of characters"
+            "The password has exceeded the maximum of 30 characters"
           );
         } else if (
           error.response &&
@@ -128,11 +133,6 @@ const UpdateProfile = () => {
           error.response.data === "The passwords does not match"
         ) {
           setErrorMessage("The passwords does not match");
-        } else if (
-          error.response &&
-          error.response.data === "The email is already taken"
-        ) {
-          setErrorMessage("The email is already taken");
         } else if (
           error.response &&
           error.response.data === "Failed updating your profile"
@@ -154,162 +154,160 @@ const UpdateProfile = () => {
               className="form d-flex justify-content-center flex-column"
               style={{ marginTop: "4rem", textAlign: "center" }}
             >
-              <h1 style={{ fontSize: 60 }}>Edit your creditentials</h1>
-              <p style={{ fontSize: 25 }}>
-                Write down your following creditentials you wish to change
+              <h1 style={{ fontSize: 60 }}>{t("Edit your credentials")}</h1>
+              <p style={{ fontSize: 25, margin: "1rem 0" }}>
+                {t("Write down your following credentials you wish to change")}
               </p>
-              {user && (
-                <Form
-                  onSubmit={handleUpdateFormSubmit}
-                  className="py-4 px-5 d-flex align-items-center flex-column"
-                  style={{ fontFamily: "primary-font" }}
-                >
-                  <Form.Group className="mb-3">
-                    <Form.Control
-                      type="text"
-                      name="first_name"
-                      placeholder={user.first_name}
-                      value={userInput.first_name}
-                      onChange={handleChange}
-                      style={{
-                        height: "3rem",
-                        marginBottom: "1rem",
-                        padding: "1.5rem",
-                        fontSize: 25,
-                        borderRadius: 20,
-                        borderBottom: "3px solid grey",
-                      }}
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <Form.Control
-                      type="text"
-                      name="last_name"
-                      placeholder={user.last_name}
-                      value={userInput.last_name}
-                      onChange={handleChange}
-                      style={{
-                        height: "3rem",
-                        marginBottom: "1rem",
-                        padding: "1.5rem",
-                        fontSize: 25,
-                        borderRadius: 20,
-                        borderBottom: "3px solid grey",
-                      }}
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <Form.Control
-                      type="email"
-                      name="email"
-                      placeholder={user.email}
-                      value={userInput.email}
-                      autoComplete="off"
-                      onChange={handleChange}
-                      style={{
-                        height: "3rem",
-                        marginBottom: "1rem",
-                        padding: "1.5rem",
-                        fontSize: 25,
-                        borderRadius: 20,
-                        borderBottom: "3px solid grey",
-                      }}
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <Form.Control
-                      type="text"
-                      name="phone_number"
-                      placeholder={user.phone_number}
-                      value={userInput.phone_number}
-                      onChange={handleChange}
-                      style={{
-                        height: "3rem",
-                        marginBottom: "1rem",
-                        padding: "1.5rem",
-                        fontSize: 25,
-                        borderRadius: 20,
-                        borderBottom: "3px solid grey",
-                      }}
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <Form.Control
-                      type="password"
-                      name="password"
-                      placeholder="Password"
-                      autoComplete="off"
-                      value={userInput.password}
-                      onChange={handleChange}
-                      style={{
-                        height: "3rem",
-                        marginBottom: "1rem",
-                        padding: "1.5rem",
-                        fontSize: 25,
-                        borderRadius: 20,
-                        borderBottom: "3px solid grey",
-                      }}
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-3">
-                    <Form.Control
-                      type="password"
-                      name="confirm_password"
-                      placeholder="Confirm password"
-                      autoComplete="off"
-                      value={userInput.confirm_password}
-                      onChange={handleChange}
-                      style={{
-                        height: "3rem",
-                        marginBottom: "1rem",
-                        padding: "1.5rem",
-                        fontSize: 25,
-                        borderRadius: 20,
-                        borderBottom: "3px solid grey",
-                      }}
-                    />
-                  </Form.Group>
-
-                  <p
+              <Form
+                onSubmit={handleUpdateFormSubmit}
+                className="py-4 px-5 d-flex align-items-center flex-column"
+                style={{ fontFamily: "primary-font" }}
+              >
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="text"
+                    name="first_name"
+                    placeholder={user.first_name}
+                    value={userInput.first_name}
+                    onChange={handleChange}
                     style={{
-                      color: "red",
+                      height: "3rem",
+                      marginBottom: "1rem",
+                      padding: "1.5rem",
                       fontSize: 25,
-                      fontFamily: "secondary-font",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {errorMessage}
-                  </p>
-                  <p
-                    style={{
-                      color: "green",
-                      fontSize: 25,
-                      fontFamily: "secondary-font",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {successMessage}
-                  </p>
-
-                  <Button
-                    type="submit"
-                    className="mt-2 px-4"
-                    style={{
-                      fontSize: 25,
-                      borderBottom: "4px solid black",
                       borderRadius: 20,
-                      backgroundColor: "#7F7EC7",
+                      borderBottom: "3px solid grey",
                     }}
-                  >
-                    Update
-                  </Button>
-                </Form>
-              )}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="text"
+                    name="last_name"
+                    placeholder={user.last_name}
+                    value={userInput.last_name}
+                    onChange={handleChange}
+                    style={{
+                      height: "3rem",
+                      marginBottom: "1rem",
+                      padding: "1.5rem",
+                      fontSize: 25,
+                      borderRadius: 20,
+                      borderBottom: "3px solid grey",
+                    }}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="email"
+                    name="email"
+                    placeholder={user.email}
+                    value={userInput.email}
+                    autoComplete="off"
+                    onChange={handleChange}
+                    style={{
+                      height: "3rem",
+                      marginBottom: "1rem",
+                      padding: "1.5rem",
+                      fontSize: 25,
+                      borderRadius: 20,
+                      borderBottom: "3px solid grey",
+                    }}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="text"
+                    name={t("phone_number")}
+                    placeholder={user.phone_number}
+                    value={userInput.phone_number}
+                    onChange={handleChange}
+                    style={{
+                      height: "3rem",
+                      marginBottom: "1rem",
+                      padding: "1.5rem",
+                      fontSize: 25,
+                      borderRadius: 20,
+                      borderBottom: "3px solid grey",
+                    }}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="password"
+                    name="password"
+                    placeholder={t("Password")}
+                    autoComplete="off"
+                    value={userInput.password}
+                    onChange={handleChange}
+                    style={{
+                      height: "3rem",
+                      marginBottom: "1rem",
+                      padding: "1.5rem",
+                      fontSize: 25,
+                      borderRadius: 20,
+                      borderBottom: "3px solid grey",
+                    }}
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                  <Form.Control
+                    type="password"
+                    name="confirm_password"
+                    placeholder={t("Confirm password")}
+                    autoComplete="off"
+                    value={userInput.confirm_password}
+                    onChange={handleChange}
+                    style={{
+                      height: "3rem",
+                      marginBottom: "1rem",
+                      padding: "1.5rem",
+                      fontSize: 25,
+                      borderRadius: 20,
+                      borderBottom: "3px solid grey",
+                    }}
+                  />
+                </Form.Group>
+
+                <p
+                  style={{
+                    color: "red",
+                    fontSize: 25,
+                    fontFamily: "secondary-font",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {t(errorMessage)}
+                </p>
+                <p
+                  style={{
+                    color: "green",
+                    fontSize: 25,
+                    fontFamily: "secondary-font",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {t(successMessage)}
+                </p>
+
+                <Button
+                  type="submit"
+                  className="mt-2 px-4"
+                  style={{
+                    fontSize: 25,
+                    borderBottom: "4px solid black",
+                    borderRadius: 20,
+                    backgroundColor: "#7F7EC7",
+                  }}
+                >
+                  {t("Update")}
+                </Button>
+              </Form>
             </div>
           </Col>
         </Row>

@@ -3,15 +3,17 @@ import { Nav, Navbar, Stack } from "react-bootstrap";
 import nuub from "../../assets/img/cropped-nuub_logo.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const LoggedInNavigation = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleLogOut = () => {
     axios
-      .post("http://localhost/api/logout.php", { withCredentials: true })
+      .post("http://localhost/api/logout.php")
       .then((response) => {
-        if (response.data === "Logout successful") {
+        if (response.data) {
           navigate("/login");
         }
       })
@@ -41,17 +43,17 @@ const LoggedInNavigation = () => {
             }}
           >
             <Nav.Link href="/profile" className="me-4">
-              My profile
+              {t("My profile")}
             </Nav.Link>
             <Nav.Link href="/appointmentlist" className="me-4">
-              My appointments
+              {t("My appointments")}
             </Nav.Link>
             <Nav.Link
               className="me-5"
               style={{ color: "#EB3131" }}
               onClick={handleLogOut}
             >
-              Sign Out
+              {t("Sign Out")}
             </Nav.Link>
           </Nav>
         </Stack>

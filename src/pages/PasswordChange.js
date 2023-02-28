@@ -1,9 +1,11 @@
 import React from "react";
 import { Row, Col, Container, Button } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 const PasswordChange = () => {
+  const { t } = useTranslation();
 
-return (
+  return (
     <>
       <Container>
         <Row>
@@ -13,24 +15,26 @@ return (
               style={{ textAlign: "center", marginTop: "12rem" }}
             >
               <h1 className="mb-4" style={{ fontSize: 50 }}>
-                Thank you!
+                {t("Thank you!")}
               </h1>
               <p style={{ fontSize: 30, width: "90%" }}>
-                Your password has been successfully changed and now can log in the portal.
+                {t(
+                  "Your password has been successfully changed and now can log in the portal."
+                )}
               </p>
-                <Button
-                  href="/login"
-                  className="mt-4 px-4"
-                  style={{
-                    fontSize: 30,
-                    fontFamily: "primary-font",
-                    borderBottom: "4px solid black",
-                    borderRadius: 20,
-                    backgroundColor: "#7F7EC7",
-                  }}
-                >
-                  Go to login
-                </Button>
+              <Button
+                href="/login"
+                className="mt-4 px-4"
+                style={{
+                  fontSize: 30,
+                  fontFamily: "primary-font",
+                  borderBottom: "4px solid black",
+                  borderRadius: 20,
+                  backgroundColor: "#7F7EC7",
+                }}
+              >
+                {t("Go to login")}
+              </Button>
             </div>
           </Col>
         </Row>
@@ -39,4 +43,4 @@ return (
   );
 };
 
-export default PasswordChange
+export default PasswordChange;

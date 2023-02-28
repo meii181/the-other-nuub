@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import AuthenticationNav from "./AuthenticationNav";
+import { useTranslation } from "react-i18next";
 
 const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -15,6 +16,8 @@ const SignUp = () => {
     password: "",
     confirm_password: "",
   });
+
+  const { t } = useTranslation();
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -66,9 +69,9 @@ const SignUp = () => {
         } else if (
           error.response &&
           error.response.data ===
-            "The first name cannot be longer than 12 characters"
+            "The first name cannot be longer than 25 characters"
         ) {
-          setErrorMessage("The first name cannot be longer than 12 characters");
+          setErrorMessage("The first name cannot be longer than 25 characters");
         } else if (
           error.response &&
           error.response.data ===
@@ -78,9 +81,9 @@ const SignUp = () => {
         } else if (
           error.response &&
           error.response.data ===
-            "The last name cannot be longer than 12 characters"
+            "The last name cannot be longer than 25 characters"
         ) {
-          setErrorMessage("The last name cannot be longer than 12 characters");
+          setErrorMessage("The last name cannot be longer than 25 characters");
         } else if (
           error.response &&
           error.response.data === "The email is not valid"
@@ -88,16 +91,19 @@ const SignUp = () => {
           setErrorMessage("The email is not valid");
         } else if (
           error.response &&
-          error.response.data === "The password is not strong enough"
+          error.response.data ===
+            "The password is not strong enough, it must be at least 8 characters"
         ) {
-          setErrorMessage("The password is not strong enough");
+          setErrorMessage(
+            "The password is not strong enough, it must be at least 8 characters"
+          );
         } else if (
           error.response &&
           error.response.data ===
-            "The password has exceeded the maximum of characters"
+            "The password has exceeded the maximum of 30 characters"
         ) {
           setErrorMessage(
-            "The password has exceeded the maximum of characters"
+            "The password has exceeded the maximum of 30 characters"
           );
         } else if (
           error.response &&
@@ -143,10 +149,12 @@ const SignUp = () => {
               style={{ textAlign: "center", marginTop: "2rem" }}
             >
               <h1 className="mb-1 p-4" style={{ fontSize: 55 }}>
-                Sign Up
+                {t("Sign Up")}
               </h1>
               <p className="mb-4" style={{ fontSize: 30 }}>
-                Introduce your creditentials in order to register an account
+                {t(
+                  "Introduce your credentials in order to register an account"
+                )}
               </p>
             </div>
             <Form
@@ -158,7 +166,7 @@ const SignUp = () => {
                 <Form.Control
                   type="first_name"
                   name="first_name"
-                  placeholder="First Name"
+                  placeholder={t("First Name")}
                   value={userInput.first_name}
                   onChange={handleChange}
                   style={{
@@ -176,7 +184,7 @@ const SignUp = () => {
                 <Form.Control
                   type="last_name"
                   name="last_name"
-                  placeholder="Last Name"
+                  placeholder={t("Last Name")}
                   value={userInput.last_name}
                   onChange={handleChange}
                   style={{
@@ -194,7 +202,7 @@ const SignUp = () => {
                 <Form.Control
                   type="company"
                   name="company"
-                  placeholder="Company"
+                  placeholder={t("Company")}
                   value={userInput.company}
                   onChange={handleChange}
                   style={{
@@ -212,7 +220,7 @@ const SignUp = () => {
                 <Form.Control
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder={t("Email")}
                   value={userInput.email}
                   onChange={handleChange}
                   style={{
@@ -230,7 +238,7 @@ const SignUp = () => {
                 <Form.Control
                   type="phone_number"
                   name="phone_number"
-                  placeholder="Phone Number"
+                  placeholder={t("Phone Number")}
                   value={userInput.phone_number}
                   onChange={handleChange}
                   style={{
@@ -248,7 +256,7 @@ const SignUp = () => {
                 <Form.Control
                   type="password"
                   name="password"
-                  placeholder="Password"
+                  placeholder={t("Password")}
                   value={userInput.password}
                   autoComplete="off"
                   onChange={handleChange}
@@ -267,7 +275,7 @@ const SignUp = () => {
                 <Form.Control
                   type="password"
                   name="confirm_password"
-                  placeholder="Confirm Password"
+                  placeholder={t("Confirm Password")}
                   value={userInput.confirm_password}
                   autoComplete="off"
                   onChange={handleChange}
@@ -295,7 +303,7 @@ const SignUp = () => {
                   backgroundColor: "#7F7EC7",
                 }}
               >
-                Register
+                {t("Register")}
               </Button>
               <p
                 style={{
@@ -305,7 +313,7 @@ const SignUp = () => {
                   fontWeight: "bold",
                 }}
               >
-                {errorMessage}
+                {t(errorMessage)}
               </p>
               <p
                 style={{
@@ -315,10 +323,10 @@ const SignUp = () => {
                   fontWeight: "bold",
                 }}
               >
-                {successMessage}
+                {t(successMessage)}
               </p>
               <p>
-                Already have an account? Log in{" "}
+                {t("Already have an account? Log in")}{" "}
                 <a
                   href="/login"
                   style={{
@@ -327,7 +335,7 @@ const SignUp = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  here!
+                  {t("here!")}
                 </a>
               </p>
             </Form>

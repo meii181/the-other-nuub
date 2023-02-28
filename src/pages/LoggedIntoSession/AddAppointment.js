@@ -3,6 +3,7 @@ import LoggedInNavigation from "./LoggedInNavigation";
 import { Container, Button, Stack, Row, Col, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const AddAppointment = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -12,6 +13,7 @@ const AddAppointment = () => {
     meeting_description: "",
   });
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleChangeInput = (event) => {
     const name = event.target.name;
@@ -72,9 +74,9 @@ const AddAppointment = () => {
           setErrorMessage("This section must be filled in");
         } else if (
           error.response &&
-          error.response.data === "Only 400 characters allowed"
+          error.response.data === "Only 550 characters allowed"
         ) {
-          setErrorMessage("Only 400 characters allowed");
+          setErrorMessage("Only 550 characters allowed");
         } else if (
           error.response &&
           error.response.data === "At least 100 characters are required"
@@ -89,11 +91,12 @@ const AddAppointment = () => {
       <LoggedInNavigation />
       <Container>
         <h1 style={{ marginTop: "5rem", textAlign: "center", fontSize: 50 }}>
-          Book meeting
+          {t("Book meeting")}
         </h1>
-        <p className="mb-4 mt-4 mx-4" style={{ fontSize: 30 }}>
-          Please choose the desired date and time and describe your future
-          project you would like to work on it with us
+        <p className="mb-4 mt-4 mx-4 px-5" style={{ fontSize: 30 }}>
+          {t(
+            "Please choose the desired date and time and describe your future project you would like to work on it with us"
+          )}
         </p>
         <Row>
           <Col sm={2} md={12} lg={12}>
@@ -146,7 +149,7 @@ const AddAppointment = () => {
                   value={appointmentInput.meeting_description}
                   onChange={handleChangeInput}
                   rows={4}
-                  placeholder="Describe your upcoming project here..."
+                  placeholder={t("Describe your upcoming project here...")}
                   style={{
                     padding: "1rem 3rem 3rem 1.5rem",
                     fontSize: 25,
@@ -173,7 +176,7 @@ const AddAppointment = () => {
                   }}
                   onClick={handleAppointmentSubmit}
                 >
-                  Confirm
+                  {t("Confirm")}
                 </Button>
               </Stack>
               <p
@@ -185,7 +188,7 @@ const AddAppointment = () => {
                   textAlign: "center",
                 }}
               >
-                {errorMessage}
+                {t(errorMessage)}
               </p>
             </Form>
           </Col>
