@@ -17,6 +17,7 @@ import PasswordChange from "./pages/PasswordChange";
 import UpdatedAppointmentConfirmation from "./pages/LoggedIntoSession/UpdatedAppointmentConfirmation";
 import CancelledAppointmentConfirmation from "./pages/LoggedIntoSession/CancelledAppointmentConfirmation";
 import ConfirmedAppointment from "./pages/LoggedIntoSession/ConfirmedAppointment";
+import EditAppointment from "./pages/LoggedIntoSession/EditAppointment";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/recoverpassword" element={<RecoverPassword />} />
           <Route path="/passwordchange" element={<PasswordChange />} />
+          <Route path="/editappointment" element={<EditAppointment />} />
           <Route
             path="/updatedappointmentconfirm"
             element={<UpdatedAppointmentConfirmation />}

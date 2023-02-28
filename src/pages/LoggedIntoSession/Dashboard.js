@@ -24,11 +24,11 @@ function Dashboard() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [navigate, user]);
 
   return (
     <>
-      <LoggedInNavigation />(
+      <LoggedInNavigation />
       <Container>
         <Row>
           <Col sm={5} md={10} xl={12}>
@@ -48,7 +48,6 @@ function Dashboard() {
           </Col>
         </Row>
       </Container>
-      )
     </>
   );
 }
