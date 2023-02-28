@@ -54,7 +54,7 @@ if (isset($data) && !empty($data)) {
     if (strlen($_POST["password"]) > _PASSWORD_MAX_LEN) {
         header("Content-type: application/json");
         http_response_code(400);
-        echo json_encode("The password cannot be longer than 15 characters");
+        echo json_encode("The password cannot be longer than 30 characters");
         exit();
     }
 

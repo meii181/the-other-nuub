@@ -51,7 +51,7 @@ if (isset($data) && !empty($data)) {
         if (strlen($row["forgot_password"]) !== 32) {
             header("Content-type: application/json");
             http_response_code(400);
-            echo json_encode("The key does not contain 32 characaters");
+            echo json_encode("The key does not contain 32 characters");
             exit();
         }
 

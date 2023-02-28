@@ -34,12 +34,12 @@ if (isset($data) && !empty($data)) {
     else if (strlen($_POST["password"]) < _PASSWORD_MIN_LEN) {
         header("Content-type: application/json");
         http_response_code(400);
-        echo json_encode("The password is not strong");
+        echo json_encode("The password is not strong, it must be at least 8 characters");
         exit();
     } else if (strlen($_POST["password"]) > _PASSWORD_MAX_LEN) {
         header("Content-type: application/json");
         http_response_code(400);
-        echo json_encode("The password has reached the maximum characters");
+        echo json_encode("The password has reached the maximum of 30 characters");
         exit();
     }
 

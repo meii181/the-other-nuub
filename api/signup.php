@@ -32,7 +32,7 @@ if (isset($data) && !empty($data)) {
     if (strlen($_POST["first_name"]) > _NAME_MAX_LEN) {
         header("Content-type: application/json");
         http_response_code(400);
-        echo json_encode("The first name cannot be longer than 12 characters");
+        echo json_encode("The first name cannot be longer than 25 characters");
         exit();
     }
 
@@ -46,7 +46,7 @@ if (isset($data) && !empty($data)) {
     if (strlen($_POST["last_name"]) > _NAME_MAX_LEN) {
         header("Content-type: application/json");
         http_response_code(400);
-        echo json_encode("The last name cannot be longer than 12 characters");
+        echo json_encode("The last name cannot be longer than 25 characters");
         exit();
     }
 

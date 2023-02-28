@@ -27,7 +27,7 @@ if (isset($data) && !empty($data)) {
 
     if (strlen($_POST["first_name"]) > _NAME_MAX_LEN) {
         http_response_code(400);
-        echo json_encode("The first name cannot be longer than 12 characters");
+        echo json_encode("The first name cannot be longer than 25 characters");
         exit();
     }
 
@@ -39,7 +39,7 @@ if (isset($data) && !empty($data)) {
 
     if (strlen($_POST["last_name"]) > _NAME_MAX_LEN) {
         http_response_code(400);
-        echo json_encode("The last name cannot be longer than 12 characters");
+        echo json_encode("The last name cannot be longer than 25 characters");
         exit();
     }
 
@@ -52,13 +52,13 @@ if (isset($data) && !empty($data)) {
 
     if (strlen($_POST["password"]) < _PASSWORD_MIN_LEN) {
         http_response_code(400);
-        echo json_encode("The password is not strong enough");
+        echo json_encode("The password is not strong enough, it must be at least 8 characters");
         exit();
     }
 
     if (strlen($_POST["password"]) > _PASSWORD_MAX_LEN) {
         http_response_code(400);
-        echo json_encode("The password has exceeded the maximum of characters");
+        echo json_encode("The password has exceeded the maximum of 30 characters");
         exit();
     }
 
@@ -80,69 +80,56 @@ if (isset($data) && !empty($data)) {
 
         if (isset($_SESSION["user_id"])) {
 
-            $user_id = $_SESSION["user_id"];
-            $updatePassHash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+            $db->beginTransaction();
 
-            $q = $db->prepare("SELECT * FROM users WHERE email = :email");
+            //the user changes their first name
+            $q = $db->prepare("UPDATE users SET first_name = :first_name WHERE user_id = :user_id");
+            $q->bindValue(":user_id", $user_id);
+            $q->bindValue(":first_name", $_POST["first_name"]);
+            $q->execute();
+
+            //the user changes their last name
+            $q = $db->prepare("UPDATE users SET last_name = :last_name WHERE user_id = :user_id");
+            $q->bindValue(":user_id", $user_id);
+            $q->bindValue(":last_name", $_POST["last_name"]);
+            $q->execute();
+
+            //the user changes their email
+            $q = $db->prepare("UPDATE users SET email = :email WHERE user_id = :user_id");
+            $q->bindValue(":user_id", $user_id);
             $q->bindValue(":email", $_POST["email"]);
             $q->execute();
-            $rowCheckEmail = $q->fetch();
 
-            if ($rowCheckEmail > 0) {
-                http_response_code(400);
-                echo json_encode("The email is already taken");
-                exit();
-            } else {
+            //the user changes their phone number
+            $q = $db->prepare("UPDATE users SET phone_number = :phone_number WHERE user_id = :user_id");
+            $q->bindValue(":user_id", $user_id);
+            $q->bindValue(":phone_number", $_POST["phone_number"]);
+            $q->execute();
 
-                $db->beginTransaction();
+            //the user changes their password
+            $q = $db->prepare("UPDATE users SET password = :password WHERE user_id = :user_id");
+            $q->bindValue(":user_id", $user_id);
+            $q->bindValue(":password", $updatePassHash);
+            $q->execute();
 
-                //the user changes their first name
-                $q = $db->prepare("UPDATE users SET first_name = :first_name WHERE user_id = :user_id");
-                $q->bindValue(":user_id", $user_id);
-                $q->bindValue(":first_name", $_POST["first_name"]);
-                $q->execute();
+            $db->commit();
 
-                //the user changes their last name
-                $q = $db->prepare("UPDATE users SET last_name = :last_name WHERE user_id = :user_id");
-                $q->bindValue(":user_id", $user_id);
-                $q->bindValue(":last_name", $_POST["last_name"]);
-                $q->execute();
-
-                //the user changes their email
-                $q = $db->prepare("UPDATE users SET email = :email WHERE user_id = :user_id");
-                $q->bindValue(":user_id", $user_id);
-                $q->bindValue(":email", $_POST["email"]);
-                $q->execute();
-
-                //the user changes their phone number
-                $q = $db->prepare("UPDATE users SET phone_number = :phone_number WHERE user_id = :user_id");
-                $q->bindValue(":user_id", $user_id);
-                $q->bindValue(":phone_number", $_POST["phone_number"]);
-                $q->execute();
-
-                //the user changes their password
-                $q = $db->prepare("UPDATE users SET password = :password WHERE user_id = :user_id");
-                $q->bindValue(":user_id", $user_id);
-                $q->bindValue(":password", $updatePassHash);
-                $q->execute();
-
-                $db->commit();
-
-                http_response_code(200);
-                echo json_encode("Your profile has been updated successfully!");
-                exit();
-            }
+            header("Content-type: application/json");
+            http_response_code(200);
+            echo json_encode("Your profile has been updated successfully!");
+            exit();
         } else {
 
+            header("Content-type: application/json");
             http_response_code(400);
             echo json_encode("Something went wrong with the update");
             exit();
         }
     } catch (Exception $ex) {
         $db->rollback();
+        header("Content-type: application/json");
         http_response_code(500);
-        echo json_encode("Failed updating your profile");
-        echo "Debug info:" . $ex->getMessage();
+        echo json_encode(["error" => $ex->getMessage()]);
         exit();
     }
 }
