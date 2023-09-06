@@ -22,8 +22,9 @@ const BookMeeting = () => {
               )}
             </h1>
             <p style={{ fontSize: 30, width: "90%" }}>
-              If the answer is yes, then book an appointment with us and start
-              planning the process of your project development!
+              {t(
+                "If the answer is yes, then book an appointment with us and start planning the process of your project development!"
+              )}
             </p>
             <Button
               href="/login"
