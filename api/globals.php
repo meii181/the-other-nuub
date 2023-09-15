@@ -7,9 +7,9 @@ define("_PASSWORD_MAX_LEN", 30);
 
 function _db()
 {
-    $database_user_name = "root";
-    $database_password = "";
-    $database_connection = "mysql:host=127.0.0.1; dbname=bachelor_exam; charset=utf8mb4";
+    $database_user_name = "br40bydeekvpezoo";
+    $database_password = "svhfaucc71hp9hdg";
+    $database_connection = "mysql:host=eporqep6b4b8ql12.chr7pe7iynqr.eu-west-1.rds.amazonaws.com; dbname=mhh8wu2upii1rq06; charset=utf8mb4";
 
     $database_options = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
