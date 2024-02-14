@@ -18,7 +18,7 @@ const BookMeeting = () => {
           >
             <h1 className="mb-5" style={{ fontSize: 50 }}>
               {t(
-                "Have we convinced you in helping you bringing an exciting project implementation or update?"
+                "Have we convinced you in helping you bringing an exciting project implementation or update to life?"
               )}
             </h1>
             <p style={{ fontSize: 30, width: "90%" }}>
