@@ -16,7 +16,7 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^12.1.4",
     "react-router-dom": "^6.8.1",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "5.0.0",
     "sass": "^1.70.0",
     "sass-loader": "^14.1.0",
     "validator": "^13.7.0",
@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm i",
+    "build": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
