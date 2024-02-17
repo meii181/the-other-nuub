@@ -60,7 +60,7 @@ if (isset($data) && !empty($data)) {
         $message = "<h4>Dear " . $row["first_name"] . ",</h4>
         <p>We are sorry to hear that you have forgotten your password, but worry no more, as by accessing the following link down below, you will be taken to a magical path where
         you will be able to recover your password.</p>
-        <p><a href='http://localhost:3000/recoverpassword?password_key=$password_key'>Recover your password here!</a></p>
+        <p><a href='http://localhost:5173/recoverpassword?password_key=$password_key'>Recover your password here!</a></p>
         <br></br>
         <h4>Best regards,</h4>
         <h3>The Nuub Team.</h3>";

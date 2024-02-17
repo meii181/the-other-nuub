@@ -135,7 +135,7 @@ if (isset($data) && !empty($data)) {
             <p>We wish you a warm welcome to Nuub and we're happy you chose to work with us on your future and exciting project.</p>
             <p>However, there's one more thing that you have to do in order to have access into scheduling new appointments with us,
             that being verification of your account, which will happen in the link down below, that is your path to your verified account.</p>
-            <p><a href='http://localhost/api/confirm_account.php?token=$token'>Verify your account</a></p>
+            <p><a href='http://localhost:3000/api/confirm_account.php?token=$token'>Verify your account</a></p>
             <p>Remember that if you don't verify your account, you will not be able to log in the Nuub portal.</p>
             <br></br>
             <h4>Best regards,</h4>
