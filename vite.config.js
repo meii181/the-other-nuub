@@ -5,7 +5,7 @@ export default defineConfig(() => {
   return {
     build: {
       outDir: "build",
-      port: 3000,
+      port: "https://master--the-other-nuub.netlify.app/",
     },
     plugins: [react()],
   };
