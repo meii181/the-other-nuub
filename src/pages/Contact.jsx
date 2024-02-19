@@ -24,7 +24,7 @@ const Contact = () => {
 
     axios
       .post(
-        "http://localhost/api/contact.php",
+        "https://the-other-nuub.netlify.app/api/contact.php",
         new URLSearchParams({
           full_name: contactInput.full_name,
           email: contactInput.email,
