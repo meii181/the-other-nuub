@@ -27,8 +27,8 @@
   },
   "scripts": {
     "start": "vite --port 3000",
-    "build": "vite build --port 3000",
-    "serve": "vite preview --port 3000"
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "eslintConfig": {
     "extends": [
