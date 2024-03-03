@@ -36,7 +36,7 @@ const RecoverPassword = () => {
 
     axios
       .post(
-        `http://localhost/api/reset_password.php?password_key=${password_key}`,
+        `https://the-other-nuub-backend-583b88d181b4.herokuapp.com/reset_password.php?password_key=${password_key}`,
         new URLSearchParams({
           password: userInput.password,
           confirm_password: userInput.confirm_password,

@@ -17,7 +17,7 @@ const AccountConfirmed = () => {
     const token = params.get("token");
 
     axios
-      .get(`http://localhost/api/confirm_account.php?token=${token}`)
+      .get(`https://the-other-nuub-backend-583b88d181b4.herokuapp.com/confirm_account.php?token=${token}`)
       .then((response) => {
         if (response.data) {
           setValidToken(true);

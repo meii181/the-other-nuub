@@ -21,7 +21,7 @@ const EditAppointment = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost/api/get_user.php", {
+      .get("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/get_user.php", {
         withCredentials: true,
       })
       .then((response) => {
@@ -35,7 +35,7 @@ const EditAppointment = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost/api/check_meetings.php?meeting_id=${meeting_id}`, {
+      .get(`https://the-other-nuub-backend-583b88d181b4.herokuapp.com/check_meetings.php?meeting_id=${meeting_id}`, {
         withCredentials: true,
       })
       .then((response) => {
@@ -62,7 +62,7 @@ const EditAppointment = () => {
 
     axios
       .post(
-        `http://localhost/api/update_meeting.php?meeting_id=${meeting_id}`,
+        `https://the-other-nuub-backend-583b88d181b4.herokuapp.com/update_meeting.php?meeting_id=${meeting_id}`,
         new URLSearchParams({
           meeting_date: appointment.meeting_date,
           meeting_time: appointment.meeting_time,

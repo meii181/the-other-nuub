@@ -12,7 +12,7 @@ function Dashboard() {
 
   useEffect(() => {
     axios
-      .get("http://localhost/api/get_user.php", { withCredentials: true })
+      .get("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/get_user.php", { withCredentials: true })
       .then((response) => {
         if (response.data) {
           setUser(user);

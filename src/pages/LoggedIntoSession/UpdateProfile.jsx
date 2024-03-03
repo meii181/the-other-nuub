@@ -25,7 +25,7 @@ const UpdateProfile = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost/api/get_user.php", { withCredentials: true })
+      .get("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/get_user.php", { withCredentials: true })
       .then((response) => {
         if (response.data) {
           const user = response.data;
@@ -52,7 +52,7 @@ const UpdateProfile = () => {
 
     axios
       .post(
-        "http://localhost/api/update_profile.php",
+        "https://the-other-nuub-backend-583b88d181b4.herokuapp.com/update_profile.php",
         new URLSearchParams({
           first_name: userInput.first_name,
           last_name: userInput.last_name,

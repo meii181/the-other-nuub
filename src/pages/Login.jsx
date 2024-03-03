@@ -26,7 +26,7 @@ const Login = () => {
 
     axios
       .post(
-        "http://localhost/api/login.php",
+        "https://the-other-nuub-backend-583b88d181b4.herokuapp.com/login.php",
         new URLSearchParams({
           email: userInput.email,
           password: userInput.password,

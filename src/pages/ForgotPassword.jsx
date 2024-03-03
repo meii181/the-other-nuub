@@ -24,7 +24,7 @@ const ForgotPassword = () => {
 
     axios
       .post(
-        "http://localhost/api/forgot_password.php",
+        "https://the-other-nuub-backend-583b88d181b4.herokuapp.com/forgot_password.php",
         new URLSearchParams({
           email: userInput.email,
         }),

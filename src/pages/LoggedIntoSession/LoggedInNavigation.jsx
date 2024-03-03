@@ -11,7 +11,7 @@ const LoggedInNavigation = () => {
 
   const handleLogOut = () => {
     axios
-      .post("http://localhost/api/logout.php")
+      .post("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/logout.php")
       .then((response) => {
         if (response.data) {
           navigate("/login");

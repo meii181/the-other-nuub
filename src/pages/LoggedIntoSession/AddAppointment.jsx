@@ -29,7 +29,7 @@ const AddAppointment = () => {
 
     axios
       .post(
-        "http://localhost/api/add_meeting.php",
+        "https://the-other-nuub-backend-583b88d181b4.herokuapp.com/add_meeting.php",
         new URLSearchParams({
           meeting_date: appointmentInput.meeting_date,
           meeting_time: appointmentInput.meeting_time,

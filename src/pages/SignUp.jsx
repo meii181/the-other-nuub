@@ -30,7 +30,7 @@ const SignUp = () => {
 
     axios
       .post(
-        "http://localhost/api/signup.php",
+        "https://the-other-nuub-backend-583b88d181b4.herokuapp.com/signup.php",
         new URLSearchParams({
           first_name: userInput.first_name,
           last_name: userInput.last_name,

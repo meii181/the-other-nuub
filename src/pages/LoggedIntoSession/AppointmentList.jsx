@@ -12,7 +12,7 @@ const AppointmentList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost/api/get_user.php", {
+      .get("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/get_user.php", {
         withCredentials: true,
       })
       .then((response) => {
@@ -26,7 +26,7 @@ const AppointmentList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost/api/check_meetings.php", {
+      .get("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/check_meetings.php", {
         withCredentials: true,
       })
       .then((response) => {
@@ -42,7 +42,7 @@ const AppointmentList = () => {
   const handleDeleteSubmit = (meeting_id) => {
     axios
       .delete(
-        `http://localhost/api/cancel_meeting.php?meeting_id=${meeting_id}`,
+        `https://the-other-nuub-backend-583b88d181b4.herokuapp.com/cancel_meeting.php?meeting_id=${meeting_id}`,
         {
           withCredentials: true,
         }
