@@ -14,7 +14,7 @@ function LoggedInRoute() {
     return(
         <Router>
             <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/loggedin/dashboard" element={<Dashboard />} />
           <Route path="/addappointment" element={<AddAppointment />} />
           <Route path="/appointmentlist" element={<AppointmentList />} />
           <Route path="/profile" element={<Profile />} />
