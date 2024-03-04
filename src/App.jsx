@@ -8,7 +8,7 @@ import SignUp from "./pages/SignUp";
 import ForgotPassword from "./pages/ForgotPassword";
 import RecoverPassword from "./pages/RecoverPassword";
 import PasswordChange from "./pages/PasswordChange";
-import LoggedInRoute from "../LoggedInRoute";
+import LoggedInRoute from "./LoggedInRoute";
 
 
 function App() {
