@@ -28,6 +28,7 @@ function Dashboard() {
 
   return (
     <>
+    <h1>Hi there</h1>
       <LoggedInNavigation />
       <Container>
         <Row>
