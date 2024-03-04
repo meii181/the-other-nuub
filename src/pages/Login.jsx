@@ -35,10 +35,10 @@ const Login = () => {
       )
       .then((response) => {
         if (response.data) {
-          navigate("/dashboard");
+          navigate("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/dashboard");
         } else {
           setErrorMessage("You're not logged in");
-          navigate("/login");
+          navigate("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/login");
         }
       })
       .catch((error) => {
