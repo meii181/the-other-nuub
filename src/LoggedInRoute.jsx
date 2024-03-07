@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Route, Navigate } from "react-router-dom";
 
 const LoggedInRoute = ({ Component, isLoggedIn, ...rest }) => {
 
