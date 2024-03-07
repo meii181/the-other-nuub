@@ -49,7 +49,7 @@ function App() {
           <Route path="/passwordchange" element={<PasswordChange />} />
 
           {/* These pages are available only after logging in or creating account */}
-          <Route path="/dashboard" element={<Dashboard />} isLoggedIn={isLoggedIn} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/addappointment" element={<AddAppointment />} />
           <Route path="/appointmentlist" element={<AppointmentList />} />
           <Route path="/profile" element={< Profile />} />
