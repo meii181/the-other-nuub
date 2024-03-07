@@ -32,10 +32,10 @@ function App() {
     localStorage.setItem("isLoggedIn", "true");
   };
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem("isLoggedIn");
-  }
+  // const handleLogout = () => {
+  //   setIsLoggedIn(false);
+  //   localStorage.removeItem("isLoggedIn");
+  // }
 
   return (
     <div className="App">
@@ -51,12 +51,12 @@ function App() {
 
           {/* These pages are available only after logging in or creating account */}
           <LoggedInRoute path="/dashboard" element={<Dashboard />} isLoggedIn={isLoggedIn} />
-          <LoggedInRoute  path="/addappointment" element={<AddAppointment />} />
-          <LoggedInRoute  path="/appointmentlist" element={<AppointmentList />} />
-          <LoggedInRoute  path="/profile" element={< Profile />} />
-          <LoggedInRoute  path="/updateprofile" element={<UpdateProfile/>} />
-          <LoggedInRoute  path="/accountconfirmed" element={<AccountConfirmed />} />
-          <LoggedInRoute  path="/editappointment" element={<EditAppointment />} />
+          <LoggedInRoute path="/addappointment" element={<AddAppointment />} />
+          <LoggedInRoute path="/appointmentlist" element={<AppointmentList />} />
+          <LoggedInRoute path="/profile" element={< Profile />} />
+          <LoggedInRoute path="/updateprofile" element={<UpdateProfile/>} />
+          <LoggedInRoute path="/accountconfirmed" element={<AccountConfirmed />} />
+          <LoggedInRoute path="/editappointment" element={<EditAppointment />} />
           <LoggedInRoute 
             path="/updatedappointmentconfirm"
             element={< UpdatedAppointmentConfirmation />}
