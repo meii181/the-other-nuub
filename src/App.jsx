@@ -42,7 +42,7 @@ function App() {
         <Routes>
           Avilable for everyone
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login onLogin={handleLogin} />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/recoverpassword" element={<RecoverPassword />} />
@@ -68,7 +68,7 @@ function App() {
             path="/appointmentconfirm"
             element={<ConfirmedAppointment />}
           /> 
-          <Route path="/*" element={<Navigate to="/login" />} />
+          {/* <Route path="/*" element={<Navigate to="/login" />} /> */}
         </Routes>
       </Router>
     </div>
