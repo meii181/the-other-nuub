@@ -18,19 +18,18 @@ import UpdatedAppointmentConfirmation from "./pages/LoggedIntoSession/UpdatedApp
 import CancelledAppointmentConfirmation from "./pages/LoggedIntoSession/CancelledAppointmentConfirmation";
 import ConfirmedAppointment from "./pages/LoggedIntoSession/ConfirmedAppointment";
 import EditAppointment from "./pages/LoggedIntoSession/EditAppointment";
-import LoggedInRoute from "./LoggedInRoute";
-import {useState} from "react";
+
 
 
 
 function App() {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === "true");
+  // const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === "true");
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-    localStorage.setItem("isLoggedIn", "true");
-  };
+  // const handleLogin = () => {
+  //   setIsLoggedIn(true);
+  //   localStorage.setItem("isLoggedIn", "true");
+  // };
 
   // const handleLogout = () => {
   //   setIsLoggedIn(false);
@@ -50,22 +49,22 @@ function App() {
           <Route path="/passwordchange" element={<PasswordChange />} />
 
           {/* These pages are available only after logging in or creating account */}
-          <LoggedInRoute path="/dashboard" element={<Dashboard />} isLoggedIn={isLoggedIn} />
-          <LoggedInRoute path="/addappointment" element={<AddAppointment />} />
-          <LoggedInRoute path="/appointmentlist" element={<AppointmentList />} />
-          <LoggedInRoute path="/profile" element={< Profile />} />
-          <LoggedInRoute path="/updateprofile" element={<UpdateProfile/>} />
-          <LoggedInRoute path="/accountconfirmed" element={<AccountConfirmed />} />
-          <LoggedInRoute path="/editappointment" element={<EditAppointment />} />
-          <LoggedInRoute 
+          <Route path="/dashboard" element={<Dashboard />} isLoggedIn={isLoggedIn} />
+          <Route path="/addappointment" element={<AddAppointment />} />
+          <Route path="/appointmentlist" element={<AppointmentList />} />
+          <Route path="/profile" element={< Profile />} />
+          <Route path="/updateprofile" element={<UpdateProfile/>} />
+          <Route path="/accountconfirmed" element={<AccountConfirmed />} />
+          <Route path="/editappointment" element={<EditAppointment />} />
+          <Route 
             path="/updatedappointmentconfirm"
             element={< UpdatedAppointmentConfirmation />}
           />
-          <LoggedInRoute
+          <Route
             path="/cancelledappointmentconfirm"
             element={<CancelledAppointmentConfirmation />}
           />
-          <LoggedInRoute
+          <Route
             path="/appointmentconfirm"
             element={<ConfirmedAppointment />}
           /> 
