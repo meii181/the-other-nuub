@@ -34,11 +34,10 @@ const Login = () => {
         { withCredentials: true }
       )
       .then((response) => {
-        if (response.data) {
+        if (response.status === 200) {
           navigate("/dashboard");
         } else {
-          setErrorMessage("You're not logged in");
-          navigate("/login");
+          setErrorMessage("Unable to log in, try again later");
         }
       })
       .catch((error) => {
