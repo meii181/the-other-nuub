@@ -50,7 +50,7 @@ function App() {
           <Route path="/passwordchange" element={<PasswordChange />} />
 
           {/* These pages are available only after logging in or creating account */}
-          <LoggedInRoute path="/" element={<Dashboard />} isLoggedIn={isLoggedIn} />
+          <LoggedInRoute path="/dashboard" element={<Dashboard />} isLoggedIn={isLoggedIn} />
           <LoggedInRoute  path="/addappointment" element={<AddAppointment />} />
           <LoggedInRoute  path="/appointmentlist" element={<AppointmentList />} />
           <LoggedInRoute  path="/profile" element={< Profile />} />
