@@ -23,6 +23,7 @@ function Dashboard() {
       })
       .catch((error) => {
         console.log(error);
+        navigate("/login");
       });
   }, [navigate]);
 
