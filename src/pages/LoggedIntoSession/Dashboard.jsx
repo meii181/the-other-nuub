@@ -15,7 +15,7 @@ function Dashboard() {
       .get("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/get_user.php", { withCredentials: true })
       .then((response) => {
         if (response.data) {
-          setUser(user);
+          setUser(response.data);
           navigate("/dashboard");
         } else {
           navigate("/login");
@@ -24,7 +24,7 @@ function Dashboard() {
       .catch((error) => {
         console.log(error);
       });
-  }, [navigate, user]);
+  }, [navigate]);
 
   return (
     <>
