@@ -17,16 +17,18 @@ function Dashboard() {
       .then((response) => {
         if (response.data) {
           setUser(response.data);
-          navigate("/dashboard");
+          if (!isLoggedIn && window.location.pathname !== "/dashboard") {
+            navigate("/dashboard");
+          }
         } else {
-          console.log(error);
+          console.log("Oops");
         }
       })
       .catch((error) => {
         console.log(error);
         navigate("/login");
       });
-  }, [navigate]);
+  }, [isLoggedIn, navigate]);
 
   return (
     <>
