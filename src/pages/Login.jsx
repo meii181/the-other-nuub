@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
 import axios from "axios";
@@ -93,6 +93,10 @@ const Login = () => {
           console.log(error);
         }
       });
+
+      useEffect(() => {
+        handleLogInSubmit();
+      }, [userInput]);
   };
 
   return (
