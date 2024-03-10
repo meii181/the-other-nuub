@@ -91,8 +91,8 @@ const Login = () => {
       });
     };
 
-    useEffect(() => {
-      handleLogInSubmit(); // Call handleLogInSubmit when component mounts
+    useEffect((event) => {
+      handleLogInSubmit(event); // Call handleLogInSubmit when component mounts
     }, []);
 
   return (
