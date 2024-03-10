@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 function Dashboard() {
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -18,6 +19,7 @@ function Dashboard() {
         if (response.data) {
           setUser(response.data);
           if (!isLoggedIn && window.location.pathname !== "/dashboard") {
+            setIsLoggedIn(true);
             navigate("/dashboard");
           }
         } else {
