@@ -14,7 +14,7 @@ function Dashboard() {
     axios
       .get("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/get_user.php", { withCredentials: true })
       .then((response) => {
-        if (response.data === 200) {
+        if (response.data) {
           setUser(response.data);
           navigate("/dashboard");
         } else {
