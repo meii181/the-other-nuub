@@ -91,10 +91,6 @@ const Login = () => {
       });
     };
 
-    useEffect((event) => {
-      handleLogInSubmit(event); // Call handleLogInSubmit when component mounts
-    }, []);
-
   return (
     <>
       <AuthenticationNav />
