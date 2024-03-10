@@ -21,81 +21,71 @@ const Login = () => {
     setUserInput((values) => ({ ...values, [name]: value }));
   };
 
-  const handleLogInSubmit = (event) => {
-    event.preventDefault();
+  useEffect(() => {
+    const handleLogInSubmit = async () => {
+      try {
+        const response = await axios.post(
+          "https://the-other-nuub-backend-583b88d181b4.herokuapp.com/login.php",
+          new URLSearchParams({
+            email: userInput.email,
+            password: userInput.password,
+          }),
+          { withCredentials: true }
+        );
 
-    useEffect(() => {
-      handleLogInSubmit();
-    }, [userInput]);
-
-    axios
-      .post(
-        "https://the-other-nuub-backend-583b88d181b4.herokuapp.com/login.php",
-        new URLSearchParams({
-          email: userInput.email,
-          password: userInput.password,
-        }),
-        { withCredentials: true }
-      )
-      .then((response) => {
         if (response.data) {
           navigate("/dashboard");
         } else {
           setErrorMessage("Unable to log in, try again later");
         }
-      })
-      .catch((error) => {
-        if (
-          error.response &&
-          error.response.data === "All fields must be filled in"
-        ) {
-          setErrorMessage("All fields must be filled in");
-        } else if (
-          error.response &&
-          error.response.data === "The email is not valid"
-        ) {
-          setErrorMessage("The email is not valid");
-        } else if (
-          error.response &&
-          error.response.data ===
-            "The password is not strong, it must be at least 8 characters"
-        ) {
-          setErrorMessage(
-            "The password is not strong, it must be at least 8 characters"
-          );
-        } else if (
-          error.response &&
-          error.response.data ===
-            "The password has reached the maximum of 30 characters"
-        ) {
-          setErrorMessage(
-            "The password has reached the maximum of 30 characters"
-          );
-        } else if (
-          error.response &&
-          error.response.data === "Wrong email or password"
-        ) {
-          setErrorMessage("Wrong email or password");
-        } else if (
-          error.response &&
-          error.response.data ===
-            "Unable to login, you must verify your account first"
-        ) {
-          setErrorMessage(
-            "Unable to login, you must verify your account first"
-          );
-        } else if (
-          error.response &&
-          error.response.data === "User does not exist"
-        ) {
-          setErrorMessage("User does not exist");
-        } else {
-          console.log(error);
+      } catch (error) {
+        handleLoginError(error);
+      }
+    };
+
+    const handleLoginError = (error) => {
+      if (error.response) {
+        switch (error.response.data) {
+          case "All fields must be filled in":
+            setErrorMessage("All fields must be filled in");
+            break;
+          case "The email is not valid":
+            setErrorMessage("The email is not valid");
+            break;
+          case "The password is not strong, it must be at least 8 characters":
+            setErrorMessage(
+              "The password is not strong, it must be at least 8 characters"
+            );
+            break;
+          case "The password has reached the maximum of 30 characters":
+            setErrorMessage(
+              "The password has reached the maximum of 30 characters"
+            );
+            break;
+          case "Wrong email or password":
+            setErrorMessage("Wrong email or password");
+            break;
+          case "Unable to login, you must verify your account first":
+            setErrorMessage(
+              "Unable to login, you must verify your account first"
+            );
+            break;
+          case "User does not exist":
+            setErrorMessage("User does not exist");
+            break;
+          default:
+            console.error(error);
         }
-      });
+      } else {
+        console.error(error);
+      }
+    };
 
-  };
-
+    if (userInput.email && userInput.password) {
+      handleLogInSubmit();
+    }
+  }, [navigate, userInput.email, userInput.password]);
+  
   return (
     <>
       <AuthenticationNav />
