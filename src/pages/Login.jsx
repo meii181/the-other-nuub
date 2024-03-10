@@ -24,6 +24,10 @@ const Login = () => {
   const handleLogInSubmit = (event) => {
     event.preventDefault();
 
+    useEffect(() => {
+      handleLogInSubmit();
+    }, [userInput]);
+
     axios
       .post(
         "https://the-other-nuub-backend-583b88d181b4.herokuapp.com/login.php",
@@ -91,10 +95,6 @@ const Login = () => {
       });
 
   };
-
-  useEffect(() => {
-    handleLogInSubmit();
-  }, [userInput]);
 
   return (
     <>
