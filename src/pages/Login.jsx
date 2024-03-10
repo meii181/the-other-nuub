@@ -38,7 +38,7 @@ const Login = () => {
         { withCredentials: true }
       )
       .then((response) => {
-        if (response.data === 200) {
+        if (response.data) {
           navigate("/dashboard");
         } else {
           setErrorMessage("Unable to log in, try again later");
