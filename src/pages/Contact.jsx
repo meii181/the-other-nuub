@@ -68,11 +68,6 @@ const Contact = () => {
           error.response.data === "Maximum 200 characters allowed"
         ) {
           setErrorMessage("Maximum 200 characters allowed");
-        } else if (
-          error.response &&
-          error.response.data === "The email has already been registered"
-        ) {
-          setErrorMessage("The email has already been registered");
         } else {
           console.log(error);
         }
