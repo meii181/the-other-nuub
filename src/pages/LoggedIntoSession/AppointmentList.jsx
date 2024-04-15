@@ -8,21 +8,29 @@ import { useTranslation } from "react-i18next";
 const AppointmentList = () => {
   const navigate = useNavigate();
   const [appointments, setAppointments] = useState([]);
+  const [isLoggedIn, setLoggedIn] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
     axios
-      .get("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/get_user.php", {
-        withCredentials: true,
-      })
+      .get("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/get_user.php", { withCredentials: true })
       .then((response) => {
         if (response.data) {
-          navigate("/appointmentlist");
+          setUser(response.data);
+          if (!isLoggedIn && window.location.pathname !== "/profile") {
+            setLoggedIn(true);
+            navigate("/profile");
+          }
         } else {
-          navigate("/login");
+          console.log("Oops");
         }
+      })
+      .catch((error) => {
+        console.log(error);
+        navigate("/login");
       });
-  }, [navigate]);
+  }, [isLoggedIn, navigate]);
+
 
   useEffect(() => {
     axios

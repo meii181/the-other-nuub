@@ -18,20 +18,28 @@ const EditAppointment = () => {
   const meeting_id = params.get("meeting_id");
 
   const { t } = useTranslation();
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     axios
-      .get("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/get_user.php", {
-        withCredentials: true,
-      })
+      .get("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/get_user.php", { withCredentials: true })
       .then((response) => {
         if (response.data) {
-          navigate("/editappointment");
+          setUser(response.data);
+          if (!isLoggedIn && window.location.pathname !== "/editappointment") {
+            setLoggedIn(true);
+            navigate("/editappointment");
+          }
         } else {
-          navigate("/login");
+          console.log("Oops");
         }
+      })
+      .catch((error) => {
+        console.log(error);
+        navigate("/login");
       });
-  }, [navigate]);
+  }, [isLoggedIn, navigate]);
+
 
   useEffect(() => {
     axios
@@ -97,7 +105,7 @@ const EditAppointment = () => {
         } else if (
           error.response &&
           error.response.data ===
-            "Meetings are available between 10 AM and 3 PM"
+          "Meetings are available between 10 AM and 3 PM"
         ) {
           setErrorMessage("Meetings are available between 10 AM and 3 PM");
         } else {

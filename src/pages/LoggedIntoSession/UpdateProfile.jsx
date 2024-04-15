@@ -13,6 +13,7 @@ const UpdateProfile = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [user, setUser] = useState({});
+  const [isLoggedIn, setLoggedIn] = useState(false);
   const [userInput, setUserInput] = useState({
     first_name: "",
     last_name: "",
@@ -28,18 +29,21 @@ const UpdateProfile = () => {
       .get("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/get_user.php", { withCredentials: true })
       .then((response) => {
         if (response.data) {
-          const user = response.data;
-          setUser(user);
-          navigate("/updateprofile");
+          setUser(response.data);
+          if (!isLoggedIn && window.location.pathname !== "/updateprofile") {
+            setLoggedIn(true);
+            navigate("/updateprofile");
+          }
         } else {
-          navigate("/login");
+          console.log("Oops");
         }
       })
       .catch((error) => {
         console.log(error);
         navigate("/login");
       });
-  }, [navigate]);
+  }, [isLoggedIn, navigate]);
+
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -81,25 +85,25 @@ const UpdateProfile = () => {
         } else if (
           error.response &&
           error.response.data ===
-            "The first name must be longer than 2 characters"
+          "The first name must be longer than 2 characters"
         ) {
           setErrorMessage("The first name must be longer than 2 characters");
         } else if (
           error.response &&
           error.response.data ===
-            "The first name cannot be longer than 12 characters"
+          "The first name cannot be longer than 12 characters"
         ) {
           setErrorMessage("The first name cannot be longer than 12 characters");
         } else if (
           error.response &&
           error.response.data ===
-            "The last name must be longer than 2 characters"
+          "The last name must be longer than 2 characters"
         ) {
           setErrorMessage("The last name must be longer than 2 characters");
         } else if (
           error.response &&
           error.response.data ===
-            "The last name cannot be longer than 2 characters"
+          "The last name cannot be longer than 2 characters"
         ) {
           setErrorMessage("The last name cannot be longer than 2 characters");
         } else if (
@@ -110,7 +114,7 @@ const UpdateProfile = () => {
         } else if (
           error.response &&
           error.response.data ===
-            "The password is not strong enough, it must be at least 8 characters"
+          "The password is not strong enough, it must be at least 8 characters"
         ) {
           setErrorMessage(
             "The password is not strong enough, it must be at least 8 characters"
@@ -118,7 +122,7 @@ const UpdateProfile = () => {
         } else if (
           error.response &&
           error.response.data ===
-            "The password has exceeded the maximum of 30 characters"
+          "The password has exceeded the maximum of 30 characters"
         ) {
           setErrorMessage(
             "The password has exceeded the maximum of 30 characters"
