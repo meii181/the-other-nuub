@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 const Profile = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   const { t } = useTranslation();
 
@@ -17,18 +18,20 @@ const Profile = () => {
       .get("https://the-other-nuub-backend-583b88d181b4.herokuapp.com/get_user.php", { withCredentials: true })
       .then((response) => {
         if (response.data) {
-          const user = response.data;
-          setUser(user);
-          navigate("/profile");
+          setUser(response.data);
+          if (!isLoggedIn && window.location.pathname !== "/profile") {
+            setLoggedIn(true);
+            navigate("/profile");
+          }
         } else {
-          navigate("/login");
+          console.log("Oops");
         }
       })
       .catch((error) => {
         console.log(error);
         navigate("/login");
       });
-  }, [navigate]);
+  }, [isLoggedIn, navigate]);
 
   return (
     <>
